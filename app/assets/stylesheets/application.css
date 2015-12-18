@@ -74,6 +74,10 @@ p#logo {
   line-height: 35%;
 }
 
+h1.greeting {
+  color: #53A697;
+}
+
 .container {
   margin: auto;
   min-height: 400px;
