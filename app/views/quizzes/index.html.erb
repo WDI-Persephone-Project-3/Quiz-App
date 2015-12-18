@@ -1,0 +1,24 @@
+<h1>All Quizzes</h1>
+
+<!-- if an instructor is logged in -->
+<!-- show a list of all quizzes -->
+
+<% if current_user.class == Instructor %>
+  <ul>
+   <% @quizzes.each do |quiz| %>
+    <li>
+      <h3><a href="/quizzes/<%= quiz[:id] %>"><%= quiz[:test_day] %></a></h3>
+    </li>
+   <% end %>
+  </ul>
+  <p><a href="/quizzes/new" class="new-quiz">Create a new quiz!</a></p>
+<!-- else if student is logged in, show a list of all quizzes THEY have taken -->
+<% elsif current_user.class == Student %>
+  <ul>
+    <% @quizzes.responses.student.each do |quiz| %> <!-- HELP! -->
+    <li>
+      <h3><a href="/quizzes/<%= quiz[:id] %>"><%= quiz[:test_day] %></a></h3>
+    </li>
+    <% end %>
+  </ul>
+<% end %>

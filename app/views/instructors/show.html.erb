@@ -1,0 +1,14 @@
+<h1> <%= @instructor.last_name %>, <%= @instructor.first_name %> </h1>
+<a><strong>Email Address:</strong> <a href="mailto:<%= @instructor.email %>"><%= @instructor.email %></a>
+<br>
+<br>
+<br>
+
+<body>
+  <h3> Cohorts </h3>
+   <ul>
+   <% @instructor.cohorts.each do |cohort| %>
+    <li> <a href="/cohorts/<%= cohort.id %>"> <%= cohort.name %></a> </li>
+  <% end %>
+  </ul>
+</body>
