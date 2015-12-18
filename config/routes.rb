@@ -8,13 +8,12 @@ Rails.application.routes.draw do
   post '/signup' => 'sessions#create_user'  
 
   get '/instructors/dash' => 'instructors#dash'
+  get '/instructors/new' => 'instructors#new'
   get '/students/dash' => 'students#dash'
   get '/instructors/dash/cohort' => 'instructors#cohort'
-  get '/instructors/new' => 'instructors#new'
-
 
   shallow do
-    resources :instructors, only: [:show, :edit, :update, :destroy] do
+    resources :instructors do
       resources :cohorts
     end
   end
