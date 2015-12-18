@@ -12,4 +12,58 @@
  *
  *= require_tree .
  *= require_self
+ *= require_grid
  */
+
+
+body {
+  margin: 0 auto;
+  padding: 0;
+}
+
+.header {
+  background-color: #53A697;
+  height: 50px;
+  width: 100%;
+  color: white;
+  top: 0px;
+  display: inline-block;
+}
+
+#logo {
+  font: 18px, 'Francois One', sans-serif,;
+  float: left;
+  margin-left: 20px;
+  position: relative;
+}
+
+.nav {
+  font: 12px, 'Open Sans', sans-serif;
+  position: relative;
+  float: right;
+  display: inline;
+  margin-right: 20px;
+}
+
+link {
+  color: white;
+}
+
+.container {
+
+}
+
+h1 {
+  font-family: 'Francois One', sans-serif;
+}
+
+
+
+
+
+
+
+
+
+
+
