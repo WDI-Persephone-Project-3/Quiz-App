@@ -28,8 +28,11 @@ class InstructorsController < ApplicationController
     redirect_to @instructor
   end
 
-  private 
+  def cohort
+    render json: '{"name":"Cohort1"}'
+  end
 
+  private 
   def instructor_params
     params.require(:instructor).permit(:last_name, :first_name, :email, :password, :password_confirmation)
   end

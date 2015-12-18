@@ -2,18 +2,23 @@
 <p>Created by <%= Instructor.find(@quiz.instructor_id).first_name %> <%= Instructor.find(@quiz.instructor_id).last_name %></p>
 
 <!-- I did some styling here, move to css files later -->
-<% @quiz.questions.each do |question| %>
-  <h4><%= question.id %>: <%= question.content %></h4>
-  <% question.answers.each do |answer| %>
-    <% if @quiz.test_day == Date.today && current_user.class == Student %>
-      <%= radio_button_tag(question.id, answer.choice) %>
-      <%= label_tag(question.id, answer.choice) %>
-    <% else %>
-      <% if answer.is_correct %>
-        <li style="font-weight: bolder"><%= answer.choice %></li>
+
+<%= form_tag("/quizzes/#{@quiz.id}/create_responses", method:"post") do %>
+  <% @quiz.questions.each do |question| %>
+    <h4><%= question.id %>: <%= question.content %></h4>
+    <% question.answers.each do |answer| %>
+      <% if @quiz.test_day == Date.today && current_user.class == Student && !Response.where(student_id: current_user.id, quiz_id: @quiz.id).any? %>
+        <%= radio_button_tag(question.id, answer.choice) %>
+        <%= label_tag(question.id, answer.choice) %>
       <% else %>
-        <li style="color: gray"><%= answer.choice %></li>
+        <% if answer.is_correct %>
+          <li style="font-weight: bolder"><%= answer.choice %></li>
+        <% else %>
+          <li style="color: gray"><%= answer.choice %></li>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>
+  </br></br>
+  <%= submit_tag "Submit Quiz" if current_user.class == Student && !Response.where(student_id: current_user.id, quiz_id: @quiz.id).any? %>
 <% end %>
