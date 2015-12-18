@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/instructors/dash' => 'instructors#dash'
   get '/students/dash' => 'students#dash'
   get '/instructors/dash/cohort' => 'instructors#cohort'
+  get '/instructors/new' => 'instructors#new'
 
   get '/create_responses' => 'responses#create'
 
