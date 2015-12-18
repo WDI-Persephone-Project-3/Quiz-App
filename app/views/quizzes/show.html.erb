@@ -3,11 +3,10 @@
 
 <!-- I did some styling here, move to css files later -->
 
-<%= form_tag("/create_responses", method:"get") do %>
+<%= form_tag("/quizzes/#{@quiz.id}/create_responses", method:"post") do %>
   <% @quiz.questions.each do |question| %>
     <h4><%= question.id %>: <%= question.content %></h4>
     <% question.answers.each do |answer| %>
-      
       <% if @quiz.test_day == Date.today && current_user.class == Student %>
         <%= radio_button_tag(question.id, answer.choice) %>
         <%= label_tag(question.id, answer.choice) %>
