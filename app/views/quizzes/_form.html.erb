@@ -1,3 +1,5 @@
+<% if current_user.class == Instructor %>
+
 <%= form_for @quiz, html: {method: "get"} do %>
   <%= label_tag(:test_day, "Date:") %>
   <%= date_field_tag(:test_day) %>
@@ -9,4 +11,6 @@
   <%= text_field_tag(:answer) %>
   <br>
   <%= submit_tag("Create") %>
+<% end %>
+
 <% end %>
