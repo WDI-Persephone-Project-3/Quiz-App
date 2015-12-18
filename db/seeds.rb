@@ -45,7 +45,7 @@ a10 = Answer.create({choice: "2", question: q3, is_correct: false})
 a11 = Answer.create({choice: "3", question: q3, is_correct: false})
 a12 = Answer.create({choice: "4", question: q3, is_correct: true})
 
-test_quiz = Quiz.create({test_day: Date.today, instructor: Instructor.first})
+test_quiz = Quiz.create({test_day: Date.today, instructor: Instructor.first, cohort: c1})
 
 test_quiz.questions.push(q1)
 test_quiz.questions.push(q2)
