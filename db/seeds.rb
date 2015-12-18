@@ -35,15 +35,15 @@ a3 = Answer.create({choice: "4", question: q1, is_correct: false})
 a4 = Answer.create({choice: "3", question: q1, is_correct: false})
 
 
-a5 = Answer.create({choice: "2", question: q2, is_correct: false})
-a6 = Answer.create({choice: "1", question: q2, is_correct: false})
-a7 = Answer.create({choice: "4", question: q2, is_correct: true})
-a8 = Answer.create({choice: "3", question: q2, is_correct: false})
+a5 = Answer.create({choice: "1", question: q2, is_correct: false})
+a6 = Answer.create({choice: "4", question: q2, is_correct: false})
+a7 = Answer.create({choice: "2", question: q2, is_correct: false})
+a8 = Answer.create({choice: "3", question: q2, is_correct: true})
 
-a9 = Answer.create({choice: "2", question: q3, is_correct: false})
-a10 = Answer.create({choice: "1", question: q3, is_correct: false})
-a11 = Answer.create({choice: "4", question: q3, is_correct: false})
-a12 = Answer.create({choice: "3", question: q3, is_correct: true})
+a9 = Answer.create({choice: "4", question: q3, is_correct: true})
+a10 = Answer.create({choice: "2", question: q3, is_correct: false})
+a11 = Answer.create({choice: "3", question: q3, is_correct: false})
+a12 = Answer.create({choice: "1", question: q3, is_correct: true})
 
 test_quiz = Quiz.create({test_day: Date.today, instructor: Instructor.first, cohort: c1})
 
