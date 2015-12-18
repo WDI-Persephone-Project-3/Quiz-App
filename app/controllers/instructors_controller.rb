@@ -19,6 +19,12 @@ class InstructorsController < ApplicationController
   end
 
   def new
+    @instructor = Instructor.new
+  end
+
+  def create
+    @instructor = Instructor.create(instructor_params)
+    redirect_to @instructor
   end
 
   private 
