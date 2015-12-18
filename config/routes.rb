@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get '/instructors/dash/cohort' => 'instructors#cohort'
   get '/instructors/new' => 'instructors#new'
 
-  get '/create_responses' => 'responses#create'
+  post '/quizzes/:id/create_responses' => 'responses#create'
 
   shallow do
     resources :instructors, only: [:show, :edit, :update, :destroy] do
