@@ -19,6 +19,18 @@
 body {
   margin: 0 auto;
   padding: 0;
+  vertical-align: middle;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+  font-family: 'Francois One', sans-serif;
+  font-size: 36px;
+}
+
+h3 {
+  font-size: 24px;
 }
 
 .header {
@@ -30,35 +42,55 @@ body {
   display: inline-block;
 }
 
-#logo {
-  font: 18px, 'Francois One', sans-serif,;
+p#logo {
+  font-family: 'Francois One', sans-serif;
+  font-size: 18px;
+  top: -15%;
   float: left;
   margin-left: 20px;
   position: relative;
 }
 
-.nav {
-  font: 12px, 'Open Sans', sans-serif;
+.nav{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  top: 5%;
   position: relative;
   float: right;
-  display: inline;
+  display: inherit;
   margin-right: 20px;
 }
 
-link {
-  color: white;
+.nav-link {
+ color: white;
+}
+
+.greeting {
+  margin: auto;
+  vertical-align: middle;
+  padding-top: 40px;
+  text-align: center;
+  line-height: 35%;
 }
 
 .container {
-
+  margin: auto;
+  min-height: 400px;
+  top: 10px;
+  width: 80%;
+  background-color: rgba(255,255,255,0.75);
 }
 
-h1 {
-  font-family: 'Francois One', sans-serif;
+
+.footer {
+  background-color: #53A697;
+  height: 26px;
+  vertical-align: middle;
+  font-size: 12px;
+  line-height: 25px;
+  color: white;
 }
-
-
-
 
 
 
