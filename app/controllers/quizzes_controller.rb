@@ -2,7 +2,8 @@ class QuizzesController < ApplicationController
 
   # GET '/quizzes'
   def index
-    @quizzes = Quiz.all
+    @quizzes = Quiz.where(instructor_id: current_user.id) if current_user.class == Instructor
+    @quizzes = Quiz.where(cohort_id: Student.find(current_user.id).cohort_id) if current_user.class == Student
   end
 
   # GET '/quizzes/1'
