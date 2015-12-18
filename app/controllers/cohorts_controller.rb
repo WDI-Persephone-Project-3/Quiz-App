@@ -1,12 +1,11 @@
 class CohortsController < ApplicationController
 	
-	# def index
-	# 	@cohorts = Cohort.all
-	# end
+	def index
+
+	end
 
 	def show
-		@c1 = Cohort.find(params[:id])
-		@students = @c1.cohorts.students
+
 	end
 
 	def new 
