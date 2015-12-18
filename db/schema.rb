@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20151216205107) do
   create_table "quizzes", force: :cascade do |t|
     t.date    "test_day"
     t.integer "instructor_id"
+    t.integer "cohort_id"
   end
 
   create_table "responses", force: :cascade do |t|

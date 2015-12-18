@@ -6,4 +6,4 @@
 <a href="/instructors/new">Add a Collegue</a>
 <a href="">Students</a>
 <a href="/instructors/<%= @instructor.id %>/edit">Update Your Information</a>
-<p>Dashboard Stuff</p>
+<p class="dash"><%= Cohort.where(instructor_id: current_user.id).pluck(:name).first %></p>

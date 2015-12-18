@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/students/dash' => 'students#dash'
   get '/instructors/dash/cohort' => 'instructors#cohort'
 
+  get '/create_responses' => 'responses#create'
 
   shallow do
     resources :instructors, only: [:show, :edit, :update, :destroy] do
