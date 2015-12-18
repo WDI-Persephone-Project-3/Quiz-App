@@ -3,6 +3,7 @@ class CreateQuizzes < ActiveRecord::Migration
     create_table :quizzes do |t|
       t.date :test_day
       t.references :instructor
+      t.references :cohort
     end
   end
 end
