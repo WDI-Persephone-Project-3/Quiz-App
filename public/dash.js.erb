@@ -1,5 +1,3 @@
-console.log('linked');
-
 $(document).ready(function() {
 
   google.setOnLoadCallback(drawChart);
@@ -35,28 +33,30 @@ $(document).ready(function() {
  $cohortChoice.on('change', function(){
 
   var choice = $cohortChoice.val().trim();
-  console.log(choice);
 
   $.ajax({
     method: "GET",
     dataType: "json",
-    url: "/instructors/dash/cohort",
-    success: function(data){
-      console.log(data)
+    url: "/instructors/dash/"+choice,
+    data: { choice: choice},
+    success: function(response, status, xhr){
       $dashCohort = $('.dash').children().first()
       $dashCohort.text("Cohort: "+choice)
+      var $studentList = $('.scroll-down').eq(0)
+      var $quizList = $('.scroll-down').eq(1)
+      $studentList.empty()
+      $quizList.empty()
+      response["students"].forEach(function(student) {
+        $studentList.append('<a href="/students/'+student.id+'">'+ student.first_name + ' ' + student.last_name + '</a>')
+      });
+      response["quizzes"].forEach(function(quiz){
+        $quizList.append('<a href="/quizzes/'+quiz.id+'">'+quiz.test_day+'</a>')
+      });
     },
-    error: function(data, err){
-      console.log(data)
-      console.log(err)
+    error: function(xhr, status, error){
+      console.log(xhr, status, error)
     },
-    done: function(data) {
-      console.log(data)
-    }
   })
 
-  // $.get("/instructors/dash/cohort?cohort="+choice, function(data) {
-  //   console.log('DATA ', data);
-  // });
  });
 });

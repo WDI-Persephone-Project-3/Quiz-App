@@ -9,6 +9,7 @@ class QuizzesController < ApplicationController
   # GET '/quizzes/1'
   def show
     @quiz = Quiz.find(params[:id])
+    @responses = Response.where(quiz_id: @quiz.id, student_id: current_user.id)
   end
 
   # GET '/quizzes/new'
