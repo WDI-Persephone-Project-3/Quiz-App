@@ -7,16 +7,15 @@ class Student < ActiveRecord::Base
   def all_quizzes
   	array_of_quiz_ids = self.responses.pluck(:quiz_id).uniq
   	array_of_quiz_ids.each do |id|
-  	  quiz = Quiz.find(id: id).test_day
+  	  quiz = Quiz.find(id).test_day
   	end
-    puts quiz
   end
 
   def calculate_grades
   	correct_counter = 0
   	array_of_quiz_ids = self.responses.pluck(:quiz_id).uniq
   	array_of_quiz_ids.each do |id|
-  	  quiz = Quiz.find_by(id: id)
+  	  quiz = Quiz.find(id)
   	  questions = quiz.questions
     end
   	questions.each do |question|
@@ -30,7 +29,7 @@ class Student < ActiveRecord::Base
   def sort_quizzes_by_date
     array_of_quiz_ids = self.responses.pluck(:quiz_id).uniq
   	quizzes = array_of_quiz_ids.each do |id|
-  	  Quiz.find(id: id)
+  	  Quiz.find(id)
   	end
   	sorted_quizzes_by_date = quizzes.sort do |quiz1, quiz2|
   	  quiz1_date = quiz1.test_day
