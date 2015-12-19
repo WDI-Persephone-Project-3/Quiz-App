@@ -1,6 +1,11 @@
 class CohortsController < ApplicationController
 	
+	def index
+
+	end
+
 	def show
+
 	end
 
 	def new 
@@ -16,7 +21,6 @@ class CohortsController < ApplicationController
 	end
 
 	def update
+	end
 
-
-	def 
 end
