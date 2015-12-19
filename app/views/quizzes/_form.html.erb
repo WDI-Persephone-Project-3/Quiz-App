@@ -1,12 +1,17 @@
+<% if current_user.class == Instructor %>
+
 <%= form_for @quiz, html: {method: "get"} do %>
   <%= label_tag(:test_day, "Date:") %>
   <%= date_field_tag(:test_day) %>
   <br>
+  <!-- at some point, want to have  -->
   <%= label_tag(:question, "Question:") %>
-  <%= text_field_tag(:question) %> <!-- HELP: How do I get other options in here without having to include them in here itself -->
+  <%= select_tag(:question, options_for_select(Quiz::QUESTIONS)) %> <!-- HELP -->
   <br>
   <%= label_tag(:answer, "Answer") %>
   <%= text_field_tag(:answer) %>
   <br>
   <%= submit_tag("Create") %>
+<% end %>
+
 <% end %>
