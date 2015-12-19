@@ -4,8 +4,9 @@
   <%= label_tag(:test_day, "Date:") %>
   <%= date_field_tag(:test_day) %>
   <br>
+  <!-- at some point, want to have  -->
   <%= label_tag(:question, "Question:") %>
-  <%= select_tag(:question, options_for_select((Quiz::QUESTIONS).content)) %> <!-- HELP -->
+  <%= select_tag(:question, options_for_select(Quiz::QUESTIONS)) %> <!-- HELP -->
   <br>
   <%= label_tag(:answer, "Answer") %>
   <%= text_field_tag(:answer) %>
@@ -14,13 +15,3 @@
 <% end %>
 
 <% end %>
-
-
-
-
-
-
-
-
-
-
