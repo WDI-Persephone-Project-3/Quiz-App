@@ -1,9 +1,43 @@
 <!-- Second input is the value, so we set to nil -->
 <%= select_tag :cohort, options_for_select(Cohort.where(instructor_id: current_user.id).pluck(:name)), :class => 'cohort-choice' %></br>
 
+<<<<<<< HEAD
 <a href="/quizzes/new">Create a New Quiz</a>
+=======
+<a href="quizzes/new">Create a New Quiz</a>
+>>>>>>> master
 <a href="instructors/<%= @instructor.id %>/quizzes">All Quizzes</a>
 <a href="/instructors/new">Add a Colleague</a>
 <a href="">Students</a>
 <a href="/instructors/<%= @instructor.id %>/edit">Update Your Information</a>
-<p class="dash"><%= Cohort.where(instructor_id: current_user.id).pluck(:name).first %></p>
+<div class="dash">
+  <h3>Cohort: <%= Cohort.where(instructor_id: current_user.id).pluck(:name).first %></h3>
+  <div class="flex">  
+    <div class="scroll-downs">
+      <h4>Students</h4>
+      <ul class="scroll-down">
+        <!-- FIX THIS FOR JUST STUDENTS IN THE COHORT -->
+        <% Student.where(cohort_id: Cohort.where(instructor_id: current_user.id).first.id).each do |student| %>
+          <a href="/students/<%=student.id%>"><%= student.first_name %> <%= student.last_name%></a>
+        <% end %>
+      </ul>
+      <h4>Quizzes</h4>
+      <ul class="scroll-down">
+        <!-- FIX THIS FOR JUST QUIZZES IN THE COHORT -->
+        <% Quiz.where(cohort_id: Cohort.where(instructor_id: current_user.id).first.id).order(test_day: :desc).each do |quiz| %>
+          <a href="/quizzes/<%=quiz.id%>"><%= quiz.test_day%></a>
+        <% end %>
+      </ul>
+    </div> <!-- scroll-downs -->
+    <div class="data">
+      <h4>Cohort Overall Grades</h4>
+      <div id="piechart"></div>
+    </div> <!-- data -->
+  </div> <!-- flex -->
+</div> <!-- dash -->
+
+<script type="text/javascript" src="https://www.google.com/jsapi?autoload= 
+{'modules':[{'name':'visualization','version':'1.1','packages':
+['corechart']}]}"></script>
+<script src="../../dash.js"></script>
+<link rel="stylesheet" href="../../dash.css">

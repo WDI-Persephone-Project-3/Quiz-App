@@ -7,7 +7,7 @@
   <% @quiz.questions.each do |question| %>
     <h4><%= question.id %>: <%= question.content %></h4>
     <% question.answers.each do |answer| %>
-      <% if @quiz.test_day == Date.today && current_user.class == Student %>
+      <% if @quiz.test_day == Date.today && current_user.class == Student && !Response.where(student_id: current_user.id, quiz_id: @quiz.id).any? %>
         <%= radio_button_tag(question.id, answer.choice) %>
         <%= label_tag(question.id, answer.choice) %>
       <% else %>
@@ -20,5 +20,5 @@
     <% end %>
   <% end %>
   </br></br>
-  <%= submit_tag "Submit Quiz" if current_user.class == Student %>
+  <%= submit_tag "Submit Quiz" if current_user.class == Student && !Response.where(student_id: current_user.id, quiz_id: @quiz.id).any? %>
 <% end %>
