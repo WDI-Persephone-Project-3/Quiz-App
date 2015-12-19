@@ -9,21 +9,12 @@ class InstructorsController < ApplicationController
   end
 
   def edit  
-    @instructor = Instructor.find(params[:id])
+    @instructor = Instructor.find(session[:user_id])
   end
 
   def update
-    @instructor = Instructor.find(params[:id])
+    @instructor = Instructor.find(session[:user_id])
     @instructor.update(instructor_params)
-    redirect_to "/"
-  end
-
-  def new
-    @instructor = Instructor.new
-  end
-
-  def create
-    @instructor = Instructor.create(instructor_params)
     redirect_to @instructor
   end
 
@@ -33,7 +24,7 @@ class InstructorsController < ApplicationController
 
   private 
   def instructor_params
-    params.require(:instructor).permit(:last_name, :first_name, :email_address)
+    params.require(:instructor).permit(:email, :password, :password_confirmation)
   end
 
 end
