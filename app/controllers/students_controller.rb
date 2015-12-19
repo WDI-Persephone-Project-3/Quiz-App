@@ -14,18 +14,26 @@ class StudentsController < ApplicationController
   end
 
   def dash
-  
+    @student = Student.find(session[:user_id])
   end
   
   def show
-  	@student = Student.find(session[:user_id])
-  	@quizzes = @student.all_quizzes
-  	@student.sort_quizzes_by_date
+    @student = Student.find(params[:id])
+  	if @student == Student.find(session[:user_id])
+  	  @quizzes = @student.all_quizzes
+  	  @student.sort_quizzes_by_date
+    else
+      redirect_to "/"
+    end  
     # @grades = @student.calculate_grades
   end
 
   def edit
-  	@student = Student.find(session[:user_id])
+    @student = Student.find(params[:id])
+  	if @student == Student.find(session[:user_id])
+      render :edit
+    else
+      redirect_to "/"
   end
 
   def update

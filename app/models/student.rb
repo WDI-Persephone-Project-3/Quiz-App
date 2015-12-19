@@ -6,8 +6,8 @@ class Student < ActiveRecord::Base
   
   def all_quizzes
   	array_of_quiz_ids = self.responses.pluck(:quiz_id).uniq
-  	quizzes = array_of_quiz_ids.each do |id|
-  	  Quiz.find(id).test_day
+  	quizzes = array_of_quiz_ids.map do |id|
+  	  Quiz.find(id)
   	end
     quizzes
   end
@@ -15,7 +15,7 @@ class Student < ActiveRecord::Base
   def calculate_grades
   	correct_counter = 0
   	array_of_quiz_ids = self.responses.pluck(:quiz_id).uniq
-  	array_of_quiz_ids.each do |id|
+  	array_of_quiz_ids.map do |id|
   	  quiz = Quiz.find(id)
   	  questions = quiz.questions
       questions.each do |question|
@@ -29,7 +29,7 @@ class Student < ActiveRecord::Base
 
   def sort_quizzes_by_date
     array_of_quiz_ids = self.responses.pluck(:quiz_id).uniq
-  	quizzes = array_of_quiz_ids.each do |id|
+  	quizzes = array_of_quiz_ids.map do |id|
   	  Quiz.find(id)
   	end
   	sorted_quizzes_by_date = quizzes.sort do |quiz1, quiz2|
@@ -45,10 +45,10 @@ class Student < ActiveRecord::Base
 
   def current_average
     array_of_quiz_ids = self.responses.pluck(:quiz_id).uniq
-    quizzes = array_of_quiz_ids.each do |id|
+    quizzes = array_of_quiz_ids.map do |id|
       Quiz.find(id)
     end
-    totals = quizzes.each do |quiz|
+    totals = quizzes.map do |quiz|
       quiz.questions.length
     end
     quiz_total = totals.reduce(:+)
