@@ -5,7 +5,7 @@
   <%= date_field_tag(:test_day) %>
   <br>
   <%= label_tag(:question, "Question:") %>
-  <%= text_field_tag(:question) %> <!-- HELP: How do I get other options in here without having to include them in here itself -->
+  <%= select_tag(:question, options_for_select((Quiz::QUESTIONS).content)) %> <!-- HELP -->
   <br>
   <%= label_tag(:answer, "Answer") %>
   <%= text_field_tag(:answer) %>

@@ -13,7 +13,7 @@ class QuizzesController < ApplicationController
 
   # GET '/quizzes/new'
   def new
-    @quiz = Quiz.find(params[:id])
+    @quiz = Quiz.new
     @question = @quiz.questions.build
     @answer = @question.answers.build
   end
