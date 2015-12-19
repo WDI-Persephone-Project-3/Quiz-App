@@ -60,5 +60,10 @@
 
 svg {
   width: 100%;
-  margin-top: -80px;
+  margin: -80px auto 0 auto;
+}
+
+#piechart div div {
+  width: 100%;
+  margin: 0 auto;
 }
