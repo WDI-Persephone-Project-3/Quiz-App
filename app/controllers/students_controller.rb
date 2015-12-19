@@ -5,9 +5,9 @@ class StudentsController < ApplicationController
   
   def show
   	@student = Student.find(params[:id])
-  	@quizzes = @student.all_quizzes
-  	@grades = @student.calculate_grades
-  	@date_sorted_quizzes = @student.sort_quizzes_by_date
+  	# @quizzes = @student.all_quizzes
+  	# @grades = @student.calculate_grades
+  	# @date_sorted_quizzes = @student.sort_quizzes_by_date
   end
 
   def edit

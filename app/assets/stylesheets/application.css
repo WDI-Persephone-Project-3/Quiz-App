@@ -80,7 +80,6 @@ h1.greeting {
 
 .container {
   margin: auto;
-  min-height: 400px;
   top: 10px;
   width: 80%;
   background-color: rgba(255,255,255,0.75);
@@ -89,11 +88,17 @@ h1.greeting {
 
 .footer {
   background-color: #53A697;
-  height: 26px;
-  vertical-align: middle;
   font-size: 12px;
-  line-height: 25px;
+  height: 36px;
   color: white;
+  align-items; center;
+  display: flex;
+  justify-content: space-around;
+}
+
+.footer p {
+  margin: 0;
+  align-self: center;
 }
 
 
