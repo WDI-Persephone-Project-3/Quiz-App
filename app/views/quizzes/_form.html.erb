@@ -4,7 +4,7 @@
   <%= label_tag(:test_day, "Date:") %>
   <%= date_field_tag(:test_day) %>
   <br>
-  <!-- at some point, want to have  -->
+  <!-- at some point, want to have a dropdown menu that lists all the existing questions -->
   <%= label_tag(:question, "Question:") %>
   <%= select_tag(:question, options_for_select(Quiz::QUESTIONS)) %> <!-- HELP -->
   <br>
