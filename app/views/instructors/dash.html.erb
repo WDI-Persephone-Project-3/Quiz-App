@@ -1,21 +1,10 @@
 <!-- Second input is the value, so we set to nil -->
 <%= select_tag :cohort, options_for_select(Cohort.where(instructor_id: current_user.id).pluck(:name)), :class => 'cohort-choice' %></br>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<a href="/quizzes/new">Create a New Quiz</a>
-=======
-<a href="quizzes/new">Create a New Quiz</a>
->>>>>>> master
-<a href="instructors/<%= @instructor.id %>/quizzes">All Quizzes</a>
-<a href="/instructors/new">Add a Colleague</a>
-<a href="">Students</a>
-=======
 <a href="/quizzes/new">Create a New Quiz</a>
 <a href="/quizzes">All Quizzes</a>
 <a href="/instructors/new">Add a Colleague</a>
 <a href="/students">Students</a>
->>>>>>> master
 <a href="/instructors/<%= @instructor.id %>/edit">Update Your Information</a>
 <div class="dash">
   <h3>Cohort: <%= Cohort.where(instructor_id: current_user.id).pluck(:name).first %></h3>
