@@ -1,0 +1,164 @@
+body {
+ margin: 0;
+}
+/* This is the file where all my grid stuff will go! Awesome. */
+
+.wrapper {
+display:flex;
+flex-wrap: wrap;
+/*  align-items: center; */
+/*  justify-content: space-between;  */
+}
+
+/* This is a rule that will make the targeted element take up 20% of available space. */
+.grid-1-5 {
+ width: 20%;
+}
+.grid-2-5 {
+ width: 40%;
+}
+.grid-3-5 {
+ width:60%;
+}
+.grid-4-5 {
+ width: 80%;
+}
+.grid-5-5, .grid-8-8, .grid-full {
+ width: 100%;
+}
+
+/* Write a new series of rules that will allow us to utilize a grid divided in eighths*/
+
+.grid-1-8 {
+ width: 12.5%;
+}
+.grid-2-8 {
+ width: 25%;
+}
+.grid-3-8 {
+ width: 37.5%;
+}
+.grid-4-8 {
+ width: 50%;
+}
+.grid-5-8 {
+ width: 62.5%;
+}
+.grid-6-8 {
+ width: 75%;
+}
+.grid-7-8 {
+ width: 87.5%;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ *= require_grid
+ */
+
+
+
+
+body {
+  margin: 0 auto;
+  padding: 0;
+  vertical-align: middle;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+  font-family: 'Francois One', sans-serif;
+  font-size: 36px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+.header {
+  background-color: #53A697;
+  height: 50px;
+  width: 100%;
+  color: white;
+  top: 0px;
+  display: inline-block;
+}
+
+p#logo {
+  font-family: 'Francois One', sans-serif;
+  font-size: 18px;
+  top: -15%;
+  float: left;
+  margin-left: 20px;
+  position: relative;
+}
+
+.nav{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  top: 5%;
+  position: relative;
+  float: right;
+  display: inherit;
+  margin-right: 20px;
+}
+
+.nav-link {
+ color: white;
+}
+
+.greeting {
+  margin: auto;
+  vertical-align: middle;
+  padding-top: 40px;
+  text-align: center;
+  line-height: 35%;
+}
+
+h1.greeting {
+  color: #53A697;
+}
+
+.container {
+  margin: auto;
+  top: 10px;
+  width: 80%;
+  background-color: rgba(255,255,255,0.75);
+}
+
+
+.footer {
+  background-color: #53A697;
+  font-size: 12px;
+  height: 36px;
+  color: white;
+  align-items; center;
+  display: flex;
+  justify-content: space-around;
+}
+
+.footer p {
+  margin: 0;
+  align-self: center;
+}
+
+
+
+
+
+
+
+

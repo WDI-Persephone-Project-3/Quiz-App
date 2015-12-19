@@ -19,7 +19,23 @@ class InstructorsController < ApplicationController
   end
 
   def cohort
-    render json: '{"name":"Cohort1"}'
+    students = Student.where(cohort_id: Cohort.find_by(name: "#{params[:name]}").id)
+    quizzes = Quiz.where(cohort_id: Cohort.find_by(name: "#{params[:name]}").id).order(test_day: :desc)
+    response = {students: [], quizzes: []}
+    students.each do |student|
+      response[:students].push({
+        id:         student.id,
+        first_name: student.first_name,
+        last_name:  student.last_name
+      })
+    end
+    quizzes.each do |quiz|
+      response[:quizzes].push({
+        id:       quiz.id,
+        test_day: quiz.test_day
+      })
+    end
+    render json: response
   end
 
   private 
