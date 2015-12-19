@@ -20,8 +20,8 @@ class StudentsController < ApplicationController
   def show
   	@student = Student.find(session[:user_id])
   	@quizzes = @student.all_quizzes
-  	@grades = @student.calculate_grades
   	@student.sort_quizzes_by_date
+    # @grades = @student.calculate_grades
   end
 
   def edit
