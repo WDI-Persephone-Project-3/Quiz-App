@@ -20,6 +20,18 @@
   border: 1px solid black;
 }*/
 
+.splash-image {
+  height: 600px;
+  width: 100%;
+  background-image: url("giphy.gif");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: none;
+  text-align: center;
+}
+
+
 body {
   margin: 0 auto;
   padding: 0;
@@ -38,12 +50,13 @@ h3 {
 }
 
 .header {
-  background-color: #53A697;
-  height: 50px;
+/*  background-color: #53A697;*/
+  height: 40px;
   width: 100%;
-  color: white;
+  color: black;
   top: 0px;
   display: inline-block;
+  position: relative;
 }
 
 p#logo {
@@ -67,7 +80,10 @@ p#logo {
 }
 
 .nav-link {
- color: white;
+  border: 1px solid #FF5A5F;
+  padding: 4px 8px;
+  color: black;
+  text-decoration: none;
 }
 
 .greeting {
@@ -91,10 +107,10 @@ h1.greeting {
 
 
 .footer {
-  background-color: #53A697;
+  background-color: white;
   font-size: 12px;
   height: 36px;
-  color: white;
+  color: black;
   align-items; center;
   display: flex;
   justify-content: space-around;

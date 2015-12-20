@@ -35,6 +35,7 @@ label, input {
 
 
 
+
 /*instructor update css*/
 .login-field {
 	height: 1.5em;
@@ -67,8 +68,8 @@ label, input {
 }
 
 .wrapper {
-	border: 1px solid black;
-	width: 550px;
+/*	border: 1px solid black;
+*/	width: 550px;
 	margin: 0 auto;
 	text-align: center;
 }

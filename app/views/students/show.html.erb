@@ -5,17 +5,25 @@
 
 <h3>Quiz History:</h3>
 <p>Current Average: </p>
-<ul>
-  <% @quizzes.each do |quiz| %>
-      <li><a href="/quizzes/<%= quiz.id %>"><%= quiz.test_day %></a> Possible Total: <%= quiz.questions.length %></li>  
-  <% end %> 
-</ul>
 
-<ul>
-  <% @grades.each do |grade| %>
-      <li>Grade: <%= grade.pop() %> </li> 
-  <% end %> 
-</ul>
+<div class="grade-wrapper wrapper">
+	<div class="ul-wrapper">
+		<ul>
+		  <% @quizzes.each do |quiz| %>
+		      <li><a href="/quizzes/<%= quiz.id %>"><%= quiz.test_day %></a> Possible Total: <%= quiz.questions.length %></li>  
+		  <% end %> 
+		</ul>
+	</div>	
+
+	<div class="ul-wrapper">
+		<ul>
+		  <% @grades.each do |grade| %>
+		      <li>Grade: <%= grade.pop() %> </li> 
+		  <% end %> 
+		</ul>
+	</div>
+
+</div>
 
 
 
