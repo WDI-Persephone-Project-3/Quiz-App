@@ -1,0 +1,45 @@
+/*landing page css*/
+
+.form-container {
+	width: 50%;
+	padding: 30px;
+	border: 1px solid black;
+	margin: 0 auto;
+/*	display:flex;
+	flex-wrap: wrap;
+  align-items: center; */
+/*  justify-content: space-between;  */
+}
+
+
+.login-field {
+	height: 1.5em;
+	width:175px;
+	font-size: 15px;
+	border: 1px solid #53A697;
+	padding: 4px 4px;
+	margin-left: 5px;
+	vertical-align: bottom;
+	margin-bottom: 5px;
+}
+
+.submit-btn {
+	height: 2.1em;
+	width: 5em;
+	font-size: 15px;
+/*	padding: 10px 10px;*/
+	margin-left: 5px;
+	background-color: #53A697; 
+	color: white;
+	border: none;
+	margin-bottom: 5px;
+}
+
+/*signup page css*/
+
+.instructor-select {
+	border-radius: none;
+	width: 180px;
+	margin-bottom: 10px;
+	background-color: #C4CECA;
+}
