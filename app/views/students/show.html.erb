@@ -6,8 +6,10 @@
 <h3>Quiz History:</h3>
 <p>Current Average: </p>
 <ul>
-  <% @quizzes.each |quiz| %>
-    <li><a href="/quizzes/<%= quiz.id %>"><%= quiz.test_day %></a> Grade: / <%= quiz.questions.length %></li> 
+  <% @quizzes.each do |quiz| %>
+  	<% @grades.each do |grade| %>
+      <li><a href="/quizzes/<%= quiz.id %>"><%= quiz.test_day %></a> Grade: <%= grade %> / <%= quiz.questions.length %></li> 
+    <% end %> 
   <% end %> 
 </ul>
 
