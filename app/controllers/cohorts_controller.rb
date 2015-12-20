@@ -1,6 +1,10 @@
 class CohortsController < ApplicationController
 	
 	def show
+		@corhort = Cohort.all
+	end
+
+	def show
 		@corhort = 
 	end
 
