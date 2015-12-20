@@ -64,6 +64,7 @@ test_quiz2 = Quiz.create({test_day: Date.parse('16th Dec 2015'), instructor: i3,
 test_quiz2 = Quiz.create({test_day: Date.parse('17th Dec 2015'), instructor: i3, cohort: c2})
 test_quiz2 = Quiz.create({test_day: Date.parse('18th Dec 2015'), instructor: i3, cohort: c2})
 test_quiz2 = Quiz.create({test_day: Date.today, instructor: i3, cohort: c2})
+test_quiz3 = Quiz.create({test_day: Date.parse('18th Dec 2015'), instructor: i3, cohort: c2})
 
 Quiz.all.each do |quiz|
   quiz.questions.push(q1)
@@ -71,6 +72,10 @@ Quiz.all.each do |quiz|
   quiz.questions.push(q3)
 end
 
-r1 = Response.create(choice: a1, student: s1, quiz: test_quiz1, question: q1)
-r2 = Response.create(choice: a7, student: s1, quiz: test_quiz1, question: q2)
-r3 = Response.create(choice: a11, student: s1, quiz: test_quiz1, question: q3)
+r1 = Response.create(choice: a1.choice, student: s1, quiz: test_quiz1, question: q1)
+r2 = Response.create(choice: a7.choice, student: s1, quiz: test_quiz1, question: q2)
+r3 = Response.create(choice: a11.choice, student: s1, quiz: test_quiz1, question: q3)
+
+r4 = Response.create(choice: a2.choice, student: s1, quiz: test_quiz3, question: q1)
+r5 = Response.create(choice: a8.choice, student: s1, quiz: test_quiz3, question: q2)
+r6 = Response.create(choice: a10.choice, student: s1, quiz: test_quiz3, question: q3)

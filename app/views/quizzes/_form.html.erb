@@ -7,8 +7,9 @@
   <br>
   <!-- want to have a button that when click, will append a question field and four answer fields to the body -->
   <!-- at some point, want to have a dropdown menu that lists the existing questions -->
-  <%= label_tag(:question, "Question: ") %>
-  <%= text_field_tag(:question, nil, :placeholder => 'Enter Question Here') %>
+  <%= label_tag(:question, "Question:") %>
+  <%= select_tag(:question, options_for_select(
+  @quiz_questions.pluck(:content)))%> <!-- HELP -->
   <br>
   <!-- one answer should have the attribute of is_correct set to true -->
   <!-- only one checkbox should be able to be clicked. should have a "correct answer" id for CSS stuff -->
@@ -37,3 +38,4 @@
 </div>
 
 <% end %>
+

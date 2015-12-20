@@ -1,11 +1,21 @@
 <h3>Sign-up Screen</h3>
 
+<div class="form-container">
+
 <%= form_tag '/signup' do %>
   <!-- Second input is the value, so we set to nil -->
-  <%= text_field_tag :email, nil, placeholder: "Email"%>
-  <%= text_field_tag :first_name, nil, placeholder: "First Name"%>
-  <%= text_field_tag :last_name, nil, placeholder: "Last Name"%>    
-  <%= password_field_tag :password, nil, placeholder: "Password" %>
-  <%= select_tag :user, "<option>Instructor</option><option>Student</option>".html_safe %>
-  <%= submit_tag value="Sign-Up" %>
+
+  <%= select_tag :user, "<option>Instructor</option><option>Student</option>".html_safe, class: "submit-btn instructor-select"%> <br>
+
+  <%= text_field_tag :first_name, nil, placeholder: "First Name", class: "login-field"%> <br>
+
+  <%= text_field_tag :last_name, nil, placeholder: "Last Name", class: "login-field"%> <br>   
+
+  <%= text_field_tag :email, nil, placeholder: "Email", class: "login-field"%> <br>
+
+  <%= password_field_tag :password, nil, placeholder: "Password", class: "login-field" %> <br>
+  
+  <%= submit_tag value="Sign-Up", class: "submit-btn"  %>
 <% end %>
+
+</div>

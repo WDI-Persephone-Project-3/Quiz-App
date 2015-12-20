@@ -6,8 +6,8 @@ class Student < ActiveRecord::Base
   
   def all_quizzes
   	array_of_quiz_ids = self.responses.pluck(:quiz_id).uniq
-  	quizzes = array_of_quiz_ids.each do |id|
-  	  Quiz.find(id).test_day
+  	quizzes = array_of_quiz_ids.map do |id|
+  	  Quiz.find(id)
   	end
     quizzes
   end
@@ -15,21 +15,20 @@ class Student < ActiveRecord::Base
   def calculate_grades
   	correct_counter = 0
   	array_of_quiz_ids = self.responses.pluck(:quiz_id).uniq
-  	array_of_quiz_ids.each do |id|
+  	array_of_quiz_ids.map do |id|
   	  quiz = Quiz.find(id)
   	  questions = quiz.questions
-      questions.each do |question|
-        student_response = Response.find_by(quiz_id: question.quizzes.id).choice
-        question = Response.find_by(question_id: question.id)
-        correct_counter += 1 if student_response == questions.answers.where(is_correct: true)
-        grade = correct_counter 
+      questions.map do |question|
+        student_response = Response.find_by(question_id: question.id).choice
+        correct_counter += 1 if student_response == question.correct_answer.choice
+        grade = correct_counter
       end
     end
   end
 
   def sort_quizzes_by_date
     array_of_quiz_ids = self.responses.pluck(:quiz_id).uniq
-  	quizzes = array_of_quiz_ids.each do |id|
+  	quizzes = array_of_quiz_ids.map do |id|
   	  Quiz.find(id)
   	end
   	sorted_quizzes_by_date = quizzes.sort do |quiz1, quiz2|
@@ -45,16 +44,28 @@ class Student < ActiveRecord::Base
 
   def current_average
     array_of_quiz_ids = self.responses.pluck(:quiz_id).uniq
-    quizzes = array_of_quiz_ids.each do |id|
+    quizzes = array_of_quiz_ids.map do |id|
       Quiz.find(id)
     end
-    totals = quizzes.each do |quiz|
+    totals = quizzes.map do |quiz|
       quiz.questions.length
     end
     quiz_total = totals.reduce(:+)
     grades = self.calculate_grades
-    student_total = grades.reduce(:+)
-    student_average = student_total / quiz_total
+    all_grades = grades.map do |grade|
+      grade[0]
+    end
+    student_total = all_grades.reduce(:+)
+    student_average = student_total.to_f / quiz_total.to_f * 100
+  end
+
+  def self.cohort_average
+    students = Student.all
+    all_students_avg = students.map do |student|
+      student.current_average
+    end
+    students_avg_total = all_students_avg.reduce(:+)
+    cohort_avg = students_avg_total.to_f / students.length.to_f * 100
   end
 
 end

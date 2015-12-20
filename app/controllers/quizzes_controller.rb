@@ -15,12 +15,9 @@ class QuizzesController < ApplicationController
   # GET '/quizzes/new'
   def new
     @quiz = Quiz.new
-    # @question = Quiz.find(params[:id).questions
-    @questions = Question.all
-    @question = Question.new
-    # @answer = Answer.where(question_id: @question.id)
-    @answers = Answer.all
-    @answer = Answer.new(is_correct: params[:is_correct])
+    @question = @quiz.questions.build
+    @answer = @question.answers.build
+    @quiz_questions = Question.all
   end
 
   # method so only one checkbox can be checked
