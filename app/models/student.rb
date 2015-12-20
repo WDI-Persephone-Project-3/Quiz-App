@@ -18,11 +18,10 @@ class Student < ActiveRecord::Base
   	array_of_quiz_ids.map do |id|
   	  quiz = Quiz.find(id)
   	  questions = quiz.questions
-      questions.each do |question|
-        student_response = Response.find_by(quiz_id: question.quizzes.id).choice
-        question = Response.find_by(question_id: question.id)
-        correct_counter += 1 if student_response == questions.answers.where(is_correct: true)
-        grade = correct_counter 
+      questions.map do |question|
+        student_response = Response.find_by(question_id: question.id).choice
+        correct_counter += 1 if student_response == question.correct_answer.choice
+        grade = correct_counter
       end
     end
   end

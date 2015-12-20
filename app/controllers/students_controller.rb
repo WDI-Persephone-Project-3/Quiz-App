@@ -22,10 +22,10 @@ class StudentsController < ApplicationController
   	if @student == Student.find(session[:user_id])
   	  @quizzes = @student.all_quizzes
   	  @student.sort_quizzes_by_date
+      @grades = @student.calculate_grades
     else
       redirect_to "/"
     end  
-    # @grades = @student.calculate_grades
   end
 
   def edit
@@ -34,6 +34,7 @@ class StudentsController < ApplicationController
       render :edit
     else
       redirect_to "/"
+    end
   end
 
   def update
