@@ -6,7 +6,8 @@
   <br>
   <!-- at some point, want to have  -->
   <%= label_tag(:question, "Question:") %>
-  <%= select_tag(:question, options_for_select(Quiz::QUESTIONS)) %> <!-- HELP -->
+  <%= select_tag(:question, options_for_select(
+  @quiz_questions.pluck(:content)))%> <!-- HELP -->
   <br>
   <%= label_tag(:answer, "Answer") %>
   <%= text_field_tag(:answer) %>
@@ -15,3 +16,4 @@
 <% end %>
 
 <% end %>
+

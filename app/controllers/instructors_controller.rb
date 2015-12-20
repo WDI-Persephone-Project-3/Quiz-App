@@ -42,6 +42,24 @@ class InstructorsController < ApplicationController
     render json: response
   end
 
+  def quiz
+    response = [
+      ["90-100%", rand(10)],
+      ["80-89%", rand(10)],
+      ["70-79%", rand(10)],
+      ["60-69%", rand(10)],
+      ["Needs Help", rand(10)]
+    ]
+    render json: response
+  end
+
+  def student
+    response = [
+      [2015,12,13,100], [2015,12,14,100], [2015,12,15,100], [2015,12,16,100], [2015,12,17,100], [2015,12,18,100], [2015,12,20,100]
+    ]
+    render json: response
+  end
+
   private 
   def instructor_params
     params.require(:instructor).permit(:email, :password, :password_confirmation)

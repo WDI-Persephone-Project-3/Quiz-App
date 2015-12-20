@@ -23,6 +23,7 @@ class StudentsController < ApplicationController
   	  @quizzes = @student.all_quizzes
   	  @student.sort_quizzes_by_date
       @grades = @student.calculate_grades
+      @average = @student.current_average
     else
       redirect_to "/"
     end  
