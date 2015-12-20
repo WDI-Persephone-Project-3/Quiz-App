@@ -2,6 +2,9 @@ class InstructorsController < ApplicationController
 
   def dash
     @instructor = Instructor.find(session[:user_id])
+    @students = Student.where(cohort_id: Cohort.where(instructor_id: current_user.id).first.id)
+    @quizzes = Quiz.where(cohort_id: Cohort.where(instructor_id: current_user.id).first.id).order(test_day: :desc)
+    @cohorts = Cohort.where(instructor_id: current_user.id)
   end
 
   def show
@@ -26,7 +29,8 @@ class InstructorsController < ApplicationController
       response[:students].push({
         id:         student.id,
         first_name: student.first_name,
-        last_name:  student.last_name
+        last_name:  student.last_name,
+        grades: [{quiz_id: 10, grade: rand(100)}, {quiz_id: 9, grade: rand(100)}]
       })
     end
     quizzes.each do |quiz|
