@@ -21,7 +21,7 @@ class Student < ActiveRecord::Base
       questions.map do |question|
         student_response = Response.find_by(question_id: question.id).choice
         correct_counter += 1 if student_response == question.correct_answer.choice
-        grade = correct_counter[0]
+        grade = correct_counter
       end
     end
   end
