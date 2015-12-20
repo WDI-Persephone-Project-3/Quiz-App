@@ -1,15 +1,33 @@
 <% if current_user.class == Instructor %>
 
 <%= form_for @quiz, html: {method: "get"} do %>
-  <%= label_tag(:test_day, "Date:") %>
+  <%= label_tag(:test_day, "Date: ") %>
   <%= date_field_tag(:test_day) %>
   <br>
-  <!-- at some point, want to have a dropdown menu that lists all the existing questions -->
-  <%= label_tag(:question, "Question:") %>
-  <%= select_tag(:question, options_for_select(Quiz::QUESTIONS)) %> <!-- HELP -->
+  <!-- at some point, want to have a dropdown menu that lists the existing questions -->
+  <%= label_tag(:question, "Question: ") %>
+  <%= text_field_tag(:question, nil, :placeholder => 'Enter Question Here') %>
   <br>
-  <%= label_tag(:answer, "Answer") %>
-  <%= text_field_tag(:answer) %>
+  <!-- one answer should have the attribute of is_correct set to true -->
+  <%= label_tag(:answer, "Answer Choice #1: ") %>
+  <%= text_field_tag(:answer, nil, :placeholder => 'Enter Answer Here') %>
+  <%= label_tag(:answer, 'Correct Answer?') %>
+  <%= check_box_tag(:is_correct) %>
+  <br>
+  <%= label_tag(:answer, "Answer Choice #2: ") %>
+  <%= text_field_tag(:answer, nil, :placeholder => 'Enter Answer Here') %>
+  <%= label_tag(:answer, 'Correct Answer?') %>
+  <%= check_box_tag(:is_correct) %>
+  <br>
+  <%= label_tag(:answer, "Answer Choice #3: ") %>
+  <%= text_field_tag(:answer, nil, :placeholder => 'Enter Answer Here') %>
+  <%= label_tag(:answer, 'Correct Answer?') %>
+  <%= check_box_tag(:is_correct) %>
+  <br>
+  <%= label_tag(:answer, "Answer Choice #4: ") %>
+  <%= text_field_tag(:answer, nil, :placeholder => 'Enter Answer Here') %>
+  <%= label_tag(:answer, 'Correct Answer?') %>
+  <%= check_box_tag(:is_correct) %>
   <br>
   <%= submit_tag("Create") %>
 <% end %>

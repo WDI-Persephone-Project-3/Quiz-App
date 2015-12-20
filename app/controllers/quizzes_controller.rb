@@ -15,13 +15,19 @@ class QuizzesController < ApplicationController
   # GET '/quizzes/new'
   def new
     @quiz = Quiz.new
-    @question = @quiz.questions.build
-    @answer = @question.answers.build
+    # @question = Quiz.find(params[:id).questions
+    @questions = Question.all
+    @question = Question.new
+    # @answer = Answer.where(question_id: @question.id)
+    @answers = Answer.all
+    @answer = Answer.new(is_correct: params[:is_correct])
   end
 
   # POST '/quizzes'
   def create
     @quiz = Quiz.new(test_day: params[:test_day], instructor_id: params[:instructor_id], cohort_id: params[:cohort_id])
+    @question = Question.new(content: params[:content], quiz_id: @quiz.id)
+    @answer = Answer.new(choice: params[:choice], question_id: @question.id, is_correct: params[:is_correct])
     if @quiz.save
       redirect_to '/quizzes'
     else
