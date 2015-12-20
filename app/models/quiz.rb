@@ -4,6 +4,7 @@ class Quiz < ActiveRecord::Base
   has_many :responses
   has_and_belongs_to_many :questions
 
-  
-
+  QUESTIONS = []
+  QUESTIONS.push(Question.all)
+  QUESTIONS.flatten
 end

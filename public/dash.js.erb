@@ -1,0 +1,62 @@
+$(document).ready(function() {
+
+  google.setOnLoadCallback(drawChart);
+  function drawChart() {
+
+    var data = google.visualization.arrayToDataTable([
+      ['Grade', 'Students'],
+      ['90-100%', 3],
+      ['80-89%',  2],
+      ['70-79%',  4],
+      ['60-69%',  2],
+      ['Less',    1]
+    ]);
+
+    var options = {
+      backgroundColor: 'none',
+      legend: {position: 'none'}
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+    chart.draw(data, options);
+  };
+
+// $(window).on('resize',function() {
+//   console.log('resize')
+//   $('svg').css({"width":"100%"})
+// });
+
+
+
+ var $cohortChoice = $('.cohort-choice');
+ $cohortChoice.on('change', function(){
+
+  var choice = $cohortChoice.val().trim();
+
+  $.ajax({
+    method: "GET",
+    dataType: "json",
+    url: "/instructors/dash/"+choice,
+    data: { choice: choice},
+    success: function(response, status, xhr){
+      $dashCohort = $('.dash').children().first()
+      $dashCohort.text("Cohort: "+choice)
+      var $studentList = $('.scroll-down').eq(0)
+      var $quizList = $('.scroll-down').eq(1)
+      $studentList.empty()
+      $quizList.empty()
+      response["students"].forEach(function(student) {
+        $studentList.append('<a href="/students/'+student.id+'">'+ student.first_name + ' ' + student.last_name + '</a>')
+      });
+      response["quizzes"].forEach(function(quiz){
+        $quizList.append('<a href="/quizzes/'+quiz.id+'">'+quiz.test_day+'</a>')
+      });
+    },
+    error: function(xhr, status, error){
+      console.log(xhr, status, error)
+    },
+  })
+
+ });
+});

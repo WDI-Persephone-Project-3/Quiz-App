@@ -1,3 +1,55 @@
+body {
+ margin: 0;
+}
+/* This is the file where all my grid stuff will go! Awesome. */
+
+.wrapper {
+display:flex;
+flex-wrap: wrap;
+/*  align-items: center; */
+/*  justify-content: space-between;  */
+}
+
+/* This is a rule that will make the targeted element take up 20% of available space. */
+.grid-1-5 {
+ width: 20%;
+}
+.grid-2-5 {
+ width: 40%;
+}
+.grid-3-5 {
+ width:60%;
+}
+.grid-4-5 {
+ width: 80%;
+}
+.grid-5-5, .grid-8-8, .grid-full {
+ width: 100%;
+}
+
+/* Write a new series of rules that will allow us to utilize a grid divided in eighths*/
+
+.grid-1-8 {
+ width: 12.5%;
+}
+.grid-2-8 {
+ width: 25%;
+}
+.grid-3-8 {
+ width: 37.5%;
+}
+.grid-4-8 {
+ width: 50%;
+}
+.grid-5-8 {
+ width: 62.5%;
+}
+.grid-6-8 {
+ width: 75%;
+}
+.grid-7-8 {
+ width: 87.5%;
+}
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -10,15 +62,13 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
- *= require_self
+
+
  *= require_grid
  */
 
-/* Temporary borders to help with development */
-.container {
-  border: 1px solid black;
-}
+
+
 
 body {
   margin: 0 auto;

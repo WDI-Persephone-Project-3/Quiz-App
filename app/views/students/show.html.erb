@@ -1,7 +1,17 @@
 <h1><%= @student.cohort.name %></h1>
 
-<h2>Hello, <%= @student.first_name %> </h2>
 <p>Current Email: <%= @student.email %></p>
-<p>Current Average: </p>
 <a href="/students/<%= @student.id %>/edit">Update Your Information</a>
+
+<h3>Quiz History:</h3>
+<p>Current Average: </p>
+<ul>
+  <% @quizzes.each do |quiz| %>
+  	<% @grades.each do |grade| %>
+      <li><a href="/quizzes/<%= quiz.id %>"><%= quiz.test_day %></a> Grade: <%= grade %> / <%= quiz.questions.length %></li> 
+    <% end %> 
+  <% end %> 
+</ul>
+
+
 
