@@ -8,7 +8,7 @@
 <ul>
   <% @quizzes.each do |quiz| %>
   	<% @grades.each do |grade| %>
-      <li><a href="/quizzes/<%= quiz.id %>"><%= quiz.test_day %></a> Grade: <%= grade %> / <%= quiz.questions.length %></li> 
+      <li><a href="/quizzes/<%= quiz.id %>"><%= quiz.test_day %></a> Grade: <%= grade[0] %> / <%= quiz.questions.length %></li> 
     <% end %> 
   <% end %> 
 </ul>
