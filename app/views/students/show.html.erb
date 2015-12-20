@@ -7,9 +7,13 @@
 <p>Current Average: </p>
 <ul>
   <% @quizzes.each do |quiz| %>
-  	<% @grades.each do |grade| %>
-      <li><a href="/quizzes/<%= quiz.id %>"><%= quiz.test_day %></a> Grade: <%= grade[0] %> / <%= quiz.questions.length %></li> 
-    <% end %> 
+      <li><a href="/quizzes/<%= quiz.id %>"><%= quiz.test_day %></a> Possible Total: <%= quiz.questions.length %></li>  
+  <% end %> 
+</ul>
+
+<ul>
+  <% @grades.each do |grade| %>
+      <li>Grade: <%= grade.pop() %> </li> 
   <% end %> 
 </ul>
 
