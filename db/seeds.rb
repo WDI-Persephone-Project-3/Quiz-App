@@ -71,6 +71,6 @@ Quiz.all.each do |quiz|
   quiz.questions.push(q3)
 end
 
-r1 = Response.create(choice: a1, student: s1, quiz: test_quiz1, question: q1)
-r2 = Response.create(choice: a7, student: s1, quiz: test_quiz1, question: q2)
-r3 = Response.create(choice: a11, student: s1, quiz: test_quiz1, question: q3)
+r1 = Response.create(choice: a1.choice, student: s1, quiz: test_quiz1, question: q1)
+r2 = Response.create(choice: a7.choice, student: s1, quiz: test_quiz1, question: q2)
+r3 = Response.create(choice: a11.choice, student: s1, quiz: test_quiz1, question: q3)

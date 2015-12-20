@@ -15,7 +15,10 @@
  *= require_grid
  */
 
-
+/* Temporary borders to help with development */
+.container {
+  border: 1px solid black;
+}
 
 body {
   margin: 0 auto;
