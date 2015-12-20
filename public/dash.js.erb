@@ -1,62 +1,113 @@
+var globalStudents
+
 $(document).ready(function() {
 
-  google.setOnLoadCallback(drawChart);
-  function drawChart() {
+  google.setOnLoadCallback(drawMultSeries);
+  function drawMultSeries() {
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Grade Range');
+    data.addColumn('number', 'Students');
+    data.addRows([
+      ["90-100%", 4],
+      ["80-89%", 2],
+      ["70-79%", 5],
+      ["60-69%", 4],
+      ["Needs Help", 3],
+    ]);
+    var options = {
+      backgroundColor: 'none',
+      hAxis: {
+        title: 'Scores',
+      },
+      legend: 'none'
+    };
 
-    var data = google.visualization.arrayToDataTable([
-      ['Grade', 'Students'],
-      ['90-100%', 3],
-      ['80-89%',  2],
-      ['70-79%',  4],
-      ['60-69%',  2],
-      ['Less',    1]
+    var chart = new google.visualization.ColumnChart(
+      document.getElementById('column-chart'));
+    chart.draw(data, options);
+  }
+
+
+  google.setOnLoadCallback(drawBasic);
+  function drawBasic() {
+
+    var data = new google.visualization.DataTable();
+    data.addColumn('date', 'Test Day');
+    data.addColumn('number', 'Grade');
+
+    data.addRows([
+      [new Date(2015,11,9), 80], [new Date(2015,11,10), 70], [new Date(2015,11,11), 80], [new Date(2015,11,12), 85], [new Date(2015,11,13), 90], [new Date(2015,11,14), 80], [new Date(2015,11,15), 100]
     ]);
 
     var options = {
       backgroundColor: 'none',
-      legend: {position: 'none'}
+      legend: 'none',
+      hAxis: {
+        title: 'Test Day'
+      },
+      lineWidth: 4,
     };
 
-    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
+    var chart = new google.visualization.LineChart(document.getElementById('line-chart'));
     chart.draw(data, options);
-  };
+  }
 
-// $(window).on('resize',function() {
-//   console.log('resize')
-//   $('svg').css({"width":"100%"})
-// });
+  var $cohortChoice = $('.cohort-choice');
+  var $studentChoice = $('.student-dropdown');
+  var $quizChoice = $('.quiz-dropdown');
+  var $quizList = $('.scroll-down').eq(0)
+  var $studentList = $('.scroll-down').eq(1)  
+  var $dashCohort = $('.dash').children().first()
 
+  $cohortChoice.on('change', function(){
 
+    var choice = $cohortChoice.val().trim();
 
- var $cohortChoice = $('.cohort-choice');
- $cohortChoice.on('change', function(){
+    $.ajax({
+      method: "GET",
+      dataType: "json",
+      url: "/instructors/dash/"+choice,
+      data: { choice: choice},
+      success: function(response, status, xhr){
+        $dashCohort.text("Cohort: "+choice)
+        $studentList.empty()
+        $quizList.empty()
+        $studentChoice.empty()
+        $quizChoice.empty()
+        response["students"].forEach(function(student) {
+          $studentList.append('<a href="/students/'+student.id+'">'+ student.first_name + ' ' + student.last_name + '</a>');
+          $studentChoice.append('<option data-student-id='+student.id+'>'+student.first_name+' '+student.last_name+'</option>');
+        });
+        response["quizzes"].forEach(function(quiz){
+          $quizList.append('<a href="/quizzes/'+quiz.id+'">'+quiz.test_day+'</a>')
+          $quizChoice.append('<option data-quiz-id='+quiz.id+'>'+quiz.test_day+'</option>');          
+        });
+        globalStudents = response["students"]
+      },
+      error: function(xhr, status, error){
+        console.log(xhr, status, error)
+      },
+    })
+  });
 
-  var choice = $cohortChoice.val().trim();
+  $studentChoice.on('change', function() {
 
-  $.ajax({
-    method: "GET",
-    dataType: "json",
-    url: "/instructors/dash/"+choice,
-    data: { choice: choice},
-    success: function(response, status, xhr){
-      $dashCohort = $('.dash').children().first()
-      $dashCohort.text("Cohort: "+choice)
-      var $studentList = $('.scroll-down').eq(0)
-      var $quizList = $('.scroll-down').eq(1)
-      $studentList.empty()
-      $quizList.empty()
-      response["students"].forEach(function(student) {
-        $studentList.append('<a href="/students/'+student.id+'">'+ student.first_name + ' ' + student.last_name + '</a>')
-      });
-      response["quizzes"].forEach(function(quiz){
-        $quizList.append('<a href="/quizzes/'+quiz.id+'">'+quiz.test_day+'</a>')
-      });
-    },
-    error: function(xhr, status, error){
-      console.log(xhr, status, error)
-    },
-  })
+    $('.student-name').text($studentChoice.val()+'\'s Grades')
+    var selectedStudentID = $studentChoice.find('option:selected').attr('data-student-id');
+    var filteredStudent = globalStudents.filter(function(student){
+        return student.id == selectedStudentID;
+     })[0];
+    var grades = filteredStudent.grades
+  });
 
- });
+  $quizChoice.on('change', function() {
+
+    $('.quiz-name').text('Grades for Quiz '+$quizChoice.val())
+    var selectedStudentID = $studentChoice.find('option:selected').attr('data-student-id');
+    var filteredStudent = globalStudents.filter(function(student){
+        return student.id == selectedStudentID;
+     })[0];
+    var grades = filteredStudent.grades
+  });
+
 });

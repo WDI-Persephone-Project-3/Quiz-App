@@ -52,18 +52,17 @@
   background-color: rgb(220,220,220);
 }
 
-#piechart {
+#column-chart, #line-chart {
   margin: 10px auto;
   width: 99%;
-  height: 350px;
+  height: 200px;
 }
 
 svg {
   width: 100%;
-  margin: -80px auto 0 auto;
 }
 
-#piechart div div {
-  width: 100%;
-  margin: 0 auto;
+#column-chart div div, #line-chart div div {
+  /*width: 100%;*/
+  margin: -20px auto 0 auto;
 }
