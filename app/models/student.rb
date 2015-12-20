@@ -52,8 +52,20 @@ class Student < ActiveRecord::Base
     end
     quiz_total = totals.reduce(:+)
     grades = self.calculate_grades
-    student_total = grades.reduce(:+)
-    student_average = student_total / quiz_total
+    all_grades = grades.map do |grade|
+      grade[0]
+    end
+    student_total = all_grades.reduce(:+)
+    student_average = student_total.to_f / quiz_total.to_f * 100
+  end
+
+  def self.cohort_average
+    students = Student.all
+    all_students_avg = students.map do |student|
+      student.current_average
+    end
+    students_avg_total = all_students_avg.reduce(:+)
+    cohort_avg = students_avg_total.to_f / students.length.to_f * 100
   end
 
 end
