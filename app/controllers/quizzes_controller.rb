@@ -17,6 +17,7 @@ class QuizzesController < ApplicationController
     @quiz = Quiz.new
     @question = @quiz.questions.build
     @answer = @question.answers.build
+    @quiz_questions = Question.all
   end
 
   # POST '/quizzes'
