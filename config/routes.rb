@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   get '/instructors/dash' => 'instructors#dash'
   get '/students/dash' => 'students#dash'
+  get '/instructors/dash/quizzes/:test_day' => 'instructors#quiz'
+  get '/instructors/dash/students/:name' => 'instructors#student'  
   get '/instructors/dash/:name' => 'instructors#cohort'
   post '/quizzes/:id/create_responses' => 'responses#create'
 
