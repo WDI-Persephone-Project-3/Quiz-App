@@ -1,0 +1,75 @@
+label, input {
+    display: inline-block;
+    vertical-align: baseline;
+}
+
+/*select {
+    -webkit-appearance: none;
+    -webkit-border-radius: 0px;
+    border: 1px solid red;
+}
+*/
+/*instructor dashboard css*/
+.instructor-links-container a{
+	text-decoration: none;
+	padding: 4px;
+	padding-left: 15px;
+	color: black;
+	background-color: #C8C8C8;
+	border-top-left-radius: 20px;
+	border: 1px solid blue;
+}
+
+.btn-container-wrapper {
+	margin-top: 10px;
+	width: 95%;
+	text-align: right;
+	margin-bottom: 0;
+	border: 1px solid black;
+	margin: 0 auto;
+	height: 2em;
+	padding-top: 10px;
+}
+
+
+
+
+
+
+/*instructor update css*/
+.login-field {
+	height: 1.5em;
+	width:175px;
+	font-size: 15px;
+	border: 1px solid #53A697;
+	padding: 4px 4px;
+	margin-left: 5px;
+	vertical-align: bottom;
+	margin-bottom: 5px;
+}
+
+
+.label-field {
+	height: 1.5em;
+	font-size: 25px;
+	padding: 4px 4px;
+	vertical-align: none;
+}
+
+.update-btn {
+	margin-top: 5px;
+	height: 2.1em;
+	width: 200px;
+	font-size: 15px;
+	background-color: #53A697; 
+	color: white;
+	border: none;
+	margin-bottom: 5px;
+}
+
+.wrapper {
+/*	border: 1px solid black;
+*/	width: 550px;
+	margin: 0 auto;
+	text-align: center;
+}

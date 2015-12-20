@@ -1,9 +1,12 @@
-<%= form_for @student do %>
-  <%= label_tag(:email, "Email:") %>
-  <%= text_field_tag(:email) %> 
-  <%= label_tag(:password, "Password:") %>
-  <%= password_field_tag(:password) %>
-  <%= label_tag(:password_confirmation, "Confirm Password:") %>
-  <%= password_field_tag(:password_confirmation) %>
-  <%= submit_tag("Update") %>
-<% end %>
+<div class="update-student-wrapper">
+	<%= form_for @student do |f| %>
+	  <%= f.label :email, "Email:", class: "label-field" %>
+	  <%= f.text_field :email, class: "login-field" %><br> 
+	  <%= f.label :password, "Password:", class: "label-field" %>
+	  <%= f.password_field :password, class: "login-field" %><br>
+	  <%= f.label :password_confirmation, "Confirm Password:", class: "label-field" %>
+	  <%= f.password_field :password_confirmation, class: "login-field" %><br>
+	  <%= f.submit class: "update-btn" %>
+	<% end %>
+
+</div>
