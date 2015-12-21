@@ -15,7 +15,6 @@
     <div class="scroll-downs">
       <h4>Quizzes</h4>
       <ul class="scroll-down">
-        <!-- FIX THIS FOR JUST QUIZZES IN THE COHORT -->
         <% @quizzes.each do |quiz| %>
           <a href="/quizzes/<%=quiz.id%>"><%= quiz.test_day%></a>
         <% end %>
@@ -28,7 +27,11 @@
       </select>     
     </div> <!-- scroll-downs -->
     <div class="data">
-      <h4 class="quiz-name">Grades for Quiz <%= @quizzes.first.test_day%> </h4>
+      <% if @quizzes.first %>
+        <h4 class="quiz-name">Grades for Quiz <%= @quizzes.first.test_day%> </h4>
+      <% else %>
+        <h4 class="quiz-name">Create a quiz to see data</h4>
+      <% end %>
       <div id="line-chart"></div>     
     </div> <!-- data -->
   </div> <!-- flex -->
