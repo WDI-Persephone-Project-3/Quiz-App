@@ -1,0 +1,6 @@
+config/initializers/secret_token.rb
+config/secrets.yml
+config/environment_variables.yml
+
+/log/*.log
+/tmp
