@@ -5,8 +5,6 @@ var $quizList = $('.scroll-down').eq(0)
 var $studentList = $('.scroll-down').eq(1)  
 var $dashCohort = $('.dash').children().first()
 var cohortChoice = $cohortChoice.val().trim();
-var quizChoice = $quizChoice.val();
-var studentChoice = $studentChoice.val();
 
 //This creates the column chart using Google Visualization API. AJAX call pulls data from the server for use here
 google.setOnLoadCallback(drawMultSeries);
@@ -14,7 +12,7 @@ function drawMultSeries() {
   $.ajax({
     method: 'GET',
     datatype: 'json',
-    url: "/instructors/dash/quizzes/"+quizChoice,
+    url: "/instructors/dash/"+$cohortChoice.val().trim()+"/quizzes/"+$quizChoice.val(),
     success: function(response){
       var data = new google.visualization.DataTable();
       //How to add data to Google Viz - it needs columns with (type, column name) as y-axis and x-axis and then rows with corresponding data
@@ -44,11 +42,11 @@ function drawBasic() {
   $.ajax({
     method: 'GET',
     datatype: 'json',
-    url: "/instructors/dash/students/"+studentChoice.split(' ').join(''),
+    url: "/instructors/dash/students/"+$studentChoice.val().split(' ').join('-'),
     success: function(response){
       //Since this is using dates, we need to parse the response into Google Viz format
-      parsedResponse = response.map(function(array){
-        return [new Date(array[0],array[1]-1,array[2]), Math.random()*100]
+      parsedResponse = response.map(function(object){
+        return [new Date(object.year,object.month-1,object.day), object.grade]
       })
       var data = new google.visualization.DataTable();
       //How to add data to Google Viz - it needs columns with (type, column name) as y-axis and x-axis and then rows with corresponding data
