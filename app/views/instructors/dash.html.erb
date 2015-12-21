@@ -1,7 +1,4 @@
 <!-- Second input is the value, so we set to nil -->
-
-
-
 <%= select_tag :cohort, options_for_select(Cohort.where(instructor_id: current_user.id).pluck(:name)), :class => 'cohort-choice' %></br>
 
 <div class="btn-container-wrapper">
@@ -55,5 +52,5 @@
 <script type="text/javascript" src="https://www.google.com/jsapi?autoload= 
 {'modules':[{'name':'visualization','version':'1.1','packages':
 ['corechart']}]}"></script>
-<script src="../../dash.js.erb"></script>
-<link rel="stylesheet" href="../../dash.css">
+<script src="../../instructor_dash.js.erb"></script>
+<link rel="stylesheet" href="../../instructor_dash.css">

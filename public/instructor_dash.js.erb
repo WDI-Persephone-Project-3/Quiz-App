@@ -102,6 +102,7 @@ $(document).ready(function() {
       datatype: 'json',
       url: "/instructors/dash/quizzes/"+quizChoice,
       success: function(response){
+        // drawMultSeries;
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Grade Range');
         data.addColumn('number', 'Students');
@@ -131,8 +132,9 @@ $(document).ready(function() {
       url: "/instructors/dash/students/"+studentChoice.split(' ').join(''),
       success: function(response){
         console.log(response);
+        // drawBasic;
         parsedResponse = response.map(function(array){
-          return [new Date(array[0],array[1],array[2]), Math.random()*100]
+          return [new Date(array[0],array[1]-1,array[2]), Math.random()*100]
         })
         var data = new google.visualization.DataTable();
         data.addColumn('date', 'Test Day');

@@ -1,0 +1,68 @@
+.dash {
+  width: 95%;
+  height: 650px;
+  background-color: rgb(200,200,200);
+  margin: 10px auto;
+  padding: 1em;
+  box-sizing: border-box;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.dash h3 {
+  margin: 0;
+}
+
+.scroll-downs {
+  width: 35%;
+  background-color: rgb(210,210,210);
+  padding-left: 15px;
+  box-sizing: border-box;
+  height: 586px;
+}
+
+.scroll-downs h4 {
+  text-align: left;
+  margin-bottom: 0px;
+
+}
+
+.scroll-down {
+  margin-top: 5px;
+  padding-left: 5px;
+  height: 408px;
+  width: 90%;
+  overflow: hidden;
+  overflow-y: scroll;
+  background-color: white;
+}
+
+.scroll-down a {
+  display: block;
+  text-align: left;
+  text-decoration: none;
+}
+
+.data {
+  width: 65%;
+  height: 586px;
+  background-color: rgb(220,220,220);
+}
+
+#line-chart {
+  margin: 10px auto;
+  width: 99%;
+  height: 630px;
+}
+
+svg {
+  width: 100%;
+}
+
+#line-chart div div {
+  /*width: 100%;*/
+  margin: -50px auto 0 auto;
+}

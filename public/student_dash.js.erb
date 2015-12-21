@@ -1,0 +1,78 @@
+console.log('linked');
+var $quizChoice = $('.quiz-dropdown');
+var quizChoice = $quizChoice.val();
+var serverData;
+
+function ajax1(){
+return $.ajax({
+  method: "GET",
+  datatype: "json",
+  url: "/students/dash/"+quizChoice,
+  success: function(response){
+    serverData = response;
+  }
+});
+}
+
+google.setOnLoadCallback(drawBasic);
+function drawBasic() {
+
+  // parsedResponse = serverData.map(function(array){
+  //   return [new Date(array[0],array[1]-1,array[2]), Math.random()*100]
+  // })
+
+  var data = new google.visualization.DataTable();
+  data.addColumn('date', 'Test Day');
+  data.addColumn('number', 'Grade');
+  data.addRows([
+    [new Date(2015,11,9), 80], [new Date(2015,11,10), 70], [new Date(2015,11,11), 80], [new Date(2015,11,12), 85], [new Date(2015,11,13), 90], [new Date(2015,11,14), 80], [new Date(2015,11,15), 100]
+  ]);
+
+  var options = {
+    backgroundColor: 'none',
+    legend: 'none',
+    hAxis: {
+      title: 'Test Day'
+    },
+    lineWidth: 4,
+  };
+
+  var chart = new google.visualization.LineChart(document.getElementById('line-chart'));
+  chart.draw(data, options);
+}
+
+$quizChoice.on('change', function(){
+  quizChoice = $quizChoice.val()
+  $('.quiz-name').text('Grades for Quiz '+quizChoice)    
+  $.ajax({
+    method: 'GET',
+    datatype: 'json',
+    url: "/students/dash/"+quizChoice,
+    success: function(response){
+      console.log(response);
+      // drawBasic
+      parsedResponse = response.map(function(array){
+        return [new Date(array[0],array[1]-1,array[2]), Math.random()*100]
+      })
+      var data = new google.visualization.DataTable();
+      data.addColumn('date', 'Test Day');
+      data.addColumn('number', 'Grade');
+      data.addRows(parsedResponse);
+
+      var options = {
+        backgroundColor: 'none',
+        legend: 'none',
+        hAxis: {
+          title: 'Test Day'
+        },
+        lineWidth: 4,
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('line-chart'));
+      chart.draw(data, options);
+        },
+    error: function(xhr, status, error){
+      console.log(xhr, status, error)
+    },
+  })
+})
