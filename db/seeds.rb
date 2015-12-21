@@ -37,6 +37,13 @@ s21 = Student.create({last_name: "Lee", first_name: "Jubilation", email: "jubile
 q1 = Question.create({content: "1 + 1"})
 q2 = Question.create({content: "1 + 2"})
 q3 = Question.create({content: "1 + 3"})
+q4 = Question.create({content: "2 + 2"})
+q5 = Question.create({content: "2 + 3"})
+q6 = Question.create({content: "2 + 4"})
+q7 = Question.create({content: "3 + 3"})
+q8 = Question.create({content: "3 + 4"})
+q9 = Question.create({content: "4 + 4"})
+q10 = Question.create({content: "4 + 5"})
 
 a1 = Answer.create({choice: "2", question: q1, is_correct: true})
 a2 = Answer.create({choice: "1", question: q1, is_correct: false})
@@ -53,6 +60,41 @@ a9 = Answer.create({choice: "4", question: q3, is_correct: true})
 a10 = Answer.create({choice: "2", question: q3, is_correct: false})
 a11 = Answer.create({choice: "3", question: q3, is_correct: false})
 a12 = Answer.create({choice: "1", question: q3, is_correct: false})
+
+a13 = Answer.create({choice: "4", question: q4, is_correct: true})
+a14 = Answer.create({choice: "2", question: q4, is_correct: false})
+a15 = Answer.create({choice: "3", question: q4, is_correct: false})
+a16 = Answer.create({choice: "1", question: q4, is_correct: false})
+
+a17 = Answer.create({choice: "4", question: q5, is_correct: true})
+a18 = Answer.create({choice: "2", question: q5, is_correct: false})
+a19 = Answer.create({choice: "3", question: q5, is_correct: false})
+a20 = Answer.create({choice: "1", question: q5, is_correct: false})
+
+a21 = Answer.create({choice: "4", question: q6, is_correct: true})
+a22 = Answer.create({choice: "2", question: q6, is_correct: false})
+a23 = Answer.create({choice: "3", question: q6, is_correct: false})
+a24 = Answer.create({choice: "1", question: q6, is_correct: false})
+
+a25 = Answer.create({choice: "4", question: q7, is_correct: true})
+a26 = Answer.create({choice: "2", question: q7, is_correct: false})
+a27 = Answer.create({choice: "3", question: q7, is_correct: false})
+a28 = Answer.create({choice: "1", question: q7, is_correct: false})
+
+a29 = Answer.create({choice: "4", question: q8, is_correct: true})
+a30 = Answer.create({choice: "2", question: q8, is_correct: false})
+a31 = Answer.create({choice: "3", question: q8, is_correct: false})
+a32 = Answer.create({choice: "1", question: q8, is_correct: false})
+
+a33 = Answer.create({choice: "4", question: q9, is_correct: true})
+a34 = Answer.create({choice: "2", question: q9, is_correct: false})
+a35 = Answer.create({choice: "3", question: q9, is_correct: false})
+a36 = Answer.create({choice: "1", question: q9, is_correct: false})
+
+a37 = Answer.create({choice: "4", question: q10, is_correct: true})
+a38 = Answer.create({choice: "2", question: q10, is_correct: false})
+a39 = Answer.create({choice: "3", question: q10, is_correct: false})
+a40 = Answer.create({choice: "1", question: q10, is_correct: false})
 
 test_quiz1 = Quiz.create({test_day: Date.today, instructor: Instructor.first, cohort: c1})
 test_quiz2 = Quiz.create({test_day: Date.parse('11th Dec 2015'), instructor: i3, cohort: c2})
@@ -76,9 +118,9 @@ test_quiz10 = Quiz.create({test_day: Date.parse('4th Dec 2015'), instructor: i3,
 test_quiz11 = Quiz.create({test_day: Date.parse('3th Dec 2015'), instructor: i3, cohort: c2})
 
 Quiz.all.each do |quiz|
-  quiz.questions.push(q1)
-  quiz.questions.push(q2)
-  quiz.questions.push(q3)
+  Question.all.each do |question|
+  quiz.questions.push(question)
+  end
 end
 
 rr1 = Response.create(choice: a1.choice, student: s1, quiz: test_quiz1, question: q1)
