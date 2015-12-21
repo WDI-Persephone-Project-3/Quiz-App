@@ -35,4 +35,13 @@ class QuizzesController < ApplicationController
     end
   end
 
+  def quiz
+    @todaysQuiz = Quiz.find_by(test_day: Date.today, cohort: current_user.cohort) if current_user
+    if current_user.class == Student && @todaysQuiz
+      redirect_to "/quizzes/#{@todaysQuiz.id}"
+    else
+      redirect_to "/"
+    end 
+  end
+
 end
