@@ -1,11 +1,16 @@
-<div class="wrapper">
+<div class="instructor-edit-background">
+<div class="wrapper edit-center">
+
+<div class="instructor-edit-form">	
 	<%= form_for @instructor do |f| %>
-	  <%= f.label :email, class: "label-field" %> 
-	  <%= f.text_field :email, class: "login-field" %><br>
-	  <%= f.label :password, class: "label-field"  %>
-	  <%= f.password_field :password, class: "login-field" %><br>
-	  <%= f.label :password_confirmation, class: "label-field"%>
-	  <%= f.password_field :password_confirmation, class: "login-field" %><br>
+	  <%= f.label :email, class: "update-label-field" %> 
+	  <%= f.text_field :email, class: "update-login-field" %> <br>
+	  <%= f.label :password, class: "update-label-field"  %>
+	  <%= f.password_field :password, class: "update-login-field" %><br>
+	  <%= f.label :password_confirmation, class: "update-label-field"%>
+	  <%= f.password_field :password_confirmation, class: "update-login-field" %><br>
 	  <%= f.submit class: "update-btn"%>
 	<% end %>
+</div>	
+</div>
 </div>
