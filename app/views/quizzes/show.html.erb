@@ -7,9 +7,17 @@
   <% @quiz.questions.each do |question| %>
     <h4><%= question.id %>: <%= question.content %></h4>
     <% question.answers.each do |answer| %>
-      <% if @quiz.test_day == Date.today && current_user.class == Student && !@responses.any? %>
-        <%= radio_button_tag(question.id, answer.choice) %>
-        <%= label_tag(question.id, answer.choice) %>
+      <% if @quiz.test_day == Date.today && current_user.class == Student %>
+        <% if @responses.any? %>
+          <% if answer.choice == @responses.find_by(question_id: question.id).choice %>
+            <li style="color: blue; font-weight: bolder"><%= answer.choice %></li>
+          <% else %>
+            <li><%= answer.choice %></li>
+          <% end %>
+        <% else %>
+          <%= radio_button_tag(question.id, answer.choice) %>
+          <%= label_tag(question.id, answer.choice) %>
+        <% end %>
       <% elsif (current_user.class == Student && !@responses.any?) || current_user.class == Instructor %>
         <% if answer.is_correct %>
           <li style="font-weight: bolder"><%= answer.choice %></li>
