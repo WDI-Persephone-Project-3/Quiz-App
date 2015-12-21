@@ -11,5 +11,7 @@ class UserMailer < ApplicationMailer
   def quiz_results_email(student)
     @student = student
     @url = '/students/dash'
-    mail(to: @student)
+    mail(to: @student.email, subject:'Your Quiz Results')
+  end
+
 end
