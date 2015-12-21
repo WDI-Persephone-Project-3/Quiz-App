@@ -18,7 +18,7 @@ class CohortsController < ApplicationController
 
 	def create
 		@cohort = Cohort.create(name: params[:name], instructor_id: session[:user_id])
-		redirect_to '/'
+		redirect_to '/cohorts'
 	end
 
 	def destroy

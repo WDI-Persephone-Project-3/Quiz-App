@@ -16,8 +16,10 @@ Rails.application.routes.draw do
   post '/quizzes/:id/create_responses' => 'responses#create'
   get '/students/dash/:test_day' => 'students#ajax'
   get '/quiz/' => 'quizzes#quiz'
-  get '/cohorts/new' => 'cohorts#new'
+
   get '/cohorts/' => 'cohorts#index'
+  get '/cohorts/new' => 'cohorts#new'
+  post '/cohorts/new' => 'cohorts#create'
 
   shallow do
     resources :instructors do
