@@ -143,32 +143,47 @@ label, input {
 
 
 /*instructor update css*/
-.login-field {
+.instructor-edit-background {
+	background-color: #DCDCDC;
+	height: 650px;
+}
+
+.instructor-edit-form {
+	margin-top: 200px;
+}
+
+.edit-center {
+	margin: 0 auto;
+	width: 40%;
+}
+
+.update-login-field {
 	height: 1.5em;
 	width:175px;
 	font-size: 15px;
-	border: 1px solid #53A697;
 	padding: 4px 4px;
 	margin-left: 5px;
 	vertical-align: bottom;
 	margin-bottom: 5px;
+	background-color: rgba(255, 255, 255, .80);
 }
 
 
-.label-field {
+.update-label-field {
 	height: 1.5em;
-	font-size: 25px;
+	font-size: 15px;
 	padding: 4px 4px;
 	vertical-align: none;
 }
 
 .update-btn {
-	margin-top: 5px;
-	height: 2.1em;
-	width: 200px;
+	height: 2.2em;
+	width: 5em;
 	font-size: 15px;
-	background-color: #53A697; 
+	margin-left: 5px;
+	background-color: rgba(0, 0, 0, .4); 
 	color: white;
 	border: none;
 	margin-bottom: 5px;
+	border: 1.3px solid white;
 }
