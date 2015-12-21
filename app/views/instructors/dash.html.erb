@@ -52,12 +52,13 @@
     <div class="data">
       <% if @quizzes.first %>
         <h4 class="quiz-name">Grades for Quiz <%= @quizzes.first.test_day%> </h4>
+        <div id="column-chart"></div>
+        <h4 class="student-name"><%=@students.first.first_name %> <%=@students.first.last_name %>'s Grades</h4>
+        <div id="line-chart"></div>         
       <% else %>
         <h4 class="quiz-name">Create a quiz to see data</h4>
       <% end %>
-      <div id="column-chart"></div>
-      <h4 class="student-name"><%=@students.first.first_name %> <%=@students.first.last_name %>'s Grades</h4>
-      <div id="line-chart"></div>      
+     
     </div> <!-- data -->
   </div> <!-- flex -->
 </div> <!-- dash -->

@@ -6,6 +6,7 @@
       <a>No Quiz Today</a>
     <% end %>
     <a href="/students/<%= @student.id %>">View Your Profile</a>
+    <a href="/cohorts/<%= @student.cohort_id %>">Class Directory</a>
   </div>
 </div> 
 
@@ -18,21 +19,15 @@
         <% @quizzes.each do |quiz| %>
           <a href="/quizzes/<%=quiz.id%>"><%= quiz.test_day%></a>
         <% end %>
-      </ul>
-      <h4>Select Quiz for Dash</h4>
-      <select class="quiz-dropdown">
-        <% @quizzes.each do |quiz| %>
-          <option data-quiz-id="<%=quiz.id%>"><%= quiz.test_day %></option>
-        <% end %>
-      </select>     
+      </ul>  
     </div> <!-- scroll-downs -->
     <div class="data">
-      <% if @quizzes.first %>
-        <h4 class="quiz-name">Grades for Quiz <%= @quizzes.first.test_day%> </h4>
+      <% if @responses.first %>
+        <h4 class="student-name">Grades for <%= @student.first_name %> <%= @student.last_name %></h4>
+        <div id="line-chart"></div>          
       <% else %>
-        <h4 class="quiz-name">Create a quiz to see data</h4>
-      <% end %>
-      <div id="line-chart"></div>     
+        <h4 class="quiz-name">Take a quiz to see data</h4>
+      <% end %>   
     </div> <!-- data -->
   </div> <!-- flex -->
 </div> <!-- dash -->
