@@ -7,6 +7,7 @@
     
     <p><%= select_tag :cohort, options_for_select(Cohort.where(instructor_id: current_user.id).pluck(:name)), :class => 'cohort-choice' %></p>
     <div class="links-container">
+    <div class="div-links"><a href="/cohorts/new">ADD A COHORT</a></div>
     <div class="div-links"><a href="/quizzes/new">CREATE QUIZ</a></div>
     <div class="div-links"><a href="/quizzes">ALL QUIZZES</a></div>
     <div class="div-links"><a href="/instructors/<%= @instructor.id %>/edit">UPDATE  INFO</a></div>

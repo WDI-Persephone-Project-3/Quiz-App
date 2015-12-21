@@ -6,10 +6,6 @@ class CohortsController < ApplicationController
 	end
 
 	def show
-		@student = Student.find(session[:user_id])
-		@cohort = 
-
-	def show
 		@cohort = Cohort.find(params[:id])
 		@students = Student.where(cohort_id: @cohort).order("last_name")
 	end
@@ -22,7 +18,7 @@ class CohortsController < ApplicationController
 	end
 
 	def create
-		cohort = Cohort.create(name: params[:name], instructor_id: session[:user_id])
+		@cohorts = Cohort.create(name: params[:name], instructor_id: session[:user_id])
 	end
 
 	def destroy
