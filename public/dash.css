@@ -67,3 +67,194 @@ svg {
   /*width: 100%;*/
   margin: -20px auto 0 auto;
 }
+
+img, div, ul, article, nav, section {
+    box-sizing:border-box;
+}
+
+p select {
+  margin-top: 32px;
+}
+
+select {
+  background-color: white;
+  color: black;
+  height: 35px;
+  font-size: 15px;
+  font-family: 'Open Sans', sans-serif;
+  text-transform: uppercase;
+  border: 1px solid black;
+  margin-top: 5px;
+}
+
+
+.scroll-downs {
+  text-align: left;
+}
+
+.select-container {
+  text-align: left;
+}
+
+.data-headers {
+  font-family: 'Open Sans', sans-serif;
+  text-transform: uppercase;
+  text-align: left;
+  font-weight: 600;
+  padding: 5px;
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.cohort-choice {
+  width: 125px;
+    margin-top: 30px
+  border: 0;
+}
+
+.quiz-dropdown {
+  width: 200px;
+}
+
+.cohort-name {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.graph-selectors {
+  text-align: left;
+  margin-top: 5px;
+}
+
+
+.div-links {
+  border: 1px solid black;
+  width: 125px;
+  margin: 20px auto;
+  padding: 4px;
+}
+
+
+/*instructor dashboard css*/
+.main-content {
+  width: 100%;
+  margin: 0 auto;
+  height: 650px;
+/*  margin-top: 15px;*/
+/*  background-color: #C8C8C8;
+*/}
+
+.sidebar-container {
+  height: 650px;
+  background: #C8C8C8;
+}
+
+.scroll-container {
+
+}
+
+.instructor-links-container div a {
+  text-decoration: none;
+/*  border: 1px solid black;*/
+  padding: 4px;
+  color: black;
+  font-weight: 200;
+}
+
+/*select {
+    -webkit-appearance: none;
+    -webkit-border-radius: 0px;
+    border: 1px solid red;
+    height: 30px;
+    text: 15px;
+    text-align: center;
+}
+*/
+
+
+.graph-container {
+  background: purple;
+}
+
+
+label, input {
+    display: inline-block;
+    vertical-align: baseline;
+}
+
+
+.instructor-dash-header {
+  background-color: red;
+}
+
+.sidebar {
+  background-color: #CCC;
+  align-items: center;
+}
+
+.instructor-category-links {
+  padding: 1em;
+  font-size: 1.25em;
+}
+
+
+.btn-container-wrapper {
+  margin-top: 10px;
+  width: 95%;
+  text-align: right;
+  margin-bottom: 0;
+    margin: 0 auto;
+  height: 2em;
+  padding-top: 10px;
+}
+
+
+
+
+
+
+/*instructor update css*/
+.instructor-edit-background {
+  background-color: #DCDCDC;
+  height: 650px;
+}
+
+.instructor-edit-form {
+  margin-top: 200px;
+}
+
+.edit-center {
+  margin: 0 auto;
+  width: 40%;
+}
+
+.update-login-field {
+  height: 1.5em;
+  width:175px;
+  font-size: 15px;
+  padding: 4px 4px;
+  margin-left: 5px;
+  vertical-align: bottom;
+  margin-bottom: 5px;
+  background-color: rgba(255, 255, 255, .80);
+}
+
+
+.update-label-field {
+  height: 1.5em;
+  font-size: 15px;
+  padding: 4px 4px;
+  vertical-align: none;
+}
+
+.update-btn {
+  height: 2.2em;
+  width: 5em;
+  font-size: 15px;
+  margin-left: 5px;
+  background-color: rgba(0, 0, 0, .4); 
+  color: white;
+  border: none;
+  margin-bottom: 5px;
+  border: 1.3px solid white;
+}
+
