@@ -1,9 +1,16 @@
-<%= form_for @instructor do |f| %>
-  <%= f.label :email %><br>
-  <%= f.text_field :email %><br>
-  <%= f.label :password %><br>
-  <%= f.password_field :password %><br>
-  <%= f.label :password_confirmation %><br>
-  <%= f.password_field :password_confirmation %><br>
-  <%= f.submit %>
-<% end %>
+<div class="instructor-edit-background">
+<div class="wrapper edit-center">
+
+<div class="instructor-edit-form">	
+	<%= form_for @instructor do |f| %>
+	  <%= f.label :email, class: "update-label-field" %> 
+	  <%= f.text_field :email, class: "update-login-field" %> <br>
+	  <%= f.label :password, class: "update-label-field"  %>
+	  <%= f.password_field :password, class: "update-login-field" %><br>
+	  <%= f.label :password_confirmation, class: "update-label-field"%>
+	  <%= f.password_field :password_confirmation, class: "update-login-field" %><br>
+	  <%= f.submit class: "update-btn"%>
+	<% end %>
+</div>	
+</div>
+</div>

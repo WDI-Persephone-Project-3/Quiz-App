@@ -15,6 +15,9 @@ class StudentsController < ApplicationController
 
   def dash
     @student = Student.find(session[:user_id])
+    @cohort = @student.cohort
+    @quizzes = Quiz.where(cohort: @cohort).order(test_day: :desc)
+    @todaysQuiz = @quizzes.find_by(test_day: Date.today)
   end
   
   def show
@@ -23,6 +26,7 @@ class StudentsController < ApplicationController
   	  @quizzes = @student.all_quizzes
   	  @student.sort_quizzes_by_date
       @grades = @student.calculate_grades
+      @average = @student.current_average
     else
       redirect_to "/"
     end  
@@ -46,6 +50,13 @@ class StudentsController < ApplicationController
   def destroy
     student = Student.find(params[:id])
     student.destroy
+  end
+
+  def ajax
+    response = [
+      [2015,12,13,100], [2015,12,14,100], [2015,12,15,100], [2015,12,16,100], [2015,12,17,100], [2015,12,18,100], [2015,12,20,100]
+    ]
+    render json: response
   end
   
   private

@@ -8,6 +8,10 @@ class CohortsController < ApplicationController
 	def show
 		@student = Student.find(session[:user_id])
 		@cohort = 
+
+	def show
+		@cohort = Cohort.find(params[:id])
+		@students = Student.where(cohort_id: @cohort).order("last_name")
 	end
 
 	def new 
@@ -15,7 +19,6 @@ class CohortsController < ApplicationController
 	end
 
 	def edit
-
 	end
 
 	def create

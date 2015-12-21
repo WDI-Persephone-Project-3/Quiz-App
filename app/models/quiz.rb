@@ -4,7 +4,13 @@ class Quiz < ActiveRecord::Base
   has_many :responses
   has_and_belongs_to_many :questions
 
-  QUESTIONS = []
-  QUESTIONS.push(Question.all)
-  QUESTIONS.flatten
+  # method for getting a list of pre-existing questions for the drop down
+
+  # method for checkbox? 
+
+  # QUESTIONS = []
+  # QUESTIONS.push(Question.all)
+  # QUESTIONS.flatten
+
+  # Quiz.pluck(:questions).where(quiz_id: @self.id)
 end

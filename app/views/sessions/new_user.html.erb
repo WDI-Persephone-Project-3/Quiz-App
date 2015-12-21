@@ -1,7 +1,5 @@
 <h3>Sign-up Screen</h3>
 
-<div class="form-container">
-
 <%= form_tag '/signup' do %>
   <!-- Second input is the value, so we set to nil -->
 
@@ -15,7 +13,5 @@
 
   <%= password_field_tag :password, nil, placeholder: "Password", class: "login-field" %> <br>
   
-  <%= submit_tag value="Sign-Up", class: "submit-btn"  %>
+  <%= submit_tag value="Sign-Up", class: "submit-btn signup-btn"  %>
 <% end %>
-
-</div>
