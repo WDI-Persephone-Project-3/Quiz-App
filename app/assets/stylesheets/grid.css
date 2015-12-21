@@ -6,9 +6,10 @@ body {
 .wrapper {
 display:flex;
 flex-wrap: wrap;
-  align-items: center; 
-/*  justify-content: space-between;  */
-}
+width: 95%;
+/*  align-items: center; */
+/*  justify-content: space-between;  
+}*/
 
 /* This is a rule that will make the targeted element take up 20% of available space. */
 .grid-1-5 {

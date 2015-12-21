@@ -2,6 +2,8 @@
 
 
 
+<div class="wrapper">
+  <div class=
 <%= select_tag :cohort, options_for_select(Cohort.where(instructor_id: current_user.id).pluck(:name)), :class => 'cohort-choice' %></br>
 
 <div class="btn-container-wrapper">
@@ -13,7 +15,6 @@
   </div>
 </div> 
 
-<div class="dash">
   <h3>Cohort: <%= @cohorts.pluck(:name).first %></h3>
   <div class="flex">  
     <div class="scroll-downs">

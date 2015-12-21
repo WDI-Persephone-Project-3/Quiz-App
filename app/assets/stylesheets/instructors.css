@@ -3,6 +3,8 @@ label, input {
     vertical-align: baseline;
 }
 
+
+
 /*select {
     -webkit-appearance: none;
     -webkit-border-radius: 0px;
@@ -10,23 +12,13 @@ label, input {
 }
 */
 /*instructor dashboard css*/
-.instructor-links-container a{
-	text-decoration: none;
-	padding: 4px;
-	padding-left: 15px;
-	color: black;
-	background-color: #C8C8C8;
-	border-top-left-radius: 20px;
-	border: 1px solid blue;
-}
 
 .btn-container-wrapper {
 	margin-top: 10px;
 	width: 95%;
 	text-align: right;
 	margin-bottom: 0;
-	border: 1px solid black;
-	margin: 0 auto;
+		margin: 0 auto;
 	height: 2em;
 	padding-top: 10px;
 }
@@ -65,11 +57,4 @@ label, input {
 	color: white;
 	border: none;
 	margin-bottom: 5px;
-}
-
-.wrapper {
-/*	border: 1px solid black;
-*/	width: 550px;
-	margin: 0 auto;
-	text-align: center;
 }
