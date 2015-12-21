@@ -2,7 +2,7 @@ class CohortsController < ApplicationController
 
 	def show
 		@cohort = Cohort.find(params[:id])
-		@students = Student.where(cohort_id: @cohort)
+		@students = Student.where(cohort_id: @cohort).order("last_name")
 	end
 
 	def new 
