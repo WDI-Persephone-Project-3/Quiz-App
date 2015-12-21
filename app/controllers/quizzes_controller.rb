@@ -29,8 +29,14 @@ class QuizzesController < ApplicationController
     @question = Question.new(content: params[:content], quiz_id: @quiz.id)
     @answer = Answer.new(choice: params[:choice], question_id: @question.id, is_correct: params[:is_correct])
     if @quiz.save
-      redirect_to '/quizzes'
-    else
+      if params[:commit] == "Add Question"
+        @quiz.update
+        redirect_to "/quizzes/new"
+      elsif params[:commit] == "Submit Quiz"
+        @quiz.update
+        redirect_to "/quizzes"
+      end
+    else 
       render :new
     end
   end
