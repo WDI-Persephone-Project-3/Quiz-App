@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  <title>QuizApp mailer</title>
+</head>
+<body>
+  <h1>Hello there, <%= @user.name %>!</h1>
+  <p>You have successfully signed up to Quizapp
+      your username is: <%= @user.login %>.</p>
+  <p>To login to the site, just follow this link: <%= @user.login %></p>
+  <p>Keep an eye out for updates about quizzes.</p>
+</body>
+</html>
