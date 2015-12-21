@@ -12,14 +12,25 @@ class Student < ActiveRecord::Base
     quizzes
   end
 
+  def calculate_grade(id)
+    quiz = Quiz.find(id)
+    correct_counter = 0
+    quiz.questions.map do |question|
+      student_response = Response.find_by(question: question, student: self, quiz: quiz).choice
+      correct_counter += 1 if student_response == question.correct_answer.choice      
+    end
+    correct_counter
+  end
+
   def calculate_grades
-  	correct_counter = 0
-  	array_of_quiz_ids = self.responses.pluck(:quiz_id).uniq
+  	quiz_ids = self.responses.pluck(:quiz_id).uniq
+    array_of_quiz_ids = Quiz.where(id: quiz_ids).order(test_day: :asc)
   	array_of_quiz_ids.map do |id|
+      correct_counter = 0      
   	  quiz = Quiz.find(id)
   	  questions = quiz.questions
       questions.map do |question|
-        student_response = Response.find_by(question_id: question.id).choice
+        student_response = Response.find_by(question: question, student: self, quiz: quiz).choice
         correct_counter += 1 if student_response == question.correct_answer.choice
         grade = correct_counter
       end
