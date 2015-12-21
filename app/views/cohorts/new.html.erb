@@ -1,0 +1,6 @@
+<%= form_tag '/cohorts/new' do %>
+  <%= label_tag(:name, "Cohort Name:") %>
+  <%= text_field_tag(:name) %>
+  <br>
+  <%= submit_tag("Create") %>
+<% end %>

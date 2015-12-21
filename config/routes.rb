@@ -17,6 +17,10 @@ Rails.application.routes.draw do
   get '/students/dash/quiz' => 'students#ajax'
   get '/quiz/' => 'quizzes#quiz'
 
+  get '/cohorts/' => 'cohorts#index'
+  get '/cohorts/new' => 'cohorts#new'
+  post '/cohorts/new' => 'cohorts#create'
+
   shallow do
     resources :instructors do
       resources :cohorts
