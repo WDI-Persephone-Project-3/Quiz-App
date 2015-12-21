@@ -2,8 +2,9 @@
 
 <% @cohorts.each do |cohort| %>
 
-	<h1><%= cohort.name %></h1><br>
-	<h3><%= cohort.instructor %></h3>
+	<h3><a href="/cohorts/<%= cohort.id %>"><%= cohort.name %></a></h3>
+	<p><%= cohort.instructor.last_name %>, <%= cohort.instructor.first_name %></p>
+  <br>
 
 <% end %>
 

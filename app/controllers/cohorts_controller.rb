@@ -1,8 +1,7 @@
 class CohortsController < ApplicationController
 	
 	def index
-		@instructor = Instructor.find(params[:id])
-		@cohorts = Cohort.find_by(instructor_id: params[@instructor])
+		@cohorts = Cohort.all.order("name")
 	end
 
 	def show
@@ -11,14 +10,15 @@ class CohortsController < ApplicationController
 	end
 
 	def new 
-		@cohorts = Cohort.new
+		@cohort = Cohort.new
 	end
 
 	def edit
 	end
 
 	def create
-		@cohorts = Cohort.create(name: params[:name], instructor_id: session[:user_id])
+		@cohort = Cohort.create(name: params[:name], instructor_id: session[:user_id])
+		redirect_to '/'
 	end
 
 	def destroy
