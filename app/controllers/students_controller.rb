@@ -17,6 +17,7 @@ class StudentsController < ApplicationController
     @student = Student.find(session[:user_id])
     @cohort = @student.cohort
     @quizzes = Quiz.where(cohort: @cohort).order(test_day: :desc)
+    @responses = Response.where(student: @student)
     @todaysQuiz = @quizzes.find_by(test_day: Date.today)
   end
   
@@ -53,9 +54,20 @@ class StudentsController < ApplicationController
   end
 
   def ajax
-    response = [
-      [2015,12,13,100], [2015,12,14,100], [2015,12,15,100], [2015,12,16,100], [2015,12,17,100], [2015,12,18,100], [2015,12,20,100]
-    ]
+    quizDates = Quiz.where(cohort: Student.find(current_user.id).cohort).order(test_day: :asc)
+    grades = current_user.calculate_grades
+    response = []
+
+    quizDates.each_with_index do |quiz, index|
+      parsedDate = Date.parse(quiz.test_day.to_s)
+      response.push({
+        year: parsedDate.year,
+        month: parsedDate.mon,
+        day: parsedDate.mday,
+        grade: grades[index].last * 100 / quiz.questions.length
+        })
+    end
+
     render json: response
   end
   
