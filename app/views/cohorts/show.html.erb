@@ -1,8 +1,10 @@
-<h1><%= @c1.name %> </h1>
+<h1><%= @cohort.name %> Cohort Student List</h1>
 
 <ul>
 	<% @students.each do |student| %>
-		<li><%= student.first_name %> <%= student.last_name %></li>
+		<li><strong><%= student.last_name %>, <%= student.first_name %></strong></li>
+    <li><a href="mailto:<%= student.email %>"><%= student.email %></a></li>
+    <br>
 	<% end %>
 
 </ul> 

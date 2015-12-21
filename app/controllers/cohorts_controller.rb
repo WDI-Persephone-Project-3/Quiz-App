@@ -1,13 +1,8 @@
 class CohortsController < ApplicationController
-	
-	def index
-		@instructor = Instructor.find(params[:id])
-		@cohorts = Cohort.find_by(instructor_id params[@instructor])
-	end
 
 	def show
-		@instructor = Instructor.find(params[:id])
-		@cohorts = Cohort.find_by(instructor_id params[@instructor])
+		@cohort = Cohort.find(params[:id])
+		@students = Student.where(cohort_id: @cohort).order("last_name")
 	end
 
 	def new 
@@ -15,7 +10,6 @@ class CohortsController < ApplicationController
 	end
 
 	def edit
-
 	end
 
 	def create
