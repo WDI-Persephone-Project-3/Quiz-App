@@ -15,7 +15,7 @@ class StudentsController < ApplicationController
 
     respond_to do |format|
       if @student.save
-        StudentMailer.welcome_email(@student).deliver_later
+        StudentMailer.welcome_email(@student).deliver()
         format.html {redirect_to @student, notice: 'User was successfully created.'}
         format.json {render :show, status: :created, location: @student}
       else
