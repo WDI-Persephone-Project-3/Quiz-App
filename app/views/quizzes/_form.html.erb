@@ -1,14 +1,14 @@
 <% if current_user.class == Instructor %>
 
 <div class="quiz-form">
-<%= form_for @quiz, html: {method: "get"} do %>
+<%= form_tag("/quizzes", method: "POST") do %>
   <%= label_tag(:test_day, "Date: ", :class => 'quiz-date') %>
   <%= date_field_tag(:test_day, :class => 'quiz-date') %>
   <br>
   <!-- want to have a button that when click, will append a question field and four answer fields to the body -->
   <!-- at some point, want to have a dropdown menu that lists the existing questions -->
   <%= label_tag(:question, "Question:") %>
-  <%= select_tag(:question, options_for_select(
+  <%= select_tag(:content, options_for_select(
   @quiz_questions.pluck(:content)))%> <!-- HELP -->
   <br>
   <!-- one answer should have the attribute of is_correct set to true -->
@@ -33,9 +33,12 @@
   <%= label_tag(:answer, 'Correct Answer?') %>
   <%= check_box_tag(:is_correct) %>
   <br>
-  <%= submit_tag("Create") %>
-<% end %>
-</div>
+  <%= submit_tag("Add Question") %>
+  <%= submit_tag("Submit Quiz") %>
 
 <% end %>
+</div>
+<% end %>
+
+
 
