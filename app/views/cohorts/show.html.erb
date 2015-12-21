@@ -2,7 +2,9 @@
 
 <ul>
 	<% @students.each do |student| %>
-		<li><%= student.last_name %>, <%= student.first_name %> </li>
+		<li><strong><%= student.last_name %>, <%= student.first_name %></strong></li>
+    <li><a href="mailto:<%= student.email %>"><%= student.email %></a></li>
+    <br>
 	<% end %>
 
 </ul> 
