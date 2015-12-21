@@ -14,7 +14,7 @@ class QuizzesController < ApplicationController
 
   # GET '/quizzes/new'
   def new
-    @quiz = Quiz.new
+    @quiz = Quiz.create
     @question = @quiz.questions.build
     @answer = @question.answers.build
     @quiz_questions = Question.all
@@ -25,14 +25,23 @@ class QuizzesController < ApplicationController
 
   # POST '/quizzes'
   def create
-    @quiz = Quiz.new(test_day: params[:test_day], instructor_id: params[:instructor_id], cohort_id: params[:cohort_id])
-    @question = Question.new(content: params[:content], quiz_id: @quiz.id)
-    @answer = Answer.new(choice: params[:choice], question_id: @question.id, is_correct: params[:is_correct])
-    if @quiz.save
-      redirect_to '/quizzes'
-    else
-      render :new
-    end
+    @quiz_questions = Question.all    
+    @quiz = Quiz.last  
+    @quiz.update(test_day: params[:test_day], instructor: current_user, cohort: Cohort.find_by(instructor: current_user))
+    # @question = Question.new(content: params[:content])
+    @answer = Answer.new(choice: params[:answer], question_id: Question.find_by(content: params[:content]).id, is_correct: params[:is_correct])
+      if params[:commit] == "Add Question"
+        @created_quiz = Quiz.find(@quiz.id)
+        @created_quiz.questions.push(Question.find_by(content: params[:content]))
+        @created_quiz.save
+        render :new
+      elsif params[:commit] == "Submit Quiz"
+        @created_quiz = Quiz.find(@quiz.id)
+        @created_quiz.questions.push(Question.find_by(content: params[:content]))
+        @created_quiz.save
+        binding.pry
+        redirect_to "/quizzes"
+      end
   end
 
   def quiz
