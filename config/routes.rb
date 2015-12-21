@@ -9,10 +9,12 @@ Rails.application.routes.draw do
 
   get '/instructors/dash' => 'instructors#dash'
   get '/students/dash' => 'students#dash'
-  get '/instructors/dash/quizzes/:test_day' => 'instructors#quiz'
-  get '/instructors/dash/students/:name' => 'instructors#student'  
-  get '/instructors/dash/:name' => 'instructors#cohort'
+  get '/instructors/dash/quizzes/:test_day' => 'instructors#ajaxQuiz'
+  get '/instructors/dash/students/:name' => 'instructors#ajaxStudent'  
+  get '/instructors/dash/:name' => 'instructors#ajaxCohort'
   post '/quizzes/:id/create_responses' => 'responses#create'
+  get '/students/dash/:test_day' => 'students#ajax'
+  get '/quiz/' => 'quizzes#quiz'
 
   shallow do
     resources :instructors do

@@ -21,7 +21,7 @@ class InstructorsController < ApplicationController
     redirect_to @instructor
   end
 
-  def cohort
+  def ajaxCohort
     students = Student.where(cohort_id: Cohort.find_by(name: "#{params[:name]}").id)
     quizzes = Quiz.where(cohort_id: Cohort.find_by(name: "#{params[:name]}").id).order(test_day: :desc)
     response = {students: [], quizzes: []}
@@ -42,7 +42,7 @@ class InstructorsController < ApplicationController
     render json: response
   end
 
-  def quiz
+  def ajaxQuiz
     response = [
       ["90-100%", rand(10)],
       ["80-89%", rand(10)],
@@ -53,7 +53,7 @@ class InstructorsController < ApplicationController
     render json: response
   end
 
-  def student
+  def ajaxStudent
     response = [
       [2015,12,13,100], [2015,12,14,100], [2015,12,15,100], [2015,12,16,100], [2015,12,17,100], [2015,12,18,100], [2015,12,20,100]
     ]
