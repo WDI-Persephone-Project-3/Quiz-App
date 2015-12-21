@@ -6,8 +6,8 @@ class CohortsController < ApplicationController
 	end
 
 	def show
-		@instructor = Instructor.find(params[:id])
-		@cohorts = Cohort.find_by(instructor_id params[@instructor])
+		@student = Student.find(session[:user_id])
+		@cohort = 
 	end
 
 	def new 
