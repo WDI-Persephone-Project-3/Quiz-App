@@ -16,9 +16,12 @@ class StudentsController < ApplicationController
   def dash
     @student = Student.find(session[:user_id])
     @cohort = @student.cohort
-    @quizzes = Quiz.where(cohort: @cohort).order(test_day: :desc)
+    quizzes = Quiz.where(cohort: @cohort).order(test_day: :desc)
+    @quizzes = quizzes.select do |quiz|
+      quiz.test_day <= Date.today
+    end
     @responses = Response.where(student: @student)
-    @todaysQuiz = @quizzes.find_by(test_day: Date.today)
+    @todaysQuiz = @quizzes.select{|quiz| quiz.test_day == Date.today}
   end
   
   def show
@@ -54,7 +57,8 @@ class StudentsController < ApplicationController
   end
 
   def ajax
-    quizDates = Quiz.where(cohort: Student.find(current_user.id).cohort).order(test_day: :asc)
+    existingResponses = Response.where(student: current_user).pluck(:quiz_id).uniq
+    quizDates = Quiz.where(id: existingResponses).order(test_day: :asc)
     grades = current_user.calculate_grades
     response = []
 
