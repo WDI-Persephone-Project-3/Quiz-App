@@ -6,13 +6,14 @@ class StudentsController < ApplicationController
 
   def new
     @student = Student.new
+    @cohorts = Cohort.where(instructor_id: session[:user_id])
   end
 
   def create
     @default_pw = "123"
-    @student = Student.create({first_name: params[:first_name], last_name: params[:last_name], email: params[:email], password: @default_pw, password_confirmation: @default_pw, cohort_id: params[:cohort_id]})
+    @student = Student.create(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], password: @default_pw, password_confirmation: @default_pw, cohort: Cohort.find_by(name: params[:cohort]))
 
-    redirect_to @student
+    redirect_to "/"
   end
 
     # @student = Student.new(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation])
@@ -111,5 +112,5 @@ class StudentsController < ApplicationController
   def student_params
   	params.require(:student).permit(:email, :password, :password_confirmation)
   end
-  
+
 end
