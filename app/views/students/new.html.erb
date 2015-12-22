@@ -8,12 +8,6 @@
   <%= label_tag(:email, "Email:") %>
   <%= text_field_tag(:email) %> 
   <br>
-  <%= label_tag(:password, "Password:") %>
-  <%= password_field_tag(:password) %>
-  <br>
-  <%= label_tag(:password_confirmation, "Password:") %>
-  <%= password_field_tag(:password_confirmation) %>
-  <br>
   <%= label_tag(:cohort_id, "Cohort:") %>
   %= select_tag(:content, options_for_select(
     @cohorts.pluck(:name)))%> 
