@@ -10,6 +10,9 @@ class QuizzesController < ApplicationController
   def show
     @quiz = Quiz.find(params[:id])
     @responses = Response.where(quiz_id: @quiz.id, student_id: current_user.id)
+    if @quiz.test_day > Date.today && current_user.class == Student
+      redirect_to "/"
+    end
   end
 
   # GET '/quizzes/new'
@@ -19,6 +22,7 @@ class QuizzesController < ApplicationController
     @question = @quiz.questions.build
     @answer = @question.answers.build
     @quiz_questions = Question.all
+    @cohorts = Cohort.where(instructor: current_user)
   end
 
   # method so only one checkbox can be checked
@@ -27,11 +31,11 @@ class QuizzesController < ApplicationController
   # POST '/quizzes'
   def create
     @test_day = params[:test_day] if params[:test_day]
+    @cohorts = Cohort.where(instructor: current_user)
     @quiz_questions = Question.all    
     @quiz = Quiz.last
     @current_questions = @quiz.questions if @quiz.questions  
-    @quiz.update(test_day: params[:test_day], instructor: current_user, cohort: Cohort.find_by(instructor: current_user))
-    # @answer = Answer.new(choice: params[:answer], question_id: Question.find_by(content: params[:content]).id, is_correct: params[:is_correct])
+    @quiz.update(test_day: params[:test_day], instructor: current_user, cohort: Cohort.find_by(name: params[:cohort])) if @quiz.test_day == nil
     @created_quiz = Quiz.find(@quiz.id)
     if params[:written_content].length==0
       @created_quiz.questions.push(Question.find_by(content: params[:content]))
@@ -49,9 +53,6 @@ class QuizzesController < ApplicationController
     if params[:commit] == "Add Question"
       render :new
     elsif params[:commit] == "Submit Quiz"
-    # @created_quiz = Quiz.find(@quiz.id)
-    # @created_quiz.questions.push(Question.find_by(content: params[:content]))
-    # @created_quiz.save
     redirect_to "/quizzes"
     end
   end

@@ -3,6 +3,7 @@
 <div class="quiz-form">
 <%= form_tag("/quizzes", method: "POST") do %>
 
+  <%= select_tag(:cohort, options_for_select(@cohorts.pluck(:name))) %>
   <%= label_tag(:test_day, "Date: ", :class => 'quiz-date') %>
   <%= date_field_tag(:test_day, @test_day, :class => 'quiz-date') %>
   <br>
