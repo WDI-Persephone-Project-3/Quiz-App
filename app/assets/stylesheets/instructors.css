@@ -140,8 +140,6 @@ label, input {
 
 
 
-
-
 /*instructor update css*/
 .instructor-edit-background {
 	background-color: #DCDCDC;
@@ -149,12 +147,12 @@ label, input {
 }
 
 .instructor-edit-form {
-	margin-top: 200px;
+	margin-top: 150px;
 }
 
 .edit-center {
 	margin: 0 auto;
-	width: 40%;
+	width: 200px;
 }
 
 .update-login-field {
@@ -176,9 +174,9 @@ label, input {
 	vertical-align: none;
 }
 
-.update-btn {
+.update-btn-inst {
 	height: 2.2em;
-	width: 5em;
+	width: 185px;
 	font-size: 15px;
 	margin-left: 5px;
 	background-color: rgba(0, 0, 0, .4); 
@@ -186,6 +184,7 @@ label, input {
 	border: none;
 	margin-bottom: 5px;
 	border: 1.3px solid white;
+	margin-top: 20px;
 }
 
 /*sergey code*/

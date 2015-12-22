@@ -13,7 +13,6 @@
 }
 
 
-
 .instructor-links-container div a {
   text-decoration: none;
 /*  border: 1px solid black;*/
@@ -42,6 +41,27 @@ div.student-page{
 
 .student-links {
   margin-top: 50px; 
+}
+
+div.student-header {
+	font-size: 40px;
+	font-weight: 400
+}
+
+div.student-email {
+	margin-bottom: 20px;
+}
+
+div.student-page{
+	margin-top: 130px;
+}
+
+.student-links-column {
+	background-color: #C8C8C8;
+}
+
+.student-links {
+	margin-top: 50px; 
 }
 
 ul {
@@ -83,6 +103,34 @@ ul {
   border: none;
   margin-bottom: 5px;
   border: 1.3px solid white;
+}
+
+.update-student-wrapper {
+	margin-top: 100px;
+}
+
+.login-field {
+	height: 1.5em;
+	width:175px;
+	font-size: 15px;
+	border: 1px solid #53A697;
+	padding: 4px 4px;
+	margin-left: 5px;
+	vertical-align: bottom;
+	margin-bottom: 5px;
+}
+
+.update-student-btn {
+	margin-top: 15px;
+	height: 39px;
+	width: 191px;
+	font-size: 15px;
+	margin-left: 5px;
+	background-color: rgba(0, 0, 0, .4); 
+	color: white;
+	border: none;
+	margin-bottom: 5px;
+	border: 1.3px solid white;
 }
 
 /*class show*/

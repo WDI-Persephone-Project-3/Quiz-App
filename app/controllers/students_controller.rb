@@ -9,9 +9,24 @@ class StudentsController < ApplicationController
   end
 
   def create
-  #   @student = Student.create({first_name: params[:first_name], last_name: params[:last_name, email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation]})
-  #   redirect_to @student
+    @default_pw = "123"
+    @student = Student.create({first_name: params[:first_name], last_name: params[:last_name, email: params[:email], password: @default_pw, password_confirmation: @default_pw]})
+    redirect_to @student
   end
+
+    # @student = Student.new(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation])
+
+    # respond_to do |format|
+    #   if @student.save
+    #     StudentMailer.welcome_email(@student).deliver_now
+    #     format.html {redirect_to @student, notice: 'Welcome.'}
+    #     format.json {render :show, status: :created, location: @student}
+    #   else
+    #     format.html {render :new}
+    #     format.json {render json: @student.errors, status: :unprocessable_entity}
+    #   end
+    # end
+
 
   def dash
     @student = Student.find(session[:user_id])
@@ -47,13 +62,24 @@ class StudentsController < ApplicationController
 
   def update
   	@student = Student.find(session[:user_id])
-  	@student.update(email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation])
-    redirect_to @student
+
+    # respond_to do |format|
+    #   if @student.update(email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation])
+    #     format.html {redirect_to @student, notice: 'User was successfully updated.'}
+    #     format.json {render :show, status: :ok, location: @user}
+    #   else
+    #     format.html {render :edit}
+    #     format.json {render json: @user.errors, status: :unprocessable_entity}
+    #   end
+    # end
   end
 
   def destroy
     student = Student.find(params[:id])
     student.destroy
+    # respond_to do |format|
+    #   format.html {redirect_to '/', notice: 'User was successfully destroyed.'}
+    #   format.json {head :no_content}
   end
 
   def ajax
@@ -76,6 +102,10 @@ class StudentsController < ApplicationController
   end
   
   private
+
+  def set_student
+    @student = Student.find(params[:id])
+  end
 
   def student_params
   	params.require(:student).permit(:email, :password, :password_confirmation)

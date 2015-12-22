@@ -3,13 +3,13 @@
 
 <div class="instructor-edit-form">	
 	<%= form_for @instructor do |f| %>
-	  <%= f.label :email, class: "update-label-field" %> 
+	  <%= f.label :email, class: "update-label-field" %> <br>
 	  <%= f.text_field :email, class: "update-login-field" %> <br>
-	  <%= f.label :password, class: "update-label-field"  %>
+	  <%= f.label :password, class: "update-label-field"  %> <br>
 	  <%= f.password_field :password, class: "update-login-field" %><br>
-	  <%= f.label :password_confirmation, class: "update-label-field"%>
+	  <%= f.label :password_confirmation, class: "update-label-field"%><br>
 	  <%= f.password_field :password_confirmation, class: "update-login-field" %><br>
-	  <%= f.submit value: "Update",class: "update-btn"%>
+	  <%= f.submit value: "Update",class: "update-btn-inst"%>
 	<% end %>
 </div>	
 </div>
