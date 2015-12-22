@@ -4,14 +4,13 @@
 
   <section class="sidebar-container grid-1-5">
     <div class="instructor-links-container">
-    
-    <p><%= select_tag :cohort, options_for_select(Cohort.where(instructor_id: current_user.id).pluck(:name)), :class => 'cohort-choice' %></p>
-    <div class="links-container">
-    <div class="div-links"><a href="/cohorts/new">ADD A COHORT</a></div>
-    <div class="div-links"><a href="/quizzes/new">CREATE QUIZ</a></div>
-    <div class="div-links"><a href="/quizzes">ALL QUIZZES</a></div>
-    <div class="div-links"><a href="/instructors/<%= @instructor.id %>/edit">UPDATE  INFO</a></div>
-    </div>
+      <p><%= select_tag :cohort, options_for_select(Cohort.where(instructor_id: current_user.id).pluck(:name)), :class => 'cohort-choice' %></p>
+      <div class="links-container">
+      <div class="div-links"><a href="/cohorts/new">ADD A COHORT</a></div>
+      <div class="div-links"><a href="/quizzes/new">CREATE QUIZ</a></div>
+      <div class="div-links"><a href="/quizzes">ALL QUIZZES</a></div>
+      <div class="div-links"><a href="/instructors/<%= @instructor.id %>/edit">UPDATE  INFO</a></div>
+      </div>
     </div>
   </section><!-- sidebar -->
 
@@ -69,5 +68,8 @@
 <script type="text/javascript" src="https://www.google.com/jsapi?autoload= 
 {'modules':[{'name':'visualization','version':'1.1','packages':
 ['corechart']}]}"></script>
-<script src="../../instructor_dash.js"></script>
-<link rel="stylesheet" href="../../instructor_dash.css">
+
+<%= stylesheet_link_tag    'instructors' %>
+  <%= javascript_include_tag 'instructors' %>
+
+

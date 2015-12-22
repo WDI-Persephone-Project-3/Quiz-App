@@ -10,17 +10,10 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
- *= require_self
- *= require_grid
+ *= require grid
  */
 
-/* Temporary borders to help with development */
-/*.container {
-  border: 1px solid black;
-}*/
-
-.splash-image {
+/*.splash-image {
   height: 650px;
   width: 100%;
   background-image: url("giphy.gif");
@@ -30,7 +23,7 @@
   margin: none;
   text-align: center;
 }
-
+*/
 
 body {
   margin: 0 auto;
@@ -50,7 +43,6 @@ h3 {
 }
 
 .header {
-/*  background-color: #53A697;*/
   height: 40px;
   width: 100%;
   color: black;

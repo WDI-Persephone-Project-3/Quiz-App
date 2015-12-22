@@ -1,43 +1,56 @@
-<div class="btn-container-wrapper">
-  <div class="instructor-links-container">
-    <% if @todaysQuiz %>
-      <a href="/quiz">Today's Quiz</a>
-    <% else %>
-      <a>No Quiz Today</a>
-    <% end %>
-    <a href="/students/<%= @student.id %>">View Your Profile</a>
-    <a href="/cohorts/<%= @student.cohort_id %>">Class Directory</a>
-  </div>
-</div> 
+<section class="grid-full wrapper">
 
-<div class="dash">
-  <% if @cohort %>
-    <h3>Cohort: <%= @cohort.name %></h3>
-  <% else %>
-    <h3>You're not in a cohort!</h3>
-  <% end %>
-  <div class="flex">  
-    <div class="scroll-downs">
-      <h4>Quizzes</h4>
-      <ul class="scroll-down">
-        <% @quizzes.each do |quiz| %>
-          <a href="/quizzes/<%=quiz.id%>"><%= quiz.test_day%></a>
+  <section class="grid-1-5 student-links-column">   
+      <div class="instructor-links-container student-links">
+        <% if @todaysQuiz %>
+          <div class="div-links">
+            <a href="/quiz">TODAY'S QUIZ</a>
+          </div>  
+        <% else %>
+          <a>NO QUIZ TODAY</a>
         <% end %>
-      </ul>  
-    </div> <!-- scroll-downs -->
-    <div class="data">
-      <% if @responses.first %>
-        <h4 class="student-name">Grades for <%= @student.first_name %> <%= @student.last_name %></h4>
-        <div id="line-chart"></div>          
-      <% else %>
-        <h4 class="quiz-name">Take a quiz to see data</h4>
-      <% end %>   
-    </div> <!-- data -->
-  </div> <!-- flex -->
-</div> <!-- dash -->
+        <div class="div-links">  
+          <a href="/students/<%= @student.id %>">VIEW PROFILE</a>
+        </div>
+        <div class="div-links">
+          <a href="/cohorts/<%= @student.cohort_id %>">CLASS DIRECTORY</a>
+        </div>
+      </div>
+  </section>
 
-<script type="text/javascript" src="https://www.google.com/jsapi?autoload= 
-{'modules':[{'name':'visualization','version':'1.1','packages':
-['corechart']}]}"></script>
-<script src="../../student_dash.js"></script>
-<link rel="stylesheet" href="../../student_dash.css">
+
+  <section class="grid-4-5">
+    <div class="dash">
+      <% if @cohort %>
+        <h3>Cohort: <%= @cohort.name %></h3>
+      <% else %>
+        <h3>You're not in a cohort!</h3>
+      <% end %>
+      <div class="flex">  
+        <div class="scroll-downs">
+          <h4>Quizzes</h4>
+          <ul class="scroll-down">
+            <% @quizzes.each do |quiz| %>
+              <a href="/quizzes/<%=quiz.id%>"><%= quiz.test_day%></a>
+            <% end %>
+          </ul>  
+        </div> <!-- scroll-downs -->
+        <div class="data">
+          <% if @responses.first %>
+            <h4 class="student-name">Grades for <%= @student.first_name %> <%= @student.last_name %></h4>
+            <div id="line-chart"></div>          
+          <% else %>
+            <h4 class="quiz-name">Take a quiz to see data</h4>
+          <% end %>   
+        </div> <!-- data -->
+      </div> <!-- flex -->
+    </div> <!-- dash -->
+   </section><!--grid 4-5  -->
+  </section><!-- grid full wrapper --> 
+   
+    <script type="text/javascript" src="https://www.google.com/jsapi?autoload= 
+    {'modules':[{'name':'visualization','version':'1.1','packages':
+    ['corechart']}]}"></script>
+  
+  <%= stylesheet_link_tag    'students' %>
+  <%= javascript_include_tag 'students' %>
