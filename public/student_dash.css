@@ -1,8 +1,8 @@
 .dash {
-  width: 95%;
+/*  width: 95%;*/
   height: 650px;
   background-color: rgb(200,200,200);
-  margin: 10px auto;
+  margin: 0 auto;
   padding: 1em;
   box-sizing: border-box;
 }
