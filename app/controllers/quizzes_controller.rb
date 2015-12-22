@@ -14,6 +14,7 @@ class QuizzesController < ApplicationController
 
   # GET '/quizzes/new'
   def new
+    redirect_to "/" if current_user.class != Instructor
     @quiz = Quiz.create
     @question = @quiz.questions.build
     @answer = @question.answers.build
@@ -25,23 +26,34 @@ class QuizzesController < ApplicationController
 
   # POST '/quizzes'
   def create
+    @test_day = params[:test_day] if params[:test_day]
     @quiz_questions = Question.all    
-    @quiz = Quiz.last  
+    @quiz = Quiz.last
+    @current_questions = @quiz.questions if @quiz.questions  
     @quiz.update(test_day: params[:test_day], instructor: current_user, cohort: Cohort.find_by(instructor: current_user))
-    # @question = Question.new(content: params[:content])
-    @answer = Answer.new(choice: params[:answer], question_id: Question.find_by(content: params[:content]).id, is_correct: params[:is_correct])
-      if params[:commit] == "Add Question"
-        @created_quiz = Quiz.find(@quiz.id)
-        @created_quiz.questions.push(Question.find_by(content: params[:content]))
-        @created_quiz.save
-        render :new
-      elsif params[:commit] == "Submit Quiz"
-        @created_quiz = Quiz.find(@quiz.id)
-        @created_quiz.questions.push(Question.find_by(content: params[:content]))
-        @created_quiz.save
-        binding.pry
-        redirect_to "/quizzes"
-      end
+    # @answer = Answer.new(choice: params[:answer], question_id: Question.find_by(content: params[:content]).id, is_correct: params[:is_correct])
+    @created_quiz = Quiz.find(@quiz.id)
+    if params[:written_content].length==0
+      @created_quiz.questions.push(Question.find_by(content: params[:content]))
+    else
+      question = Question.create(content: params[:written_content])
+      @created_quiz.questions.push(question)
+      Answer.create(question: question, choice: params[:choice1], is_correct: false)
+      Answer.create(question: question, choice: params[:choice2], is_correct: false)
+      Answer.create(question: question, choice: params[:choice3], is_correct: false)
+      Answer.create(question: question, choice: params[:choice4], is_correct: false)
+      Answer.where(question: question)[params[:is_correct].to_i].update(is_correct: true)
+    end
+
+    @created_quiz.save
+    if params[:commit] == "Add Question"
+      render :new
+    elsif params[:commit] == "Submit Quiz"
+    # @created_quiz = Quiz.find(@quiz.id)
+    # @created_quiz.questions.push(Question.find_by(content: params[:content]))
+    # @created_quiz.save
+    redirect_to "/quizzes"
+    end
   end
 
   def quiz

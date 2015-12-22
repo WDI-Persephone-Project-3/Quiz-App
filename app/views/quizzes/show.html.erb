@@ -4,8 +4,8 @@
 <!-- I did some styling here, move to css files later -->
 
 <%= form_tag("/quizzes/#{@quiz.id}/create_responses", method:"post") do %>
-  <% @quiz.questions.each do |question| %>
-    <h4><%= question.id %>: <%= question.content %></h4>
+  <% @quiz.questions.each_with_index do |question, index| %>
+    <h4><%= index+1 %>: <%= question.content %></h4>
     <% question.answers.each do |answer| %>
       <% if @quiz.test_day == Date.today && current_user.class == Student %>
         <% if @responses.any? %>
