@@ -10,7 +10,8 @@ class StudentsController < ApplicationController
 
   def create
     @default_pw = "123"
-    @student = Student.create({first_name: params[:first_name], last_name: params[:last_name, email: params[:email], password: @default_pw, password_confirmation: @default_pw]})
+    @student = Student.create({first_name: params[:first_name], last_name: params[:last_name, email: params[:email], password: @default_pw, password_confirmation: @default_pw, cohort_id: params[:cohort_id]})
+    
     redirect_to @student
   end
 

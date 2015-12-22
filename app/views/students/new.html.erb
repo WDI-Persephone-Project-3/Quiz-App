@@ -14,5 +14,8 @@
   <%= label_tag(:password_confirmation, "Password:") %>
   <%= password_field_tag(:password_confirmation) %>
   <br>
-  <%= submit_tag("Create") %>
+  <%= label_tag(:cohort_id, "Cohort:") %>
+  %= select_tag(:content, options_for_select(
+    @cohorts.pluck(:name)))%> 
+  <%= submit_tag("Add Student") %>
 <% end %>
