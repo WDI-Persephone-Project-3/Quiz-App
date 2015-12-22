@@ -7,9 +7,9 @@ Rails.application.configure do
      :address => "smtp.gmail.com",
      :port => 587,
      :domain => "persephone-quiz-app.herokuapp.com"
-     :user_name => "o.boseroy@gmail.com",
-     :password => "password",
-     :authentication => :login,
+     :user_name => "ona.quizapp@gmail.com",
+     :password => "p@55w0rd12",
+     :authentication => :plain,
      :enable_starttls_auto => true
   }
 

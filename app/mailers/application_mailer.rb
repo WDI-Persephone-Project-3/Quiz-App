@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'yourinstructor@ga.co'
+  default from: 'ona.quizapp@gmail.com'
   layout 'mailer'
 end
