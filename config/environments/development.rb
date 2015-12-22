@@ -24,9 +24,9 @@ Rails.application.configure do
      :address => "smtp.gmail.com",
      :port => 587,
      # create a gmail account for this app to use. go into https://myaccount.google.com/ -> sign in & security, -> connected apps & sites -> turn on Allow less secure app
-     :user_name => "o.quizapp@gmail.com",
+     :user_name => "ona.quizapp@gmail.com",
      :password => "p@55w0rd12",
-     :authentication => :login,
+     :authentication => :plain,
      :enable_starttls_auto => true
   }
 
