@@ -9,8 +9,9 @@ class StudentsController < ApplicationController
   end
 
   def create
-  #   @student = Student.create({first_name: params[:first_name], last_name: params[:last_name, email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation]})
-  #   redirect_to @student
+    @default_pw = "123"
+    @student = Student.create({first_name: params[:first_name], last_name: params[:last_name, email: params[:email], password: @default_pw, password_confirmation: @default_pw]})
+    redirect_to @student
   end
 
   def dash
