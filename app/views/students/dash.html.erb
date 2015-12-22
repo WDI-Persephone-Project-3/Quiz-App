@@ -11,7 +11,11 @@
 </div> 
 
 <div class="dash">
-  <h3>Cohort: <%= @cohort.name %></h3>
+  <% if @cohort %>
+    <h3>Cohort: <%= @cohort.name %></h3>
+  <% else %>
+    <h3>You're not in a cohort!</h3>
+  <% end %>
   <div class="flex">  
     <div class="scroll-downs">
       <h4>Quizzes</h4>
