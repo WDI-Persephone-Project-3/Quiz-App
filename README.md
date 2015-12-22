@@ -1,3 +1,9 @@
+#Read Me
+
+## QuizApp
+
+With this app, an instrutctor can manage student cohorts, create and administer quizzes, and keep track of grades.
+
 ![erd pic1](md_images/ERDv1.png)
 
 ### User Story:
@@ -85,3 +91,11 @@ A student user should:
   |                 |
   +-----------------+
 ```
+
+### Technologies Used
+- Rails 4
+- jQuery
+- HTML
+- CSS
+- AJAX
+- Google APIs
