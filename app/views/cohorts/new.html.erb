@@ -1,6 +1,8 @@
+
+<div class="cohort-update">
 <%= form_tag '/cohorts/new' do %>
-  <%= label_tag(:name, "Cohort Name:") %>
-  <%= text_field_tag(:name) %>
-  <br>
-  <%= submit_tag("Create") %>
+  <%= label_tag(:name, "Cohort Name:", class: "cohort-label") %>
+  <%= text_field_tag(:name, nil, class: "cohort-field") %>
+  <%= submit_tag("Create", class: "cohort-btn") %>
 <% end %>
+</div>

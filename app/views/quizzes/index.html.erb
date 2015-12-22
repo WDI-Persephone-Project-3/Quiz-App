@@ -1,3 +1,5 @@
+
+<div class="move-left">
 <h1>All Quizzes</h1>
 
 <!-- if an instructor is logged in -->
@@ -6,7 +8,7 @@
 <% if current_user.class == Instructor %>
   <p><a href="/quizzes/new" class="new-quiz">Create a new quiz!</a></p>
 <% end %>
-
+</div>
 <ul>
  <% @quizzes.each do |quiz| %>
   <li>

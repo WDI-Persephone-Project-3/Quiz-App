@@ -4,6 +4,25 @@
 
 /*student dash*/
 
+.div-links {
+  border: 1px solid black;
+  width: 140px;
+  padding: 5px;
+  margin: 10px auto;
+
+}
+
+
+
+.instructor-links-container div a {
+  text-decoration: none;
+/*  border: 1px solid black;*/
+  padding: 4px;
+  color: black;
+  font-weight: 200;
+  text-align: center;
+}
+
 div.student-header {
   font-size: 40px;
   font-weight: 400
