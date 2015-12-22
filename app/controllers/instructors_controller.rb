@@ -47,16 +47,18 @@ class InstructorsController < ApplicationController
     quiz = Quiz.find_by(cohort: Cohort.find_by(name: params[:cohort_name]),test_day: params[:test_day])
     students = Student.where(cohort: Cohort.find_by(name: params[:cohort_name]))
     response = []
-    students.each do |student|
-      grade = student.calculate_grade(quiz.id) * 100 / quiz.questions.length
-      if grade < 30 
-        grades[3] += 1
-      elsif grade < 50
-        grades[2] += 1
-      elsif grade < 70
-        grades[1] += 1
-      else
-        grades[0] += 1
+    if quiz.test_day < Date.today
+      students.each do |student|
+        grade = student.calculate_grade(quiz.id) * 100 / quiz.questions.length
+        if grade < 30 
+          grades[3] += 1
+        elsif grade < 50
+          grades[2] += 1
+        elsif grade < 70
+          grades[1] += 1
+        else
+          grades[0] += 1
+        end
       end
     end
 
@@ -73,7 +75,8 @@ class InstructorsController < ApplicationController
   def ajaxStudent
     studentName = params[:name].split('-')
     student = Student.find_by(first_name: studentName[0], last_name: studentName[1])
-    quizDates = Quiz.where(cohort: student.cohort).order(test_day: :asc)
+    existingResponses = Response.where(student: student).pluck(:quiz_id).uniq
+    quizDates = Quiz.where(id: existingResponses).order(test_day: :asc)
     grades = student.calculate_grades
     response = []
 
