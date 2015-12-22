@@ -1,25 +1,24 @@
 class CohortsController < ApplicationController
 	
 	def index
-		@instructor = Instructor.find(params[:id])
-		@cohorts = Cohort.find_by(instructor_id params[@instructor])
+		@cohorts = Cohort.all.order("name")
 	end
 
 	def show
-		@instructor = Instructor.find(params[:id])
-		@cohorts = Cohort.find_by(instructor_id params[@instructor])
+		@cohort = Cohort.find(params[:id])
+		@students = Student.where(cohort_id: @cohort).order("last_name")
 	end
 
 	def new 
-		@cohorts = Cohort.new
+		@cohort = Cohort.new
 	end
 
 	def edit
-
 	end
 
 	def create
-		@cohort = Cohort.create(name params[:name], instructor_id)
+		@cohort = Cohort.create(name: params[:name], instructor_id: session[:user_id])
+		redirect_to '/cohorts'
 	end
 
 	def destroy

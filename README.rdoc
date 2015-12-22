@@ -1,28 +1,87 @@
-== README
+![erd pic1](md_images/ERDv1.png)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### User Story:
 
-Things you may want to cover:
+An instructor user should:
+* Be able to log in
+* Be able to see a dashboard with:
+    * A link to **creating** a new **quiz** and corresponding **answer key*** A link to **view** a **list** of **quizzes** and **answer keys** they've already created
+    * **Notifications** about **quizzes** **students** have taken
+* Be able to **view** individual **student** **progress**
+* Be able to **create** a new **quiz**
+    * A **quiz** is multiple choice 
+    * **Questions** should be able to be formatted in Markdown
+    * Each **question** has an **answer key**
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+A student user should:
+* Be able to log in
+* Be able to **view** a list of their old **quizzes** based on date or score and overall **progress**
+* Be able to see quiz directly by visiting '/quiz' or see that no quiz us assigned
+* Not be able to take a quiz from a previous day
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+*Added Features*:
+* A **quiz** can be multiple choice or short, free-form (typed out, one word answers)
+* An instructor 
+* Be able to **view** summary of entire **cohort's** **progress** as a whole
+
+## Sources
+* http://guides.rubyonrails.org/association_basics.html#polymorphic-associations
+
+* http://eewang.github.io/blog/2013/03/12/how-and-when-to-use-single-table-inheritance-in-rails/
+
+###Entity Relationship Diagram:
+```
+  +-----------------+                                                +-----------------+
+  |   Instructors   |               +----------------+               |    Students     |
+  |                 |               |     Cohorts    |               |                 |
+  |- name           |1              |                |1              |- name           |
+  |- email          +---------------+ - name         +---------------+- email          |
+  |- password_digest|              *| - instructor_id|              *|- password_digest|
+  |- img_url        |               |                |               |- img_url        |                                             |                 |               |                |               |- cohort_id      |
+  +--------+--------+               +----------------+               +--------+--------+
+          1|                                                                 1|
+           |*                                                                 |
+  +--------+--------+               +----------------+                        |
+  |     Quizzes     |               |    Responses   |                        |           
+  |                 |               |                |                        |
+  | - instructor_id |1              |  - choice      |*                       |        
+  | - test_day      +---------------+  - student_id  +------------------------+                                     
+  |                 |              *|  - quiz_id     |                                 
+  |                 |               |  - question_id | 
+  |                 |               |                | 
+  +--------+--------+               +--------+-------+  
+          *|                                1| 
+           |                                 |
+  +--------+--------+                        |
+  |Questions_Quizzes|                        |
+  |                 |                        | 
+  | - question_id   |                        |
+  | - quiz_id       |                        |
+  |                 |                        |
+  |                 |                        |
+  |                 |                        |
+  +--------+--------+                        | 
+           |                                 |
+       |*                                |
+  +--------+--------+                        |
+  |    Questions    |                        |
+  |                 |                        |
+  |  - content      |1                       | 
+  |                 +------------------------+
+  |                 |
+  |                 |
+  |                 |
+  +--------+--------+      
+      1|
+       |*
+  +--------+--------+
+  |     Answers     |
+  |                 |
+  |  - choice       |
+  |  - is_correct   |
+  |  - question_id  |
+  |                 |
+  |                 |
+  +-----------------+
+```

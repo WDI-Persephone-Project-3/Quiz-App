@@ -1,35 +1,42 @@
 <!-- Second input is the value, so we set to nil -->
 
+<section class="main-content grid-full wrapper">
 
+  <section class="sidebar-container grid-1-5">
+    <div class="instructor-links-container">
+    
+    <p><%= select_tag :cohort, options_for_select(Cohort.where(instructor_id: current_user.id).pluck(:name)), :class => 'cohort-choice' %></p>
+    <div class="links-container">
+    <div class="div-links"><a href="/cohorts/new">ADD A COHORT</a></div>
+    <div class="div-links"><a href="/quizzes/new">CREATE QUIZ</a></div>
+    <div class="div-links"><a href="/quizzes">ALL QUIZZES</a></div>
+    <div class="div-links"><a href="/instructors/<%= @instructor.id %>/edit">UPDATE  INFO</a></div>
+    </div>
+    </div>
+  </section><!-- sidebar -->
 
-<%= select_tag :cohort, options_for_select(Cohort.where(instructor_id: current_user.id).pluck(:name)), :class => 'cohort-choice' %></br>
-
-<div class="btn-container-wrapper">
-  <div class="instructor-links-container">
-    <a href="/quizzes/new">Create New Quiz</a>
-    <a href="/quizzes">All Quizzes</a>
-    <a href="/students">Students</a>
-    <a href="/instructors/<%= @instructor.id %>/edit">Update Your Information</a>
-  </div>
-</div> 
+<section class="graphics-container grid-4-5 wrapper"> <!-- contain graphics -->
 
 <div class="dash">
-  <h3>Cohort: <%= @cohorts.pluck(:name).first %></h3>
+  <h3 class="cohort-name">Cohort: <%= @cohorts.pluck(:name).first %></h3>
   <div class="flex">  
     <div class="scroll-downs">
-      <h4>Quizzes</h4>
+      <h4>QUIZZES</h4>
       <ul class="scroll-down">
         <!-- FIX THIS FOR JUST QUIZZES IN THE COHORT -->
         <% @quizzes.each do |quiz| %>
           <a href="/quizzes/<%=quiz.id%>"><%= quiz.test_day%></a>
         <% end %>
       </ul>
-      <h4>Select Quiz for Dash</h4>
+      
+      <h4>Select Quiz to display</h4>
       <select class="quiz-dropdown">
         <% @quizzes.each do |quiz| %>
           <option data-quiz-id="<%=quiz.id%>"><%= quiz.test_day %></option>
         <% end %>
-      </select>     
+      </select>  
+  
+
       <h4>Students</h4>
       <ul class="scroll-down">
         <% @students.each do |student| %>
@@ -44,16 +51,23 @@
       </select>       
     </div> <!-- scroll-downs -->
     <div class="data">
-      <h4 class="quiz-name">Grades for Quiz <%= @quizzes.first.test_day%> </h4>
-      <div id="column-chart"></div>
-      <h4 class="student-name"><%=@students.first.first_name %> <%=@students.first.last_name %>'s Grades</h4>
-      <div id="line-chart"></div>      
+      <% if @quizzes.first %>
+        <h4 class="quiz-name">Grades for Quiz <%= @quizzes.first.test_day%> </h4>
+        <div id="column-chart"></div>
+        <h4 class="student-name"><%=@students.first.first_name %> <%=@students.first.last_name %>'s Grades</h4>
+        <div id="line-chart"></div>         
+      <% else %>
+        <h4 class="quiz-name">Create a quiz to see data</h4>
+      <% end %>
+     
     </div> <!-- data -->
   </div> <!-- flex -->
 </div> <!-- dash -->
 
+</section>
+
 <script type="text/javascript" src="https://www.google.com/jsapi?autoload= 
 {'modules':[{'name':'visualization','version':'1.1','packages':
 ['corechart']}]}"></script>
-<script src="../../dash.js.erb"></script>
-<link rel="stylesheet" href="../../dash.css">
+<script src="../../instructor_dash.js"></script>
+<link rel="stylesheet" href="../../instructor_dash.css">

@@ -9,8 +9,7 @@
   <script src="../../application.js"></script>
 </head>
 <body>
-<% if !current_user %>
-  <div class="spash-image">
+
       <div class="header">
         <p id="logo">QuizApp</p>
         <div class="nav">
@@ -23,28 +22,8 @@
         </div>
 
       </div>
-  </div>
 
-<%else%>
-  <div class="header">
-    <p id="logo">QuizApp</p>
-    <div class="nav">
-      <% if current_user %>
-       <p>
-       <%= current_user.email %> /
-       <%= link_to "Log Out", logout_path, method: "delete", :class => "nav-link" %>
-       </p>
-      <% else %>
-        <p>
-
-        <%= link_to 'Sign Up', '/signup', :class => "nav-link" %>
-        </p>
-      <% end %>
-      </div>
-  </div>
-<%end%>
-<!-- 
-  <div class="container"> -->
+<!-- <div class="container"> -->
   <%= yield %>
 <!--   </div> -->
 

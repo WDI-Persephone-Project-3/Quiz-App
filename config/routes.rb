@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :users
   root 'sessions#new'
 
+  get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
   get '/signup' => 'sessions#new_user'
@@ -10,10 +11,16 @@ Rails.application.routes.draw do
 
   get '/instructors/dash' => 'instructors#dash'
   get '/students/dash' => 'students#dash'
-  get '/instructors/dash/quizzes/:test_day' => 'instructors#quiz'
-  get '/instructors/dash/students/:name' => 'instructors#student'  
-  get '/instructors/dash/:name' => 'instructors#cohort'
+  get '/instructors/dash/:cohort_name/quizzes/:test_day' => 'instructors#ajaxQuiz'
+  get '/instructors/dash/students/:name' => 'instructors#ajaxStudent'  
+  get '/instructors/dash/:cohort_name' => 'instructors#ajaxCohort'
   post '/quizzes/:id/create_responses' => 'responses#create'
+  get '/students/dash/quiz' => 'students#ajax'
+  get '/quiz/' => 'quizzes#quiz'
+
+  get '/cohorts/' => 'cohorts#index'
+  get '/cohorts/new' => 'cohorts#new'
+  post '/cohorts/new' => 'cohorts#create'
 
   shallow do
     resources :instructors do
