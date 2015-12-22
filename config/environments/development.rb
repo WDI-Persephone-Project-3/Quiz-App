@@ -23,9 +23,10 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
      :address => "smtp.gmail.com",
      :port => 587,
-     :user_name => ENV["GMAIL_USERNAME"],
-     :password => ENV["GMAIL_PASSWORD"],
-     :authentication => :plain,
+     # create a gmail account for this app to use. go into https://myaccount.google.com/ -> sign in & security, -> connected apps & sites -> turn on Allow less secure app
+     :user_name => "o.boseroy@gmail.com",
+     :password => "password",
+     :authentication => :login,
      :enable_starttls_auto => true
   }
 
