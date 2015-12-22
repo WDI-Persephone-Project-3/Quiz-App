@@ -33,7 +33,7 @@ s18 = Student.create({last_name: "McCoy", first_name: "Hank", email: "beast@gmai
 s19 = Student.create({last_name: "Pryde", first_name: "Kitty", email: "shadowcat@gmail.com", password: "123", password_confirmation: "123", cohort: c2})
 s20 = Student.create({last_name: "Worthington", first_name: "Warren", email: "angel@gmail.com", password: "123", password_confirmation: "123", cohort: c2})
 s21 = Student.create({last_name: "Lee", first_name: "Jubilation", email: "jubilee@gmail.com", password: "123", password_confirmation: "123", cohort: c2})
-s21 = Student.create({last_name: "Jones", first_name: "Jessica", email: "diekilgrave@gmail.com", password: "Sup3rd00per", password_confirmation: "Sup3rd00per", cohort: c4})
+s22 = Student.create({last_name: "Jones", first_name: "Jessica", email: "diekilgrave@gmail.com", password: "Sup3rd00per", password_confirmation: "Sup3rd00per", cohort: c4})
 
 q1 = Question.create({content: "1 + 1"})
 q2 = Question.create({content: "1 + 2"})
