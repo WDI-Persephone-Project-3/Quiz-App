@@ -4,8 +4,6 @@
 
 With this app, an instrutctor can manage student cohorts, create and administer quizzes, and keep track of grades.
 
-![erd pic1](md_images/ERDv1.png)
-
 ### User Story:
 
 An instructor user should:
@@ -35,6 +33,17 @@ A student user should:
 * http://guides.rubyonrails.org/association_basics.html#polymorphic-associations
 
 * http://eewang.github.io/blog/2013/03/12/how-and-when-to-use-single-table-inheritance-in-rails/
+
+###Wireframes 
+![erd pic1](md_images/ERDv1.png)
+![wf pic 1](md_images/instructor_create_quiz.png)
+![wf pic 2](md_images/instructor_dashboard.png)
+![wf pic 3](md_images/instructor_view_one_student.png)
+![wf pic 4](md_images/instructor_viewing_students.png)
+![wf pic 5](md_images/landing_page.png)
+![wf pic 6](md_images/student_dashboard.png)
+![wf pic 7](md_images/student_quiz.png)
+![wf pic 8](md_images/student_view_instructor.png)
 
 ###Entity Relationship Diagram:
 ```
@@ -91,6 +100,11 @@ A student user should:
   |                 |
   +-----------------+
 ```
+
+###Planning
+![erd pic1](md_images/ERDv1.png)
+![planning](md_images/planning.png)
+![planning2](md_images/profx.png)
 
 ### Technologies Used
 - Rails 4
