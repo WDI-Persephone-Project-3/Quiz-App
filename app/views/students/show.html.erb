@@ -1,22 +1,22 @@
-<h1><%= @student.cohort.name %></h1>
+<div class="student-page">
+	<div class="student-header"><%= @student.cohort.name %></div>
+	<div class="student-email"><%= @student.email %></div>
+	<a class="student-page" href="/students/<%= @student.id %>/edit">UPDATE INFO</a>
 
-<p>Current Email: <%= @student.email %></p>
-<a href="/students/<%= @student.id %>/edit">Update Your Information</a>
+	<p class="student-quiz-header" >Quiz History:</p>
 
-<h3>Quiz History:</h3>
+	<p>Current Average: <%= @average %>%</p>
+	<ul>
+	  <% @quizzes.each do |quiz| %>
+	      <li><a href="/quizzes/<%= quiz.id %>"><%= quiz.test_day %></a> Possible Total: <%= quiz.questions.length %></li>  
+	  <% end %> 
+	</ul>
 
-<p>Current Average: <%= @average %>%</p>
-<ul>
-  <% @quizzes.each do |quiz| %>
-      <li><a href="/quizzes/<%= quiz.id %>"><%= quiz.test_day %></a> Possible Total: <%= quiz.questions.length %></li>  
-  <% end %> 
-</ul>
-
-<ul>
-  <% @grades.each do |grade| %>
-      <li>Grade: <%= grade.pop() %> </li> 
-  <% end %> 
-</ul>
-
+	<ul>
+	  <% @grades.each do |grade| %>
+	      <li>Grade: <%= grade.pop() %> </li> 
+	  <% end %> 
+	</ul>
+</div>
 
 

@@ -1,6 +1,30 @@
 /*.grade-wrapper .ul-wrapper{
 	border: 1px solid black;
 }*/
+
+/*student dash*/
+
+div.student-header {
+	font-size: 40px;
+	font-weight: 400
+}
+
+div.student-email {
+	margin-bottom: 20px;
+}
+
+div.student-page{
+	margin-top: 130px;
+}
+
+.student-links-column {
+	background-color: #C8C8C8;
+}
+
+.student-links {
+	margin-top: 50px; 
+}
+
 ul {
  list-style-type: none;
 
@@ -15,6 +39,14 @@ ul {
 }
 
 /*edit form*/
+/*.page-wrap {
+	background-color: gray;
+	height: 650px;
+}*/
+.update-student-wrapper {
+	margin-top: 100px;
+}
+
 .login-field {
 	height: 1.5em;
 	width:175px;
@@ -26,13 +58,33 @@ ul {
 	margin-bottom: 5px;
 }
 
-.update-btn {
-	margin-top: 5px;
-	height: 2.1em;
-	width: 200px;
+.update-student-btn {
+	margin-top: 15px;
+	height: 39px;
+	width: 191px;
 	font-size: 15px;
-	background-color: #53A697; 
+	margin-left: 5px;
+	background-color: rgba(0, 0, 0, .4); 
 	color: white;
 	border: none;
 	margin-bottom: 5px;
+	border: 1.3px solid white;
+}
+
+/*class show*/
+
+.student-quiz-header {
+	font-size: 20px;
+	margin-top: 30px;
+}
+
+a.student-page {
+	color: black;
+	text-decoration: none;
+	border: 1px solid black;
+	width: 150px;
+	margin: 20px auto;
+	padding: 4px 8px;
+}
+
 }

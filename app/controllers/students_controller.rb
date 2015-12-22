@@ -36,7 +36,7 @@ class StudentsController < ApplicationController
   
   def show
     @student = Student.find(params[:id])
-  	if @student == Student.find(session[:user_id])
+  	if @student == Student.find(session[:user_id]) || current_user.class == Instructor
   	  @quizzes = @student.all_quizzes
   	  @student.sort_quizzes_by_date
       @grades = @student.calculate_grades
