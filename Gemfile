@@ -29,6 +29,9 @@ gem 'bcrypt', '~> 3.1.7'
 #For Markdown
 gem 'redcarpet'
 
+# for mailer/storing gmail username/passwords
+gem 'figaro'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
