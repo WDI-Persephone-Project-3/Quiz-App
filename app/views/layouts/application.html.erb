@@ -10,18 +10,17 @@
 </head>
 <body>
 
-      <div class="header">
-        <p id="logo">QuizApp</p>
-        <div class="nav">
-        <% if current_user %>
-         <p><%= current_user.email %> /
-         <%= link_to "Log Out", logout_path, method: "delete", :class => "nav-link" %></p>
-        <% else %>
-          <p><%= link_to 'Sign Up', '/signup', :class => "nav-link" %></p>
-        <% end %>
-        </div>
-
-      </div>
+  <div class="header">
+    <a href="/"><p id="logo">QuizApp</p></a>
+    <div class="nav">
+    <% if current_user %>
+     <p><%= current_user.email %> /
+     <%= link_to "Log Out", logout_path, method: "delete", :class => "nav-link" %></p>
+    <% else %>
+      <p><%= link_to 'Sign Up', '/signup', :class => "nav-link" %></p>
+    <% end %>
+    </div> <!-- nav -->
+  </div> <!-- header -->
 
 <!-- <div class="container"> -->
   <%= yield %>
@@ -29,7 +28,7 @@
 
   <div class="footer">
     <p>Copyright @ Team SODAS</p>
-  </div>
+  </div> <!-- footer -->
 
 </body>
 </html>
