@@ -2,7 +2,7 @@
  
  <div class="greeting">
     <% if current_user %>
-      <p class="hello">HELLO <%= current_user.first_name.capitalize %></p>
+      <p class="hello">Hello <%= current_user.first_name%></p>
     <% else %>
       <p class="welcome">WELCOME</p>
     <% end %>
@@ -16,3 +16,5 @@
 	<% end %>
 
 </div>
+
+<%= stylesheet_link_tag    'sessions' %>

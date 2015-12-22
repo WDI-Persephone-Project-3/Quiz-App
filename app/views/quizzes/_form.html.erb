@@ -3,7 +3,7 @@
 <div class="quiz-form">
 <%= form_tag("/quizzes", method: "POST") do %>
 
-  <%= select_tag(:cohort, options_for_select(@cohorts.pluck(:name))) %>
+  <%= select_tag(:cohort, options_for_select(@cohorts.pluck(:name)), class: "quiz-select") %> <br>
   <%= label_tag(:test_day, "Date: ", :class => 'quiz-date') %>
   <%= date_field_tag(:test_day, @test_day, :class => 'quiz-date') %>
   <br>
@@ -19,29 +19,31 @@
     <!-- only one checkbox should be able to be clicked. should have a "correct answer" id for CSS stuff -->
   </div> <!-- drop-down -->
   <div class="write-in">
-    <%= text_field_tag(:written_content, nil, :placeholder => "Enter Question") %>
+    <%= text_field_tag(:written_content, nil, :placeholder => "Enter Question", class: "write-in-tag") %>
     <br>
     <%= label_tag(:choice, "Answer Choice #1: ") %>
-    <%= text_field_tag(:choice1, nil, :placeholder => 'Enter Answer Here') %>
+    <%= text_field_tag(:choice1, nil, :placeholder => 'Enter Answer Here', class: "answers-for-questions") %>
     <%= radio_button_tag(:is_correct, 0) %>
    <br>
     <%= label_tag(:choice, "Answer Choice #2: ") %>
-    <%= text_field_tag(:choice2, nil, :placeholder => 'Enter Answer Here') %>
+    <%= text_field_tag(:choice2, nil, :placeholder => 'Enter Answer Here', class: "answers-for-questions") %>
     <%= radio_button_tag(:is_correct, 1) %>
    <br>
     <%= label_tag(:choice, "Answer Choice #3: ") %>
-    <%= text_field_tag(:choice3, nil, :placeholder => 'Enter Answer Here') %>
+    <%= text_field_tag(:choice3, nil, :placeholder => 'Enter Answer Here', class: "answers-for-questions") %>
     <%= radio_button_tag(:is_correct, 2) %>
    <br>
     <%= label_tag(:choice3, "Answer Choice #4: ") %>
-    <%= text_field_tag(:choice4, nil, :placeholder => 'Enter Answer Here') %>
+    <%= text_field_tag(:choice4, nil, :placeholder => 'Enter Answer Here', class: "answers-for-questions") %>
     <%= radio_button_tag(:is_correct, 3) %>
   </div> <!-- write-in -->
 
+<div class="button-for-questions">
   <%= submit_tag("Add Question") %>
   <%= submit_tag("Submit Quiz") %>
 
   <button id="toggle" type="button">Toggle Question Type</button>
+</div>
 
 <% end %>
 </div>

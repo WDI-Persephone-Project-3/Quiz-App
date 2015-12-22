@@ -10,17 +10,10 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
- *= require_self
- *= require_grid
+ *= require grid
  */
 
-/* Temporary borders to help with development */
-/*.container {
-  border: 1px solid black;
-}*/
-
-.splash-image {
+/*.splash-image {
   height: 650px;
   width: 100%;
   background-image: url("giphy.gif");
@@ -30,7 +23,7 @@
   margin: none;
   text-align: center;
 }
-
+*/
 
 body {
   margin: 0 auto;
@@ -50,7 +43,6 @@ h3 {
 }
 
 .header {
-/*  background-color: #53A697;*/
   height: 40px;
   width: 100%;
   color: black;
@@ -121,10 +113,104 @@ h1.greeting {
   align-self: center;
 }
 
+/*cohort update*/
+
+div.cohort-update {
+margin-top: 150px;
+}
+
+.cohort-label {
+  height: 1.5em;
+  font-size: 25px;
+  padding: 4px 4px;
+  vertical-align: none;
+}
+
+.cohort-btn {
+  height: 2.2em;
+  width: 5em;
+  font-size: 15px;
+  margin-left: 5px;
+  background-color: rgba(0, 0, 0, .4); 
+  color: white;
+  border: none;
+  margin-bottom: 5px;
+  border: 1.3px solid white;
+}
+
+.cohort-field {
+  height: 1.5em;
+  width:175px;
+  font-size: 15px;
+  padding: 4px 4px;
+  margin-left: 5px;
+  vertical-align: bottom;
+  margin-bottom: 5px;
+  background-color: rgba(255, 255, 255, .80);
+}
 
 
+/*form for quizz*/
+.quiz-select {
+  background-color: white;
+  color: black;
+  height: 25px;
+  font-size: 15px;
+  font-family: 'Open Sans', sans-serif;
+  text-transform: uppercase;
+  border: 1px solid black;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
 
+.quiz-date {
+  width: 150px;
+  height: 1em;
+  font-size: 15px;
+  padding: 4px 4px;
+  vertical-align: none;
+}
 
+.write-in-tag {
+  background-color: white;
+  color: red;
+  height: 25px;
+  width: 345px;
+  font-size: 15px;
+  font-family: 'Open Sans', sans-serif;
+  text-transform: uppercase;
+  border: 2px solid black;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
 
+.answers-for-questions {
+  height: 1em;
+  width:175px;
+  font-size: 15px;
+  padding: 4px 4px;
+  margin-left: 5px;
+  vertical-align: center;
+  margin-bottom: 5px;
+  background-color: rgba(255, 255, 255, .80);
 
+}
+
+.write-in {
+height: 500px;
+border-color: red;
+
+}
+
+.button-for-questions {
+  margin-top: 40px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.move-left {
+  margin-left: 40px;
+}
 

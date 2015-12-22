@@ -1,8 +1,47 @@
 /*.grade-wrapper .ul-wrapper{
-	border: 1px solid black;
+  border: 1px solid black;
 }*/
 
 /*student dash*/
+
+.div-links {
+  border: 1px solid black;
+  width: 140px;
+  padding: 5px;
+  margin: 10px auto;
+
+}
+
+
+.instructor-links-container div a {
+  text-decoration: none;
+/*  border: 1px solid black;*/
+  padding: 4px;
+  color: black;
+  font-weight: 200;
+  text-align: center;
+}
+
+div.student-header {
+  font-size: 40px;
+  font-weight: 400
+}
+
+div.student-email {
+  margin-bottom: 20px;
+}
+
+div.student-page{
+  margin-top: 50px;
+}
+
+.student-links-column {
+  background-color: #C8C8C8;
+}
+
+.student-links {
+  margin-top: 50px; 
+}
 
 div.student-header {
 	font-size: 40px;
@@ -35,14 +74,37 @@ ul {
 }
 
 .ul-wrapper {
-	width: 50%;
+  width: 50%;
 }
 
-/*edit form*/
-/*.page-wrap {
-	background-color: gray;
-	height: 650px;
-}*/
+.update-student-wrapper {
+  margin-top: 100px;
+}
+
+.login-field {
+  height: 1.5em;
+  width:175px;
+  font-size: 15px;
+  border: 1px solid #53A697;
+  padding: 4px 4px;
+  margin-left: 5px;
+  vertical-align: bottom;
+  margin-bottom: 5px;
+}
+
+.update-student-btn {
+  margin-top: 15px;
+  height: 39px;
+  width: 191px;
+  font-size: 15px;
+  margin-left: 5px;
+  background-color: rgba(0, 0, 0, .4); 
+  color: white;
+  border: none;
+  margin-bottom: 5px;
+  border: 1.3px solid white;
+}
+
 .update-student-wrapper {
 	margin-top: 100px;
 }
@@ -74,17 +136,87 @@ ul {
 /*class show*/
 
 .student-quiz-header {
-	font-size: 20px;
-	margin-top: 30px;
+  font-size: 20px;
+  margin-top: 30px;
 }
 
 a.student-page {
-	color: black;
-	text-decoration: none;
-	border: 1px solid black;
-	width: 150px;
-	margin: 20px auto;
-	padding: 4px 8px;
+  color: black;
+  text-decoration: none;
+  border: 1px solid black;
+  width: 150px;
+  margin: 20px auto;
+  padding: 4px 8px;
 }
 
+/*sergey code*/
+.dash {
+  width: 100%;
+  height: 650px;
+  background-color: rgb(200,200,200);
+  margin: 0 auto;
+/*  padding: 1em;*/
+padding-right: 2em;
+padding-top: 1em;
+  box-sizing: border-box;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.dash h3 {
+  margin: 0;
+}
+
+.scroll-downs {
+  width: 35%;
+  background-color: rgb(210,210,210);
+  padding-left: 15px;
+  box-sizing: border-box;
+  height: 586px;
+}
+
+.scroll-downs h4 {
+  text-align: left;
+  margin-bottom: 0px;
+
+}
+
+.scroll-down {
+  margin-top: 5px;
+  padding-left: 5px;
+  height: 408px;
+  width: 90%;
+  overflow: hidden;
+  overflow-y: scroll;
+  background-color: white;
+}
+
+.scroll-down a {
+  display: block;
+  text-align: left;
+  text-decoration: none;
+}
+
+.data {
+  width: 65%;
+  height: 586px;
+  background-color: rgb(220,220,220);
+}
+
+#line-chart {
+  margin: 10px auto;
+  width: 99%;
+  height: 630px;
+}
+
+svg {
+  width: 100%;
+}
+
+#line-chart div div {
+  /*width: 100%;*/
+  margin: -50px auto 0 auto;
 }
