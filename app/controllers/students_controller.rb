@@ -15,31 +15,6 @@ class StudentsController < ApplicationController
 
     redirect_to "/"
   end
-
-    # @student = Student.new(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation])
-
-    # respond_to do |format|
-    #   if @student.save
-    #     StudentMailer.welcome_email(@student).deliver_now
-    #     format.html {redirect_to @student, notice: 'Welcome.'}
-    #     format.json {render :show, status: :created, location: @student}
-    #   else
-    #     format.html {render :new}
-    #     format.json {render json: @student.errors, status: :unprocessable_entity}
-    #   end
-    # end
-
-
-  def dash
-    @student = Student.find(session[:user_id])
-    @cohort = @student.cohort
-    quizzes = Quiz.where(cohort: @cohort).order(test_day: :desc)
-    @quizzes = quizzes.select do |quiz|
-      quiz.test_day <= Date.today
-    end
-    @responses = Response.where(student: @student)
-    @todaysQuiz = @quizzes.select{|quiz| quiz.test_day == Date.today}
-  end
   
   def show
     @student = Student.find(params[:id])
@@ -64,29 +39,26 @@ class StudentsController < ApplicationController
 
   def update
   	@student = Student.find(session[:user_id])
-
-    # respond_to do |format|
-    #   if @student.update(email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation])
-    #     format.html {redirect_to @student, notice: 'User was successfully updated.'}
-    #     format.json {render :show, status: :ok, location: @user}
-    #   else
-    #     format.html {render :edit}
-    #     format.json {render json: @user.errors, status: :unprocessable_entity}
-    #   end
-    # end
   end
 
   def destroy
     student = Student.find(params[:id])
     student.destroy
-    # respond_to do |format|
-    #   format.html {redirect_to '/', notice: 'User was successfully destroyed.'}
-    #   format.json {head :no_content}
+  end
+
+  def dash
+    @student = Student.find(session[:user_id])
+    @cohort = @student.cohort
+    quizzes = Quiz.where(cohort: @cohort).order(test_day: :desc)
+    @quizzes = quizzes.select do |quiz|
+      quiz.test_day <= Date.today
+    end
+    @responses = Response.where(student: @student)
+    @todaysQuiz = @quizzes.select{|quiz| quiz.test_day == Date.today}
   end
 
   def ajax
-    existingResponses = Response.where(student: current_user).pluck(:quiz_id).uniq
-    quizDates = Quiz.where(id: existingResponses).order(test_day: :asc)
+    quizDates = Quiz.where(cohort: current_user.cohort).order(test_day: :asc)
     grades = current_user.calculate_grades
     response = []
 
@@ -99,7 +71,6 @@ class StudentsController < ApplicationController
         grade: grades[index].last * 100 / quiz.questions.length
         })
     end
-
     render json: response
   end
   

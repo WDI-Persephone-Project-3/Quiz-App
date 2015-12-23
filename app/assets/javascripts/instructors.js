@@ -20,12 +20,21 @@ function drawMultSeries() {
       data.addColumn('number', 'Students');
       data.addRows(response);
       //Styling Google Viz requires this options - search more options in the documentation
+
       var options = {
         backgroundColor: 'none',
         hAxis: {
           title: 'Scores',
         },
-        legend: 'none'
+        vAxis: {
+          minValue: 0,
+        },
+        legend: 'none',
+        animation: {
+          duration: 500,
+          easing: 'out',
+          startup: true
+        }
       };
       var chart = new google.visualization.ColumnChart(document.getElementById('column-chart'));
       chart.draw(data, options);
@@ -61,6 +70,14 @@ function drawBasic() {
           title: 'Test Day'
         },
         lineWidth: 4,
+        animation: {
+          duration: 500,
+          easing: 'out',
+          startup: true
+        },
+        vAxis: {
+          maxValue: 100
+        }
       };
       var chart = new google.visualization.LineChart(document.getElementById('line-chart'));
       chart.draw(data, options);

@@ -67,7 +67,7 @@ class InstructorsController < ApplicationController
       ["50-79%", grades[1]],
       ["30-59%", grades[2]],
       ["Needs Help", grades[3]],
-    ]
+    ]   
 
     render json: response
   end
@@ -75,8 +75,7 @@ class InstructorsController < ApplicationController
   def ajaxStudent
     studentName = params[:name].split('-')
     student = Student.find_by(first_name: studentName[0], last_name: studentName[1])
-    existingResponses = Response.where(student: student).pluck(:quiz_id).uniq
-    quizDates = Quiz.where(id: existingResponses).order(test_day: :asc)
+    quizDates = Quiz.where(cohort: student.cohort).order(test_day: :asc) 
     grades = student.calculate_grades
     response = []
 

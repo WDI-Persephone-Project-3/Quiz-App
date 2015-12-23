@@ -23,6 +23,14 @@ function drawBasic() {
           title: 'Test Day'
         },
         lineWidth: 4,
+        vAxis: {
+          maxValue: 100
+        },
+        animation: {
+          duration: 500,
+          easing: 'out',
+          startup: true
+        }
       };
       var chart = new google.visualization.LineChart(document.getElementById('line-chart'));
       chart.draw(data, options);
