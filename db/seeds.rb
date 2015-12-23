@@ -106,7 +106,6 @@ test_quiz2 = Quiz.create({test_day: Date.parse('15th Dec 2015'), instructor: i3,
 test_quiz2 = Quiz.create({test_day: Date.parse('16th Dec 2015'), instructor: i3, cohort: c2})
 test_quiz2 = Quiz.create({test_day: Date.parse('17th Dec 2015'), instructor: i3, cohort: c2})
 test_quiz2 = Quiz.create({test_day: Date.parse('18th Dec 2015'), instructor: i3, cohort: c2})
-test_quiz2 = Quiz.create({test_day: Date.today, instructor: i3, cohort: c2})
 
 test_quiz3 = Quiz.create({test_day: Date.parse('19th Dec 2015'), instructor: i3, cohort: c2})
 test_quiz4 = Quiz.create({test_day: Date.parse('10th Dec 2015'), instructor: i3, cohort: c2})

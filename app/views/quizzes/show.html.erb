@@ -6,6 +6,7 @@
 <%= form_tag("/quizzes/#{@quiz.id}/create_responses", method:"post") do %>
   <% @quiz.questions.each_with_index do |question, index| %>
     <h4><%= index+1 %>: <%= question.content %></h4>
+    <%= hidden_field_tag("Q#{index+1}", question.id) %>
     <% question.answers.each do |answer| %>
       <% if @quiz.test_day == Date.today && current_user.class == Student %>
         <% if @responses.any? %>
@@ -16,7 +17,7 @@
           <% end %>
         <% else %>
           <%= radio_button_tag(question.id, answer.choice) %>
-          <%= label_tag(question.id, answer.choice) %>
+          <%= label_tag(index+1, answer.choice) %>
         <% end %>
       <% elsif (current_user.class == Student && !@responses.any?) || current_user.class == Instructor %>
         <% if answer.is_correct %>

@@ -58,6 +58,7 @@ p#logo {
   float: left;
   margin-left: 20px;
   position: relative;
+  color: black;
 }
 
 .nav{
@@ -106,6 +107,7 @@ h1.greeting {
   align-items; center;
   display: flex;
   justify-content: space-around;
+  width: 100%;
 }
 
 .footer p {
