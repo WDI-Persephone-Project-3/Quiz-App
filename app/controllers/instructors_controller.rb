@@ -1,29 +1,29 @@
 class InstructorsController < ApplicationController
 
   def dash
-    @instructor = Instructor.find(session[:user_id])
-    @students = Student.where(cohort_id: Cohort.where(instructor_id: current_user.id).first.id)
-    @quizzes = Quiz.where(cohort_id: Cohort.where(instructor_id: current_user.id).first.id).order(test_day: :desc)
-    @cohorts = Cohort.where(instructor_id: current_user.id)
+    @instructor = Instructor.find(current_user.id)
+    @students = Student.where(cohort: Cohort.where(instructor: current_user).first)
+    @quizzes = Quiz.where(cohort: Cohort.where(instructor: current_user).first).order(test_day: :desc).select{|quiz| quiz.test_day <= Date.today}
+    @cohorts = Cohort.where(instructor: current_user)
   end
 
   def show
-    @instructor = Instructor.find(params[:id])
+    @instructor = Instructor.find(current_user.id)
   end
 
   def edit  
-    @instructor = Instructor.find(session[:user_id])
+    @instructor = Instructor.find(current_user.id)
   end
 
   def update
-    @instructor = Instructor.find(session[:user_id])
+    @instructor = Instructor.find(current_user.id)
     @instructor.update(instructor_params)
     redirect_to @instructor
   end
 
   def ajaxCohort
-    students = Student.where(cohort_id: Cohort.find_by(name: "#{params[:cohort_name]}").id)
-    quizzes = Quiz.where(cohort_id: Cohort.find_by(name: "#{params[:cohort_name]}").id).order(test_day: :desc)
+    students = Student.where(cohort: Cohort.find_by(name: "#{params[:cohort_name]}"))
+    quizzes = Quiz.where(cohort: Cohort.find_by(name: "#{params[:cohort_name]}")).order(test_day: :desc).select{|quiz| quiz.test_day <= Date.today}
     response = {students: [], quizzes: []}
     students.each do |student|
       response[:students].push({
@@ -75,7 +75,7 @@ class InstructorsController < ApplicationController
   def ajaxStudent
     studentName = params[:name].split('-')
     student = Student.find_by(first_name: studentName[0], last_name: studentName[1])
-    quizDates = Quiz.where(cohort: student.cohort).order(test_day: :asc) 
+    quizDates = Quiz.where(cohort: student.cohort).order(test_day: :asc).select{|quiz| quiz.test_day <= Date.today}
     grades = student.calculate_grades
     response = []
 
@@ -88,7 +88,6 @@ class InstructorsController < ApplicationController
         grade: grades[index].last * 100 / quiz.questions.length
         })
     end
-
     render json: response
   end
 

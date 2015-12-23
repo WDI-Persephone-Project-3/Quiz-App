@@ -35,8 +35,15 @@ class Student < ActiveRecord::Base
   	ids_for_responses = self.responses.pluck(:quiz_id).uniq
     # Quiz ids for quizzes the student has taken ordered by test day - this is important to get a good visualization - otherwise the line chart will not go in order
     quiz_ids_for_responses = Quiz.where(id: ids_for_responses).order(test_day: :asc).pluck(:id)
-    # Quiz ids for quizzes in the cohort
-    quiz_ids_for_cohort = Quiz.where(cohort: self.cohort).order(test_day: :asc).pluck(:id)
+    # Quiz ids for quizzes in the cohort set for no later than current day
+    quiz_ids_for_cohort = Quiz.where(cohort: self.cohort).order(test_day: :asc).map do |quiz|
+      if quiz.test_day <= Date.today
+        quiz.id
+      else
+      end
+    end
+    # Remove any nils from quiz_ids
+    quiz_ids_for_cohort.compact   
     # Quiz ids for quizzes the student has missed or has not taken yet
     quiz_ids_difference = quiz_ids_for_cohort-quiz_ids_for_responses
     # If there are quizzes the student has missed, replace the quiz id with 0
