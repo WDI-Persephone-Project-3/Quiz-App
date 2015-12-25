@@ -1,18 +1,19 @@
+<div class="big-scroll page-length">
+  <h1>All Quizzes</h1>
 
-<div class="move-left">
-<h1>All Quizzes</h1>
+  <!-- if an instructor is logged in -->
+  <!-- show a list of all quizzes -->
 
-<!-- if an instructor is logged in -->
-<!-- show a list of all quizzes -->
+  <% if current_user.class == Instructor %>
+    <p><a href="/quizzes/new">Create a new quiz!</a></p>
+  <% end %>
+  <ul>
+   <% @quizzes.each do |quiz| %>
+    <li>
+      <h3><a href="/quizzes/<%= quiz[:id] %>"><%= quiz[:test_day] %></a></h3>
+    </li>
+   <% end %>
+  </ul>
+</div> <!-- big-scroll -->
 
-<% if current_user.class == Instructor %>
-  <p><a href="/quizzes/new" class="new-quiz">Create a new quiz!</a></p>
-<% end %>
-</div>
-<ul>
- <% @quizzes.each do |quiz| %>
-  <li>
-    <h3><a href="/quizzes/<%= quiz[:id] %>"><%= quiz[:test_day] %></a></h3>
-  </li>
- <% end %>
-</ul>
+<%= stylesheet_link_tag    'quizzes' %>

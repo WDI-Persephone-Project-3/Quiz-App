@@ -1,9 +1,11 @@
-<h1><%= @cohort.name %> Cohort Student List</h1>
-<a href="/students/new">Add Students!</a>
-<ul>
-	<% @students.each do |student| %>
-		<li><strong><%= student.last_name %>, <%= student.first_name %></strong></li>
-    <li><a href="mailto:<%= student.email %>"><%= student.email %></a></li>
-    <br>
-  <% end %>
-</ul> 
+<div class="big-scroll page-length">  
+  <h1><%= @cohort.name %> Cohort Student List</h1>
+  <a href="/students/new">Add Students!</a>
+  <ul>
+  	<% @students.each do |student| %>
+  		<li><strong><%= student.last_name %>, <%= student.first_name %></strong></li>
+      <li><a href="mailto:<%= student.email %>"><%= student.email %></a></li>
+      <br>
+    <% end %>
+  </ul>
+</div> <!-- big-scroll page-length -->

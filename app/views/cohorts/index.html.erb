@@ -1,8 +1,9 @@
-<h1>Cohorts</h1>
+<div class="big-scroll page-length">
+  <h1>Cohorts</h1>
 
-<% @cohorts.each do |cohort| %>
-	<h3><a href="/cohorts/<%= cohort.id %>"><%= cohort.name %></a></h3>
-	<p><%= cohort.instructor.last_name %>, <%= cohort.instructor.first_name %></p>
-  <br>
-<% end %>
-
+  <% @cohorts.each do |cohort| %>
+  	<h3><a href="/cohorts/<%= cohort.id %>"><%= cohort.name %></a></h3>
+  	<p><%= cohort.instructor.last_name %>, <%= cohort.instructor.first_name %></p>
+    <br>
+  <% end %>
+</div>

@@ -1,7 +1,7 @@
 <div class="dash">
   <h3 class="cohort-name">Cohort: <%= @cohorts.pluck(:name).first %></h3>
   <div class="flex">  
-    <div class="scroll-downs grid-2-8">
+    <div class="scroll-downs grid-2-8 big-scroll">
       <h4>Quizzes</h4>
       <ul class="scroll-down">
         <!-- FIX THIS FOR JUST QUIZZES IN THE COHORT -->
@@ -30,7 +30,7 @@
         <% end %>
       </select>       
     </div> <!-- scroll-downs -->
-    <div class="data grid-6-8">
+    <div class="data grid-6-8 big-scroll">
       <% if @quizzes.first %>
         <h4 class="quiz-name">Grades for Quiz <%= @quizzes.first.test_day%> </h4>
         <div id="column-chart"></div>

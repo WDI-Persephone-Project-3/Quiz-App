@@ -230,3 +230,12 @@ ul {
 .sidebar-container {
   background-color: rgb(200,200,200);
 }
+
+.big-scroll {
+  overflow: hidden;
+  overflow-y: scroll;  
+}
+
+.page-length {
+  height: 90vh;
+}

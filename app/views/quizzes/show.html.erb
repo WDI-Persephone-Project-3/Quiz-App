@@ -1,49 +1,51 @@
-<p>Test Date: <%= @quiz.test_day %></p>
-<p>Created by <%= Instructor.find(@quiz.instructor_id).first_name %> <%= Instructor.find(@quiz.instructor_id).last_name %></p>
+<div class="big-scroll page-length">
+  <p>Test Date: <%= @quiz.test_day %></p>
+  <p>Created by <%= Instructor.find(@quiz.instructor_id).first_name %> <%= Instructor.find(@quiz.instructor_id).last_name %></p>
 
-<!-- I did some styling here, move to css files later -->
+  <!-- I did some styling here, move to css files later -->
 
-<%= form_tag("/quizzes/#{@quiz.id}/create_responses", method:"post") do %>
-  <% @quiz.questions.each_with_index do |question, index| %>
-    <h4><%= index+1 %>: <%= question.content %></h4>
-    <%= hidden_field_tag("Q#{index+1}", question.id) %>
-    <% question.answers.each do |answer| %>
-      <% if @quiz.test_day == Date.today && current_user.class == Student %>
-        <% if @responses.any? %>
-          <% if answer.choice == @responses.find_by(question_id: question.id).choice %>
-            <li style="color: blue; font-weight: bolder"><%= answer.choice %></li>
+  <%= form_tag("/quizzes/#{@quiz.id}/create_responses", method:"post") do %>
+    <% @quiz.questions.each_with_index do |question, index| %>
+      <h4><%= index+1 %>: <%= question.content %></h4>
+      <%= hidden_field_tag("Q#{index+1}", question.id) %>
+      <% question.answers.each do |answer| %>
+        <% if @quiz.test_day == Date.today && current_user.class == Student %>
+          <% if @responses.any? %>
+            <% if answer.choice == @responses.find_by(question_id: question.id).choice %>
+              <li style="color: blue; font-weight: bolder"><%= answer.choice %></li>
+            <% else %>
+              <li><%= answer.choice %></li>
+            <% end %>
           <% else %>
-            <li><%= answer.choice %></li>
+            <%= radio_button_tag(question.id, answer.choice) %>
+            <%= label_tag(index+1, answer.choice) %>
+          <% end %>
+        <% elsif (current_user.class == Student && !@responses.any?) || current_user.class == Instructor %>
+          <% if answer.is_correct %>
+            <li style="font-weight: bolder"><%= answer.choice %></li>
+          <% else %>
+            <li style="color: gray"><%= answer.choice %></li>
           <% end %>
         <% else %>
-          <%= radio_button_tag(question.id, answer.choice) %>
-          <%= label_tag(index+1, answer.choice) %>
-        <% end %>
-      <% elsif (current_user.class == Student && !@responses.any?) || current_user.class == Instructor %>
-        <% if answer.is_correct %>
-          <li style="font-weight: bolder"><%= answer.choice %></li>
-        <% else %>
-          <li style="color: gray"><%= answer.choice %></li>
-        <% end %>
-      <% else %>
-        <% if answer.is_correct %>
-          <% if answer.choice == @responses.find_by(question_id: question.id).choice %>
-            <li style="font-weight: bolder; color: green"><%= answer.choice %></li>
-           <% else %>
-            <li style="font-weight: bolder"><%= answer.choice %></li>
-           <% end %> 
-        <% else %>
-          <% if answer.choice == @responses.find_by(question_id: question.id).choice %>
-            <li style="color: red"><%= answer.choice %></li>
-           <% else %>
-            <li style="color: gray"><%= answer.choice %></li>
-           <% end %>
+          <% if answer.is_correct %>
+            <% if answer.choice == @responses.find_by(question_id: question.id).choice %>
+              <li style="font-weight: bolder; color: green"><%= answer.choice %></li>
+             <% else %>
+              <li style="font-weight: bolder"><%= answer.choice %></li>
+             <% end %> 
+          <% else %>
+            <% if answer.choice == @responses.find_by(question_id: question.id).choice %>
+              <li style="color: red"><%= answer.choice %></li>
+             <% else %>
+              <li style="color: gray"><%= answer.choice %></li>
+             <% end %>
+          <% end %>
         <% end %>
       <% end %>
     <% end %>
+    </br></br>
+    <%= submit_tag "Submit Quiz" if current_user.class == Student && !@responses.any? && @quiz.test_day == Date.today %>
   <% end %>
-  </br></br>
-  <%= submit_tag "Submit Quiz" if current_user.class == Student && !@responses.any? && @quiz.test_day == Date.today %>
-<% end %>
 
-<%= stylesheet_link_tag    'quizzes' %>
+  <%= stylesheet_link_tag    'quizzes' %>
+</div> <!-- big-scroll page-length -->
