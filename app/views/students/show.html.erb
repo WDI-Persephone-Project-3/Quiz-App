@@ -1,8 +1,9 @@
-<div class="student-page">
+<div class="big-scroll page-length">
 	<div class="student-header"><%= @student.cohort.name %></div>
 	<div class="student-email"><%= @student.email %></div>
-	<a class="student-page" href="/students/<%= @student.id %>/edit">UPDATE INFO</a>
-
+	<% if current_user.class == Student && current_user.id == @student.id %>
+		<a class="student-page" href="/students/<%= @student.id %>/edit">UPDATE INFO</a>
+	<% end %>
 	<p class="student-quiz-header" >Quiz History:</p>
 
 	<p>Current Average: <%= @average %>%</p>
