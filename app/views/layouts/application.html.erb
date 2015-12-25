@@ -6,10 +6,8 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic|Francois+One' rel='stylesheet' type='text/css'>
-  <script src="../../application.js"></script>
 </head>
 <body>
-
   <div class="header">
     <a href="/"><p id="logo">QuizApp</p></a>
     <div class="nav">
@@ -22,13 +20,53 @@
     </div> <!-- nav -->
   </div> <!-- header -->
 
-<!-- <div class="container"> -->
-  <%= yield %>
-<!--   </div> -->
+  <% if current_user %>
+    <section class="main-content grid-full wrapper">
+      <section class="sidebar-container grid-1-8">
+        <% if current_user.class == Instructor %>
+          <div class="instructor-links-container">
+            <div class="links-container">
+            <p><%= select_tag :cohort, options_for_select(Cohort.where(instructor_id: current_user.id).pluck(:name)), :class => 'cohort-choice' %></p>            
+            <div class="div-links"><a href="/cohorts/new">ADD A COHORT</a></div>
+            <div class="div-links"><a href="/quizzes/new">CREATE QUIZ</a></div>
+            <div class="div-links"><a href="/quizzes">ALL QUIZZES</a></div>
+            <div class="div-links"><a href="/instructors/<%= current_user.id %>/edit">UPDATE INFO</a></div>
+          </div> <!-- instructor-links-containers -->
+        </div> <!-- sidebar-container grid-1-8 -->
+        <% else %>
+          <div class="instructor-links-container student-links">
+            <% if todays_quiz %>
+              <div class="div-links">
+                <a href="/quiz">TODAY'S QUIZ</a>
+              </div>  
+            <% else %>
+              <a>NO QUIZ TODAY</a>
+            <% end %>
+            <div class="div-links">  
+              <a href="/students/<%= current_user.id %>">VIEW PROFILE</a>
+            </div>
+            <div class="div-links">
+              <a href="/cohorts/<%= current_user.cohort.id %>">CLASS DIRECTORY</a>
+            </div>
+          </div>
+        <% end %>
+      </section> <!-- sidebar grid-1-8 -->
+      <section class="grid-7-8">
+        <%= yield %>
+      </section> <!-- grid-7-8 -->
+    </section> <!-- main-content grid-full wrapper -->
+  <% else %>
+    <%= yield %>
+  <% end %>
 
   <div class="footer">
     <p>Copyright @ Team SODAS</p>
   </div> <!-- footer -->
 
+  <% if current_user.class == Instructor %>
+    <%= stylesheet_link_tag    'instructors' %>
+  <% elsif current_user.class == Student %>
+    <%= stylesheet_link_tag    'students' %>
+  <% end %>
 </body>
 </html>

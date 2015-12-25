@@ -58,7 +58,7 @@ class StudentsController < ApplicationController
   end
 
   def ajax
-    quizDates = Quiz.where(cohort: current_user.cohort).order(test_day: :asc)
+    quizDates = Quiz.where(cohort: current_user.cohort).order(test_day: :asc).select{|quiz| quiz.test_day <= Date.today}
     grades = current_user.calculate_grades
     response = []
 

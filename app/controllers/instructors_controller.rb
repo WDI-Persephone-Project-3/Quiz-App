@@ -65,7 +65,7 @@ class InstructorsController < ApplicationController
     response = [
       ["70-100%", grades[0]],
       ["50-79%", grades[1]],
-      ["30-59%", grades[2]],
+      ["30-49%", grades[2]],
       ["Needs Help", grades[3]],
     ]   
 

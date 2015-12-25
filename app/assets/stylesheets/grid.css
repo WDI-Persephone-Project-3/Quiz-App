@@ -1,11 +1,12 @@
 body {
- margin: 0;
+  margin: 0;
 }
 /* This is the file where all my grid stuff will go! Awesome. */
 
 .wrapper {
-display:flex;
-flex-wrap: wrap;
+  display:flex;
+  flex-wrap: wrap;
+  height: 90vh;
 }
 /*width: 95%;*/
 /*  align-items: center; */
@@ -14,19 +15,19 @@ flex-wrap: wrap;
 
 /* This is a rule that will make the targeted element take up 20% of available space. */
 .grid-1-5 {
- width: 20%;
+  width: 20%;
 }
 .grid-2-5 {
- width: 40%;
+  width: 40%;
 }
 .grid-3-5 {
- width:60%;
+  width:60%;
 }
 .grid-4-5 {
- width: 80%;
+  width: 80%;
 }
 .grid-5-5, .grid-8-8, .grid-full {
- width: 100%;
+  width: 100%;
 }
 
 /* Write a new series of rules that will allow us to utilize a grid divided in eighths*/

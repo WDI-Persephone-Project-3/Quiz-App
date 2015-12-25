@@ -6,12 +6,21 @@
 
 .div-links {
   border: 1px solid black;
-  width: 140px;
-  padding: 5px;
+  width: 85%;
+  padding: 5px 0;
   margin: 10px auto;
-
 }
 
+.div-links:hover {
+  background-color: #E0E0E0;
+  transition: all 0.3s ease 0s;  
+}
+
+.div-links:active {
+  transition: all 0.3s ease 0s;
+  background-color: white;
+  box-shadow: inset 0 0 10px 4px #C8C8C8;
+}
 
 .instructor-links-container div a {
   text-decoration: none;
@@ -33,10 +42,6 @@ div.student-email {
 
 div.student-page{
   margin-top: 50px;
-}
-
-.student-links-column {
-  background-color: #C8C8C8;
 }
 
 .student-links {
@@ -152,12 +157,12 @@ a.student-page {
 /*sergey code*/
 .dash {
   width: 100%;
-  height: 650px;
+  height: 90vh;
   background-color: rgb(200,200,200);
   margin: 0 auto;
-/*  padding: 1em;*/
-padding-right: 2em;
-padding-top: 1em;
+  padding: 1em 1em 1em 0;
+  /*padding-right: 2em;*/
+  /*padding-top: 1em;*/
   box-sizing: border-box;
 }
 
@@ -171,24 +176,22 @@ padding-top: 1em;
 }
 
 .scroll-downs {
-  width: 35%;
   background-color: rgb(210,210,210);
   padding-left: 15px;
   box-sizing: border-box;
-  height: 586px;
+  height: 80vh;
 }
 
 .scroll-downs h4 {
   text-align: left;
   margin-bottom: 0px;
-
 }
 
 .scroll-down {
   margin-top: 5px;
   padding-left: 5px;
-  height: 408px;
-  width: 90%;
+  height: 85%;
+  width: 93%;
   overflow: hidden;
   overflow-y: scroll;
   background-color: white;
@@ -201,15 +204,14 @@ padding-top: 1em;
 }
 
 .data {
-  width: 65%;
-  height: 586px;
+  height: 80vh;
   background-color: rgb(220,220,220);
 }
 
 #line-chart {
-  margin: 10px auto;
+  margin: 40px auto;
   width: 99%;
-  height: 630px;
+  height: 80vh;
 }
 
 svg {

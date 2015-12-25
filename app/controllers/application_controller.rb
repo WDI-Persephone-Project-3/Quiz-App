@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  helper_method :current_user
+  def todays_quiz
+    Quiz.where(cohort: current_user.cohort, test_day: Date.today)
+  end
+
+  helper_method :current_user, :todays_quiz
 
 end

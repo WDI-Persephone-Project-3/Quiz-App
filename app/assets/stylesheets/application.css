@@ -79,6 +79,17 @@ p#logo {
   text-decoration: none;
 }
 
+.nav-link:hover {
+  transition: all 0.3s ease 0s;
+  background-color: #FFCCCE;
+}
+
+.nav-link:active {
+  transition: all 0.3s ease 0s;
+  background-color: #FCE1E2;
+  box-shadow: inset 0 0 10px 4px #FFD6D7;  
+}
+
 .greeting {
   margin: auto;
   vertical-align: middle;
@@ -97,7 +108,6 @@ h1.greeting {
   width: 80%;
   background-color: rgba(255,255,255,0.75);
 }
-
 
 .footer {
   background-color: white;
@@ -210,9 +220,13 @@ border-color: red;
 
 ul {
   list-style-type: none;
+  padding-left: 0;
 }
 
 .move-left {
   margin-left: 40px;
 }
 
+.sidebar-container {
+  background-color: rgb(200,200,200);
+}

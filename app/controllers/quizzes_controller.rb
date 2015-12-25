@@ -67,7 +67,7 @@ class QuizzesController < ApplicationController
       if params[:test_day].length == 0
         render :new
       else
-        redirect_to "/quizzes"
+        redirect_to "/quizzes/#{@quiz.id}"
       end
     end
   end

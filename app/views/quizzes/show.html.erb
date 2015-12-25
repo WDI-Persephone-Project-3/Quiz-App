@@ -45,3 +45,5 @@
   </br></br>
   <%= submit_tag "Submit Quiz" if current_user.class == Student && !@responses.any? && @quiz.test_day == Date.today %>
 <% end %>
+
+<%= stylesheet_link_tag    'quizzes' %>
