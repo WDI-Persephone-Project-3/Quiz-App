@@ -54,7 +54,7 @@ class QuizzesController < ApplicationController
       # Else create the written question, the written answers, and give one of the answers
       else
         question = Question.create(content: params[:written_content])
-        @created_quiz.questions.push(question)
+        @quiz.questions.push(question)
         Answer.create(question: question, choice: params[:choice1], is_correct: false)
         Answer.create(question: question, choice: params[:choice2], is_correct: false)
         Answer.create(question: question, choice: params[:choice3], is_correct: false)
