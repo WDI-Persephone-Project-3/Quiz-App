@@ -10,7 +10,6 @@ class ResponsesController < ApplicationController
       Response.create(choice: params[question_id], student_id: current_user.id, quiz_id: params[:id], question_id: question_id)
       i += 1
     end
-    binding.pry
     redirect_to @quiz
   end
 
