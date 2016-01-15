@@ -1,0 +1,49 @@
+.drop-down {
+  height: 150px;
+  padding-top: 52.5px;
+  display: none;
+}
+
+.write-in {
+  height: 150px;
+  padding-top: 18px; 
+}
+
+.sidebar-container{
+  height: 90vh;
+  background: #C8C8C8;
+}
+
+.div-links {
+  border: 1px solid black;
+  width: 140px;
+  padding: 5px;
+  margin: 10px auto;
+}
+
+.div-links:hover {
+  background-color: #E0E0E0;
+  transition: all 0.3s ease 0s;  
+}
+
+.div-links:active {
+  transition: all 0.3s ease 0s;
+  background-color: white;
+  box-shadow: inset 0 0 10px 4px #C8C8C8;
+}
+
+.instructor-links-container div a {
+  text-decoration: none;
+/*  border: 1px solid black;*/
+  padding: 4px;
+  color: black;
+  font-weight: 200;
+}
+
+.student-links {
+  margin-top: 50px; 
+}
+
+.page-length {
+  height: 90vh;
+}
