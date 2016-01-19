@@ -2,7 +2,7 @@
 .splash-image {
   height: 100vh;
 	width: 100%;
-	background-image: asset-url("giphy.gif");
+	background-image: image-url("giphy.gif");
 	background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
