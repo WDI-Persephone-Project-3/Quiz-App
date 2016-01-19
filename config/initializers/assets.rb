@@ -9,13 +9,13 @@ Rails.application.config.assets.version = '1.0'
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
-Rails.application.config.assets.precompile += %w( sessions.css )
-Rails.application.config.assets.precompile += %w( instructors.css )
-Rails.application.config.assets.precompile += %w( students.css )
-Rails.application.config.assets.precompile += %w( quizzes.css )
+# Rails.application.config.assets.precompile += %w( sessions.css )
+# Rails.application.config.assets.precompile += %w( instructors.css )
+# Rails.application.config.assets.precompile += %w( students.css )
+# Rails.application.config.assets.precompile += %w( quizzes.css )
 
+# Rails.application.config.assets.precompile += %w( instructors.js )
+# Rails.application.config.assets.precompile += %w( students.js )
+# Rails.application.config.assets.precompile += %w( quizzes.js )
 
-
-Rails.application.config.assets.precompile += %w( instructors.js )
-Rails.application.config.assets.precompile += %w( students.js )
-Rails.application.config.assets.precompile += %w( quizzes.js )
+Rails.application.config.assets.precompile += ['footer.js', 'instructors.js','quizzes.js','students.js','students.css','instructors.css','quizzes.css','sessions.css']
