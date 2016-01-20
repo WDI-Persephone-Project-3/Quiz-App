@@ -18,4 +18,4 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.precompile += %w( students.js )
 # Rails.application.config.assets.precompile += %w( quizzes.js )
 
-Rails.application.config.assets.precompile += ['footer.js', 'instructors.js','quizzes.js','students.js','students.css','instructors.css','quizzes.css','sessions.css']
+Rails.application.config.assets.precompile += ['footer.js', 'instructors.js','quizzes.js','students.js','students.css','instructors.css','quizzes.css','sessions.css.erb']
