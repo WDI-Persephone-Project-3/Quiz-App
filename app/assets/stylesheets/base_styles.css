@@ -1,0 +1,214 @@
+body {
+  margin: 0 auto;
+  padding: 0;
+  vertical-align: middle;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+  font-family: 'Francois One', sans-serif;
+  font-size: 36px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+.header {
+  height: 40px;
+  width: 100%;
+  color: black;
+  top: 0px;
+  display: inline-block;
+  position: relative;
+}
+
+p#logo {
+  font-family: 'Francois One', sans-serif;
+  font-size: 18px;
+  top: -15%;
+  float: left;
+  margin-left: 20px;
+  position: relative;
+  color: black;
+}
+
+.nav{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  top: 5%;
+  position: relative;
+  float: right;
+  display: inherit;
+  margin-right: 20px;
+}
+
+.nav-link {
+  border: 1px solid #FF5A5F;
+  padding: 4px 8px;
+  color: black;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  transition: all 0.3s ease 0s;
+  background-color: #FFCCCE;
+}
+
+.nav-link:active {
+  transition: all 0.3s ease 0s;
+  background-color: #FCE1E2;
+  box-shadow: inset 0 0 10px 4px #FFD6D7;  
+}
+
+.greeting {
+  margin: auto;
+  vertical-align: middle;
+  padding-top: 40px;
+  text-align: center;
+  line-height: 35%;
+}
+
+h1.greeting {
+  color: #53A697;
+}
+
+.container {
+  margin: auto;
+  top: 10px;
+  width: 80%;
+  background-color: rgba(255,255,255,0.75);
+}
+
+.footer {
+  background-color: white;
+  font-size: 12px;
+  height: 36px;
+  color: black;
+  align-items; center;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.footer p {
+  margin: 0;
+  align-self: center;
+}
+
+/*cohort update*/
+
+div.cohort-update {
+margin-top: 150px;
+}
+
+.cohort-label {
+  height: 1.5em;
+  font-size: 25px;
+  padding: 4px 4px;
+  vertical-align: none;
+}
+
+.cohort-btn {
+  height: 2.2em;
+  width: 5em;
+  font-size: 15px;
+  margin-left: 5px;
+  background-color: rgba(0, 0, 0, .4); 
+  color: white;
+  border: none;
+  margin-bottom: 5px;
+  border: 1.3px solid white;
+}
+
+.cohort-field {
+  height: 1.5em;
+  width:175px;
+  font-size: 15px;
+  padding: 4px 4px;
+  margin-left: 5px;
+  vertical-align: bottom;
+  margin-bottom: 5px;
+  background-color: rgba(255, 255, 255, .80);
+}
+
+
+/*form for quizz*/
+.quiz-select {
+  background-color: white;
+  color: black;
+  height: 25px;
+  font-size: 15px;
+  font-family: 'Open Sans', sans-serif;
+  text-transform: uppercase;
+  border: 1px solid black;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.quiz-date {
+  width: 150px;
+  height: 1em;
+  font-size: 15px;
+  padding: 4px 4px;
+  vertical-align: none;
+}
+
+.write-in-tag {
+  background-color: white;
+  color: red;
+  height: 25px;
+  width: 345px;
+  font-size: 15px;
+  font-family: 'Open Sans', sans-serif;
+  text-transform: uppercase;
+  border: 2px solid black;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.answers-for-questions {
+  height: 1em;
+  width:175px;
+  font-size: 15px;
+  padding: 4px 4px;
+  margin-left: 5px;
+  vertical-align: center;
+  margin-bottom: 5px;
+  background-color: rgba(255, 255, 255, .80);
+
+}
+
+.write-in {
+height: 500px;
+border-color: red;
+
+}
+
+.button-for-questions {
+  margin-top: 40px;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.move-left {
+  margin-left: 40px;
+}
+
+.sidebar-container {
+  background-color: rgb(200,200,200);
+}
+
+.big-scroll {
+  overflow: hidden;
+  overflow-y: scroll;  
+}
+
+.page-length {
+  height: 90vh;
+}
