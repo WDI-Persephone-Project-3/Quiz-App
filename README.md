@@ -3,7 +3,7 @@
 ## QuizApp
 
 With this app, an instrutctor can manage student cohorts, create and administer quizzes, and keep track of grades.
-https://vast-basin-3507.herokuapp.com/
+https://quizapp-wdi.herokuapp.com/
 
 ### User Story:
 
